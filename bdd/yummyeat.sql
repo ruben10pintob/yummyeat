@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-03-2020 a las 20:27:08
--- Versión del servidor: 10.4.8-MariaDB
--- Versión de PHP: 7.3.11
+-- Tiempo de generación: 17-03-2020 a las 01:45:55
+-- Versión del servidor: 10.1.35-MariaDB
+-- Versión de PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -113,6 +113,7 @@ CREATE TABLE `producto` (
   `ID_PRODUCTO` int(11) NOT NULL,
   `NOMBRE_PRODUCTO` varchar(40) NOT NULL,
   `DESCRIPCION_PRODUCTO` varchar(150) NOT NULL,
+  `CATEGORIA_PRODUCTO` varchar(50) DEFAULT NULL,
   `PRECIO_PRODUCTO` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -120,44 +121,44 @@ CREATE TABLE `producto` (
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`ID_PRODUCTO`, `NOMBRE_PRODUCTO`, `DESCRIPCION_PRODUCTO`, `PRECIO_PRODUCTO`) VALUES
-(1, 'New York MeatBalls', 'Salsa de tomate, queso 100% mozzarella, pepperoni, meatballs, salsa BBQ por encima y queso cheddar en los bordes.', '12.90'),
-(2, 'Oklahoma Bacon Crispy', 'Salsa BBQ original, queso 100% mozzarella, pepperoni, york, bacon cripy y queso cheddar en el borde.', '12.90'),
-(3, 'Texas BBQ Crispy', 'Salsa BBQ Texas, queso 100% mozzarella, bacon crispy, bacon, pollo a la parrilla, carne de vacuno, queso cheddar en el borde y salsa.', '12.90'),
-(4, 'Cremozza al estilo Bourbon', 'Base de crema fresca, queso 100% mozzarella, bacon, pollo a la parrilla, cebolla y salsa Bourbon', '11.90'),
-(5, 'Cremozza BBQ', 'Base de crema fresca, queso 100% mozzarella, bacon, pollo a la parrila, cebolla, salsa barbacoa.', '11.90'),
-(6, 'Cabramelizada', 'Crema fresca, queso 100% mozzarella, queso de cabra, cebolla caramelizada.', '11.90'),
-(7, 'Cheesix', 'Crema fresca, queso 100% mozzarella, cheddar, emmental, parmesano, gorgonzola, queso de cabra.', '11.90'),
-(8, 'Pecado Carnal', 'Salsa de tomate, extra de queso 100% mozzarella, carne de vacuno, bacon, pepperoni, york.', '10.90'),
-(9, 'Carbonara', 'Crema fresca, queso 100% mozzarella, bacon, champiñon y cebolla.', '10.90'),
-(10, 'Extravaganzza', 'Sala de tomate, mozzarella, carne de vacuno, pepperoni, York, bacon, cebolla, pimiento verde, champiñon y aceitunas negras.', '10.90'),
-(11, 'Barbacoa', 'Salsa barbacoa, queso 100% mozzarella, carne de vacuno, cebolla, bacon, maiz', '10.90'),
-(12, 'Hawaiana Plus', 'Salsa de tomate, extra de queso 100% mozzarella, doble de York y piña.', '10.90'),
-(13, 'Pollo a la Parrilla', 'Salsa de tomate, queso 100% mozzarella, doble de pollo a la parrilla, cebolla, champiñon y maíz.', '10.90'),
-(14, 'Cuatro  Quesos', 'Salsa de tomate, queso 100% mozzarella, cheddar, emmental y gorgonzola.', '10.90'),
-(15, 'Tony Pepperoni', 'Salsa de tomate, extra de queso 100% mozzarella y doble de pepperoni.', '10.90'),
-(16, 'Patanegra', 'Salsa de tomate, queso 100% mozzarella, jamón serrano, aceite de oliva, aceitunas negras, tomate natural y orégano.', '10.90'),
-(17, 'Campiña', 'Salsa de tomate, extra de queso 100% mozzarella, champiñón, pimiento verde, cebolla, aceitunas negras y tomate natural.', '10.90'),
-(19, 'Cheese &  Bacon Fries', 'Nuestras patatas con bacon crispy y deliciosa salsa cheddar.', '7.90'),
-(20, 'Patatas Grill', 'Crujientes patatas horneadas acompañadas de una salsa a elegir.', '7.90'),
-(21, 'Combo de pollo', 'Strippers, Kickers y Alitas (17 uds).', '9.90'),
-(22, 'Combo de alitas', 'Alitas en salsa Bourbon, Mostaza y miel y Barbacoa (18 uds).', '9.90'),
-(23, 'Alitas de pollo', 'Sabrosas alitas de pollo marinadas (6uds).', '6.90'),
-(24, 'Alitas de polllo con salsa', 'Sabrosas alitas de pollo marinadas con salsa.', '7.90'),
-(25, 'Kickers', 'Pequeñas pechugas de pollo empanadas, con rebozado picante (6uds).', '6.90'),
-(26, 'Strippers', 'Tiras de pollo empanadas (5uds).', '6.90'),
-(27, 'Camembits', 'Deliciosos bocados de queso que se funden en tu boca.', '6.90'),
-(28, 'Pan de ajo con queso', 'Crujiente pan de ajo tostado con queso 100% mozzarella fundido (4 o 6 uds).', '0.00'),
-(29, 'Brownkie', 'Una deliciosa unión de cookies y brownie fundido.', '4.95'),
-(30, 'Chococheese', 'Cremoso volcán de queso con una esponjosa base de brownie de chocolate.', '4.95'),
-(35, 'Cookies', 'Deliciosas galletas con pepitas de chocolate.', '3.95'),
-(36, 'Vulcano de chocolate', 'Delicioso bizcocho de chocolate relleno de chocolate fundido.', '3.95'),
-(37, 'Pepsi', 'Pepsi clásica lata 33cl.', '1.50'),
-(38, 'Pepsi Max', 'Pepsi Maaxlata 33cl.', '1.50'),
-(39, 'Red Bull', 'Red Bull lata 25cl.', '2.30'),
-(40, 'Kas Naranja', 'Kas Naranja lata 33cl.', '1.50'),
-(43, 'Kas Limón', 'Kas Limón lata 33cl.', '1.50'),
-(44, 'Agua', 'Agua sin gas 50cl.', '1.10');
+INSERT INTO `producto` (`ID_PRODUCTO`, `NOMBRE_PRODUCTO`, `DESCRIPCION_PRODUCTO`, `CATEGORIA_PRODUCTO`, `PRECIO_PRODUCTO`) VALUES
+(1, 'New York MeatBalls', 'Salsa de tomate, queso 100% mozzarella, pepperoni, meatballs, salsa BBQ por encima y queso cheddar en los bordes.', 'Comida principal', '12.90'),
+(2, 'Oklahoma Bacon Crispy', 'Salsa BBQ original, queso 100% mozzarella, pepperoni, york, bacon cripy y queso cheddar en el borde.', 'Comida principal', '12.90'),
+(3, 'Texas BBQ Crispy', 'Salsa BBQ Texas, queso 100% mozzarella, bacon crispy, bacon, pollo a la parrilla, carne de vacuno, queso cheddar en el borde y salsa.', 'Comida principal', '12.90'),
+(4, 'Cremozza al estilo Bourbon', 'Base de crema fresca, queso 100% mozzarella, bacon, pollo a la parrilla, cebolla y salsa Bourbon', 'Comida principal', '11.90'),
+(5, 'Cremozza BBQ', 'Base de crema fresca, queso 100% mozzarella, bacon, pollo a la parrila, cebolla, salsa barbacoa.', 'Comida principal', '11.90'),
+(6, 'Cabramelizada', 'Crema fresca, queso 100% mozzarella, queso de cabra, cebolla caramelizada.', 'Comida principal', '11.90'),
+(7, 'Cheesix', 'Crema fresca, queso 100% mozzarella, cheddar, emmental, parmesano, gorgonzola, queso de cabra.', 'Comida principal', '11.90'),
+(8, 'Pecado Carnal', 'Salsa de tomate, extra de queso 100% mozzarella, carne de vacuno, bacon, pepperoni, york.', 'Comida principal', '10.90'),
+(9, 'Carbonara', 'Crema fresca, queso 100% mozzarella, bacon, champiñon y cebolla.', 'Comida principal', '10.90'),
+(10, 'Extravaganzza', 'Sala de tomate, mozzarella, carne de vacuno, pepperoni, York, bacon, cebolla, pimiento verde, champiñon y aceitunas negras.', 'Comida principal', '10.90'),
+(11, 'Barbacoa', 'Salsa barbacoa, queso 100% mozzarella, carne de vacuno, cebolla, bacon, maiz', 'Comida principal', '10.90'),
+(12, 'Hawaiana Plus', 'Salsa de tomate, extra de queso 100% mozzarella, doble de York y piña.', 'Comida principal', '10.90'),
+(13, 'Pollo a la Parrilla', 'Salsa de tomate, queso 100% mozzarella, doble de pollo a la parrilla, cebolla, champiñon y maíz.', 'Comida principal', '10.90'),
+(14, 'Cuatro  Quesos', 'Salsa de tomate, queso 100% mozzarella, cheddar, emmental y gorgonzola.', 'Comida principal', '10.90'),
+(15, 'Tony Pepperoni', 'Salsa de tomate, extra de queso 100% mozzarella y doble de pepperoni.', 'Comida principal', '10.90'),
+(16, 'Patanegra', 'Salsa de tomate, queso 100% mozzarella, jamón serrano, aceite de oliva, aceitunas negras, tomate natural y orégano.', 'Comida principal', '10.90'),
+(17, 'Campiña', 'Salsa de tomate, extra de queso 100% mozzarella, champiñón, pimiento verde, cebolla, aceitunas negras y tomate natural.', 'Comida principal', '10.90'),
+(19, 'Cheese &  Bacon Fries', 'Nuestras patatas con bacon crispy y deliciosa salsa cheddar.', 'Complemento', '7.90'),
+(20, 'Patatas Grill', 'Crujientes patatas horneadas acompañadas de una salsa a elegir.', 'Complemento', '7.90'),
+(21, 'Combo de pollo', 'Strippers, Kickers y Alitas (17 uds).', 'Complemento', '9.90'),
+(22, 'Combo de alitas', 'Alitas en salsa Bourbon, Mostaza y miel y Barbacoa (18 uds).', 'Complemento', '9.90'),
+(23, 'Alitas de pollo', 'Sabrosas alitas de pollo marinadas (6uds).', 'Complemento', '6.90'),
+(24, 'Alitas de polllo con salsa', 'Sabrosas alitas de pollo marinadas con salsa.', 'Complemento', '7.90'),
+(25, 'Kickers', 'Pequeñas pechugas de pollo empanadas, con rebozado picante (6uds).', 'Complemento', '6.90'),
+(26, 'Strippers', 'Tiras de pollo empanadas (5uds).', 'Complemento', '6.90'),
+(27, 'Camembits', 'Deliciosos bocados de queso que se funden en tu boca.', 'Complemento', '6.90'),
+(28, 'Pan de ajo con queso', 'Crujiente pan de ajo tostado con queso 100% mozzarella fundido (4 o 6 uds).', 'Complemento', '0.00'),
+(29, 'Brownkie', 'Una deliciosa unión de cookies y brownie fundido.', 'Postre', '4.95'),
+(30, 'Chococheese', 'Cremoso volcán de queso con una esponjosa base de brownie de chocolate.', 'Postre', '4.95'),
+(35, 'Cookies', 'Deliciosas galletas con pepitas de chocolate.', 'Postre', '3.95'),
+(36, 'Vulcano de chocolate', 'Delicioso bizcocho de chocolate relleno de chocolate fundido.', 'Postre', '3.95'),
+(37, 'Pepsi', 'Pepsi clásica lata 33cl.', 'Bebida', '1.50'),
+(38, 'Pepsi Max', 'Pepsi Maaxlata 33cl.', 'Bebida', '1.50'),
+(39, 'Red Bull', 'Red Bull lata 25cl.', 'Bebida', '2.30'),
+(40, 'Kas Naranja', 'Kas Naranja lata 33cl.', 'Bebida', '1.50'),
+(43, 'Kas Limón', 'Kas Limón lata 33cl.', 'Bebida', '1.50'),
+(44, 'Agua', 'Agua sin gas 50cl.', 'Bebida', '1.10');
 
 -- --------------------------------------------------------
 
@@ -540,7 +541,7 @@ ALTER TABLE `pedido`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `ID_PRODUCTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `ID_PRODUCTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT de la tabla `repartidor`
