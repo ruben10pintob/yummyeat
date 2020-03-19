@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-03-2020 a las 13:46:27
--- Versión del servidor: 10.4.8-MariaDB
--- Versión de PHP: 7.3.11
+-- Tiempo de generación: 19-03-2020 a las 13:33:56
+-- Versión del servidor: 10.1.35-MariaDB
+-- Versión de PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -217,7 +217,46 @@ INSERT INTO `producto` (`ID_PRODUCTO`, `NOMBRE_PRODUCTO`, `DESCRIPCION_PRODUCTO`
 (101, 'OREO COOKIES SUNDAE', 'El suculento broche final: Oreo Cookies Sundae. Dos bolas de helado de vainilla con galletas Oreo, salsa de chocolate y nata.', 'Postre', '5.95'),
 (102, 'COPA DE HELADO BEN & JERRY', 'Dos bolas de delicioso helado: chocolate fudge Brownie, strwberry cheesecake o vainilla cookie dough.', 'Postre', '5.95'),
 (103, 'EL GRAND MILKSHAKE AMERICANO', '¡Aquí está nuestro batido americano de siempre! Delicioso batido cremoso y frío de chocolate, vainilla o fresa y servido con barquillo y nata. Atrévete a probar El Gran Milkshake Americano.', 'Postre', '5.95'),
-(104, 'WAFFLY JERRY', 'Tres minigofres con helado de vainilla Cookie Dough de Ben & Jerry’s, con dulce de leche y pepitas de chocolate negro.', 'Postre', '4.95');
+(104, 'WAFFLY JERRY', 'Tres minigofres con helado de vainilla Cookie Dough de Ben & Jerry’s, con dulce de leche y pepitas de chocolate negro.', 'Postre', '4.95'),
+(105, 'NACHOS SUBLIME', 'Nachos con queso fundido, jalapeño crujiente, juancamole, judías, carne marinada, crema agria, pico de gallo con salsa de tomate verde.', 'Entrante', '12.00'),
+(106, 'TEQUEÑOS', 'Tequeños variados, 3 uds. de queso y 3 uds. de pizza, acompañados de salsa sweet chili.', 'Entrante', '7.00'),
+(107, 'CHIKEN TENDERTENDER', 'Crujientes tiras de pollo a la parrilla, en nuestra mezcla secreta y acompañadas de salsa BBQ.', 'Entrante', '9.00'),
+(108, 'JUANCAMOLE', 'Exquisito guacamole casero con totopos fritos de maíz.', 'Entrante', '7.00'),
+(109, 'HUMMUS AL PESTO', 'Crema de garbanzos con salsa pesto, bastones de zanahoria, acompañada de totopos de maíz.', 'Entrante', '6.00'),
+(110, 'HUEVOS ROTOS', 'Chips de boniato, alioli healthy, huevos fritos y picadillo de jamón ibérico.', 'Entrante', '11.00'),
+(111, 'STRAWBERRY SALAD', 'Brotes tiernos, fresas, crujiente de cebolla, queso brie, nueces y balsámico de chocolate. (disponibilidad según temporada)', 'Principal', '10.00'),
+(112, 'SUBLIME SALAD', 'Ensalada de rúcula, compota de manzana, queso brie, cacahuete, arándano deshidratado y balsámico de trufa.', 'Principal', '10.00'),
+(113, 'TEMPLADA SALAD', 'Original ensalada templada con bacon tostado, medallón de queso de cabra, nueces, espinaca y miel de caña.', 'Principal', '10.00'),
+(114, 'SUBLIME', '180gr de carne a elegir, salsa de crema de cacahuete, bacon, cebolla caramelizada, queso cheddar, salsa sublime y brotes tiernos.', 'Principal', '13.00'),
+(115, 'MEXICAN', '180gr de carne a elegir, guacamole, relish de pepinillo agridulce alemán crema agria, tomate rallado, jalapeño y brotes tiernos.', 'Principal', '13.00'),
+(116, 'AVARICE', '180gr de carne a elegir, queso brie, bacon tostado, cebolla crujiente, balsámico de Pedro Ximénez y brotes tiernos.', 'Principal', '11.00'),
+(117, 'PURE GLUTTONY', '180gr de carne a elegir, medallón de queso de cabra, bacon, nueces, espinaca fresca y miel de caña.', 'Principal', '11.00'),
+(118, 'APPLE', '180gr de carne a elegir, compota de manzana, bacon tostado, queso brie, nueces, rúcula y balsámico de trufa.', 'Principal', '11.00'),
+(119, 'CLASSIC', '180gr de carne a elegir, relish de pepinillo, bacon tostado, tomate triturado, cebolla caramelizada, queso cheddar y mayonesa sriracha “ligeramente picante”.', 'Principal', '11.00'),
+(120, 'BLUE CHEESE', '180gr de carne a elegir, crema de cabrales, confitura de pimiento, cebolla crujiente y brotes tiernos.', 'Principal', '11.00'),
+(121, 'BASIC', '180gr de carne a elegir, queso cheddar y bacon tostado a la parrilla.', 'Principal', '8.00'),
+(122, 'DREAMS', '180gr de carne a elegir, cebolla caramelizada, mouse de pato, confitura de pimiento casera, huevo frito y brotes tiernos.', 'Principal', '13.00'),
+(123, 'BOURBON', 'Hamburguesa de ternera, medallón de queso de cabra, cebolla caramelizada, salsa bourbon y brotes tiernos.', 'Principal', '12.00'),
+(124, 'VEGGIES', 'Hamburguesa de soja bbq, cebolla caramelizada, col morada, relish de pepinillo agridulce alemán, y rúcula.', 'Principal', '10.00'),
+(125, 'RIBS BBQ', 'Carne de costillas asadas a fuego lento durante 6 h, queso cheddar salsa bbq, bacon y huevo frito.', 'Principal', '10.00'),
+(126, 'IBÉRICA', 'Hamburguesa de tenera, jamón ibérico, queso curado, tomate rallado con aceite de oliva y huevo frito.', 'Principal', '12.00'),
+(127, 'CINNAMON', 'Hamburguesa de ternera, mousse de pato, cebolla, caramelizada, compota de manzana, alioli de canela y rúcula.', 'Principal', '12.00'),
+(128, 'CARNIVOROUS', 'Hamburguesa de ternera, carne de costillas asadas, doble de queso cheddar, cebolla crujiente, bacon y salsa BBQ.', 'Principal', '15.00'),
+(129, 'SWEET BACON', 'Hamburguesa de ternera con mermelada de bacon, queso brie, cebolla frita y caramelizada y baconesa.', 'Principal', '12.00'),
+(130, 'DONUS HAMBURGER', 'Hamburguesa de ternera con doble de bacon y cheddar, onus tostado, huevo frito, salsa bbq sublime, todo sobre donas tostados a la parrilla.', 'Principal', '11.00'),
+(131, 'CHEESE PORN', '180gr de ternera, aros de cebolla a la cerveza, medallón de queso de cabra, cebolla caramelizada, bacon tostado y salsa Jack Daniel´s original, bañada con salsa de queso cheddar por encima de nuestro jugoso pan.', 'Principal', '14.00'),
+(132, 'SUBLIME FIT', 'Hamburguesa de solomillo de pollo de corral desgrasada a la zanahoria, queso rico en proteína, pimiento del piquillo, huevo a la plancha, brotes tiernos y pan proteico multicereal.', 'Principal', '12.00'),
+(133, 'HEALTHY', 'Hamburguesa de solomillo de pollo de corral desgrasada a la zanahoria, col morada, crema de queso omega 3, relish de pepinillo, tomate triturado y brotes tiernos sobre pan proteico multicereal.', 'Principal', '11.00'),
+(134, 'MEXICAN FIT', 'Hamburguesa de solomillo de pollo de corral desgrasada a la zanahoria, relish de pepinillo, juancamole, jalapeño, tomate triturado y brotes tiernos, sobre pan proteico multicereal.', 'Principal', '12.00'),
+(135, 'CHEESE FIT', 'Hamburguesa de solomillo de pollo de corral desgrasada a la zanahoria, con queso de cabra rico en omega 3, relish de pepinillo y brotes tiernos, sobre pan proteico multicereal.', 'Principal', '10.00'),
+(136, 'HUMMUS FIT', 'Hamburguesa de solomillo de pollo de corral desgrasada a la zanahoria, hummus, col morada, ali oli healthy y brotes tiernos, sobre pan proteico multicereal.', 'Principal', '10.00'),
+(137, 'SANDWICH INVERSO DE CABRA', 'Ternera a la parrilla, rellena de queso de cabra, cebolla caramelizada, y Pedro Ximénez con guarnición.', 'Principal', '11.00'),
+(138, 'HAMBURGUESA A LA PARRILLA', '360gr. de nuestra hamburguesa a la parrilla, sin pan y con guarnición.', 'Principal', '11.00'),
+(139, 'SUBLIME ICE CREAM', 'Helado de avellana con chocolate Sublime. Rodajas de plátano, crema de cacahuete, donus tostado a la parrilla y coronando nuestro brownie de chocolate con caramelo salado, nata montada y galleta oreo. Ideal para compartir.\r\n\r\nDisfruta de tu día trampa', 'Postre', '9.00'),
+(140, 'BROWNIE', 'Auténtico brownie al estilo USA con caramelo salado y rocas de chocolate, acompañado de helado de vainilla y donus tostado a la parrilla.', 'Postre', '6.00'),
+(141, 'FIT CHEESE CAKE', 'Tarta de queso desgrasado con crema de chocolate Sublime sin azúcar.', 'Postre', '6.00'),
+(142, 'DONUS LOVER', 'Crema de mantequilla de cacahuete, bacon tostado, chocolate Sublime, Kinder bueno, nata montada y galleta oreo entre dos donus tostados a la parrilla.', 'Postre', '6.00'),
+(143, 'AMERICAN COOKIES CAKE', 'Tarta de queso y American black cookies con dulce de leche, chocolate y donus tostado a la parrilla.', 'Postre', '6.00');
 
 -- --------------------------------------------------------
 
@@ -597,7 +636,85 @@ INSERT INTO `producto_restaurante` (`ID_PRODUCTO`, `ID_RESTAURANTE`) VALUES
 (101, 'FHPI'),
 (102, 'FHPI'),
 (103, 'FHPI'),
-(104, 'FHPI');
+(104, 'FHPI'),
+(105, 'SDFA'),
+(105, 'SDFM'),
+(106, 'SDFA'),
+(106, 'SDFM'),
+(107, 'SDFA'),
+(107, 'SDFM'),
+(108, 'SDFA'),
+(108, 'SDFM'),
+(109, 'SDFM'),
+(109, 'SDFM'),
+(110, 'SDFA'),
+(110, 'SDFM'),
+(111, 'SDFA'),
+(111, 'SDFM'),
+(112, 'SDFA'),
+(112, 'SDFM'),
+(113, 'SDFA'),
+(113, 'SDFM'),
+(114, 'SDFA'),
+(114, 'SDFM'),
+(115, 'SDFA'),
+(115, 'SDFM'),
+(116, 'SDFA'),
+(116, 'SDFM'),
+(117, 'SDFA'),
+(117, 'SDFM'),
+(118, 'SDFA'),
+(118, 'SDFM'),
+(119, 'SDFA'),
+(119, 'SDFM'),
+(120, 'SDFA'),
+(120, 'SDFM'),
+(121, 'SDFA'),
+(121, 'SDFM'),
+(122, 'SDFA'),
+(122, 'SDFM'),
+(123, 'SDFA'),
+(123, 'SDFM'),
+(124, 'SDFA'),
+(124, 'SDFM'),
+(125, 'SDFA'),
+(125, 'SDFM'),
+(126, 'SDFA'),
+(126, 'SDFM'),
+(127, 'SDFA'),
+(127, 'SDFM'),
+(128, 'SDFA'),
+(128, 'SDFM'),
+(129, 'SDFA'),
+(129, 'SDFM'),
+(130, 'SDFA'),
+(130, 'SDFM'),
+(131, 'SDFA'),
+(131, 'SDFM'),
+(132, 'SDFA'),
+(132, 'SDFM'),
+(133, 'SDFA'),
+(133, 'SDFM'),
+(134, 'SDFA'),
+(134, 'SDFM'),
+(135, 'SDFA'),
+(135, 'SDFM'),
+(136, 'SDFA'),
+(136, 'SDFM'),
+(137, 'SDFA'),
+(137, 'SDFM'),
+(138, 'SDFA'),
+(138, 'SDFM'),
+(139, 'SDFM'),
+(139, 'SDFM'),
+(140, 'SDFA'),
+(140, 'SDFM'),
+(141, 'SDFA'),
+(141, 'SDFA'),
+(142, 'SDFA'),
+(142, 'SDFM'),
+(143, 'SDFA'),
+(143, 'SDFM');
 
 -- --------------------------------------------------------
 
@@ -777,7 +894,7 @@ ALTER TABLE `pedido`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `ID_PRODUCTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `ID_PRODUCTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
 
 --
 -- AUTO_INCREMENT de la tabla `repartidor`
