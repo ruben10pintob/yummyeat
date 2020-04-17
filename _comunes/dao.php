@@ -1,5 +1,7 @@
 <?php
 
+require_once "clases.php";
+
 class DAO
 {
     private static $pdo = null;
@@ -42,4 +44,22 @@ class DAO
         $actualizacion = self::$pdo->prepare($sql);
         $actualizacion->execute($parametros);
     }
+
+    // RESTAURANTES
+
+    public static function obtenerRestaurantesDestacados(): array
+    {
+        $datos = [];
+        $rs = self::ejecutarConsulta("SELECT * FROM restaurante WHERE DESTACADO_RESTAURANTE = 1 GROUP BY NOMBRE_RESTAURANTE ORDER BY NOMBRE_RESTAURANTE", []);
+
+        foreach ($rs as $fila) {
+            $restaurante = new Restaurante($fila["ID_RESTAURANTE"], $fila["NOMBRE_RESTAURANTE"], $fila["TELEFONO_RESTAURANTE"], $fila["DIRECCION_RESTAURANTE"],
+                                           $fila["LOCALIDAD_RESTAURANTE"], $fila["EMAIL_RESTAURANTE"], $fila["ESPECIALIDAD_RESTAURANTE"],
+                                           $fila["DESTACADO_RESTAURANTE"]);
+            array_push($datos, $restaurante); // añadimos el restaurante al array que vamos a retornas
+        }
+        return $datos;
+    }
+
 }
+

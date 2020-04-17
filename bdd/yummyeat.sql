@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-04-2020 a las 23:27:59
+-- Tiempo de generación: 17-04-2020 a las 20:59:20
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -1083,6 +1083,10 @@ INSERT INTO `restaurante` (`ID_RESTAURANTE`, `NOMBRE_RESTAURANTE`, `TELEFONO_RES
 ('TGBG', 'The Good Burger', '912548209', 'Av. Río Guadalquivir, 13, 28906 Getafe, Madrid', 'Getafe', 'Thegoodburgergetafe@gmailcom', 'Hamburguesas', 1),
 ('TGBL', 'The Good Burger', '916850891', 'C.C. Parquesur, Av. de Gran Bretaña, S / N, 28916 Leganés, Madrid', 'Leganés', 'Thegoodburgerleganes@gmail.com', 'Hamburguesas', 1),
 ('TGBM', 'The Good Burger', '912081896', 'Calle de Maqueda, 138, 28024 Madrid', 'Madrid', 'Thegoodburgermadrid@gmail.com', 'Hamburguesas', 1),
+('TPGE', 'Telepizza', '916017121', 'Centro Comercial Getafe 3, Av. Juan Carlos I, 3, 28905 Getafe, Madrid', 'Getafe', 'TelepizzaGetafe@gmail.com', 'Pizzas', 0),
+('TPLE', 'Telepizza', '916942011', 'Avenida del Doctor Martín Vegue Jaudenes, 28, 28912 Leganés, Madrid', 'Leganés', 'TelepizzaLeganes@gmail.com', 'Pizzas', 0),
+('TPPI', 'Telepizza', '916926553', 'Plaza de las Mercedes, 4, 28320 Pinto, Madrid', 'Pinto', 'TelepizzaPinto@gmail.com', 'Pizzas', 0),
+('TPVA', 'Telepizza', '918081001', 'Calle Estrella de Elola, 11, 28340 Valdemoro, Madrid', 'Valdemoro', 'TelepizzaValdemoro@gmail.com', 'Pizzas', 0),
 ('VIPG', 'VIPS', '912156209', 'Av. Río Guadalquivir, 13, 28906 Getafe, Madrid', 'Getafe', 'Vipsgetafe@gmail.com', 'Comida Internacional', 0),
 ('VIPM', 'VIPS', '917283201', 'Calle de la Ribera de Curtidores, 43, 28005 Madrid', 'Madrid', 'Vipsmadrid@gmail.com', 'Comida Internacional', 0),
 ('VIPV', 'VIPS', '916724189', 'Av. de España, 10, 12, 28340 Valdemoro, Madrid', 'Valdemoro', 'Vipsvaldemoro@gmail.com', 'Comida Internacional', 0),
