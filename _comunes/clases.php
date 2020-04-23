@@ -111,3 +111,160 @@
 
 
     }
+
+    class Cliente{
+        use Identificable;
+
+        private $codigoCookie;
+        private $nombre;
+        private $apellidos;
+        private $telefono;
+        private $direccion;
+        private $email;
+        private $contrasenna;
+
+        public function __construct($id, $nombre, $codigoCookie, $apellidos, $telefono, $direccion, $email, $contrasenna)
+        {
+            $this->setId($id);
+            $this->setNombre($nombre);
+            $this->setCodigoCookie($codigoCookie);
+            $this->setApellidos($apellidos);
+            $this->setTelefono($telefono);
+            $this->setDireccion($direccion);
+            $this->setEmail($email);
+            $this->setContrasenna($contrasenna);
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getId()
+        {
+            return $this->id;
+        }
+
+        /**
+         * @param mixed $id
+         */
+        public function setId($id)
+        {
+            $this->id = $id;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getCodigoCookie()
+        {
+            return $this->codigoCookie;
+        }
+
+        /**
+         * @param mixed $codigoCookie
+         */
+        public function setCodigoCookie($codigoCookie)
+        {
+            $this->codigoCookie = $codigoCookie;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getNombre()
+        {
+            return $this->nombre;
+        }
+
+        /**
+         * @param mixed $nombre
+         */
+        public function setNombre($nombre)
+        {
+            $this->nombre = $nombre;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getApellidos()
+        {
+            return $this->apellidos;
+        }
+
+        /**
+         * @param mixed $apellidos
+         */
+        public function setApellidos($apellidos)
+        {
+            $this->apellidos = $apellidos;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getTelefono()
+        {
+            return $this->telefono;
+        }
+
+        /**
+         * @param mixed $telefono
+         */
+        public function setTelefono($telefono)
+        {
+            $this->telefono = $telefono;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getDireccion()
+        {
+            return $this->direccion;
+        }
+
+        /**
+         * @param mixed $direccion
+         */
+        public function setDireccion($direccion)
+        {
+            $this->direccion = $direccion;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getEmail()
+        {
+            return $this->email;
+        }
+
+        /**
+         * @param mixed $email
+         */
+        public function setEmail($email)
+        {
+            $this->email = $email;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getContrasenna()
+        {
+            return $this->contrasenna;
+        }
+
+        /**
+         * @param mixed $contrasenna
+         */
+        public function setContrasenna($contrasenna)
+        {
+            $this->contrasenna = $contrasenna;
+        }
+
+
+
+
+
+    }

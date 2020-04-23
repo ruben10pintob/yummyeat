@@ -20,11 +20,48 @@ $restaurantes = DAO::obtenerRestaurantesDestacados();
 <body>
 <h1>Bienvenidos a Yummyeat</h1>
 
+<header>
+    <a href="../sesion/inicio-sesion.php">Iniciar sesión</a>
+    <a>Registrarse</a>
+</header>
+
 <h2>Restaurantes destacados</h2>
 
-<? foreach ($restaurantes as $restaurante) { ?>
+<table border="1">
 
- <? } ?>
+    <tr>
+        <th>Nombre</th>
+        <th>Telefono</th>
+        <th>direccion</th>
+        <th>localidad</th>
+        <th>email</th>
+        <th>Especialidad</th>
+    </tr>
+
+    <?php foreach ($restaurantes as $restaurante) { ?>
+        <tr>
+            <td>
+                <a><?=$restaurante->getNombre()?></a>
+            </td>
+            <td>
+                <a><?=$restaurante->getTelefono()?></a>
+            </td>
+            <td>
+                <a><?=$restaurante->getDireccion()?></a>
+            </td>
+            <td>
+                <a><?=$restaurante->getLocalidad()?></a>
+            </td>
+            <td>
+                <a><?=$restaurante->getEmail()?></a>
+            </td>            <td>
+                <a><?=$restaurante->getEspecialidad()?></a>
+            </td>
+        </tr>
+    <?php } ?>
+
+</table>
+
 
 
 </body>
