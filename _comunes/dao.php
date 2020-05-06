@@ -45,6 +45,8 @@ class DAO
         $actualizacion->execute($parametros);
     }
 
+    // CLIENTES
+
     public static function clienteObtenerPorEmailYContrasenna($email, $contrasenna): Cliente
     {
         $rs = self::ejecutarConsulta("SELECT * FROM cliente WHERE EMAIL_CLIENTE=? AND BINARY CONTRASENNA=?",
@@ -70,18 +72,46 @@ class DAO
 
     // RESTAURANTES
 
-    public static function obtenerRestaurantesDestacados(): array
+    private static function crearListaDeRestaurante($rs) // Para crear los restaurantes y añadirlos a un array
     {
-        $datos = [];
-        $rs = self::ejecutarConsulta("SELECT * FROM restaurante WHERE DESTACADO_RESTAURANTE = 1", []);
-
+        $restaurantes = [];
         foreach ($rs as $fila) {
             $restaurante = new Restaurante($fila["ID_RESTAURANTE"], $fila["NOMBRE_RESTAURANTE"], $fila["TELEFONO_RESTAURANTE"], $fila["DIRECCION_RESTAURANTE"],
-                                           $fila["LOCALIDAD_RESTAURANTE"], $fila["EMAIL_RESTAURANTE"], $fila["ESPECIALIDAD_RESTAURANTE"],
-                                           $fila["DESTACADO_RESTAURANTE"]);
-            array_push($datos, $restaurante); // añadimos el restaurante al array que vamos a retornas
+                $fila["LOCALIDAD_RESTAURANTE"], $fila["EMAIL_RESTAURANTE"], $fila["ESPECIALIDAD_RESTAURANTE"],
+                $fila["DESTACADO_RESTAURANTE"]);
+            array_push($restaurantes, $restaurante); // añadimos el restaurante al array que vamos a retornar
         }
-        return $datos;
+        return $restaurantes;
+    }
+
+    public static function obtenerRestaurantesDestacados(): array
+    {
+
+        $rs = self::ejecutarConsulta("SELECT * FROM restaurante WHERE DESTACADO_RESTAURANTE = 1", []);
+
+        $restaurantes = self::crearListaDeRestaurante($rs);
+
+        return $restaurantes;
+    }
+
+    public static function obtenerRestaurantesSegunUbicacionCliente(String $ubicacionCliente): array
+    {
+
+        $rs = self::ejecutarConsulta("SELECT * FROM restaurante WHERE LOCALIDAD_RESTAURANTE = ?", [$ubicacionCliente]);
+
+        $restaurantes = self::crearListaDeRestaurante($rs);
+
+        return $restaurantes;
+    }
+
+    public static function obtenerRestaurantePorEspecialidad(String $especialidadRestaurante): array
+    {
+
+        $rs = self::ejecutarConsulta("SELECT * FROM restaurante WHERE ESPECIALIDAD_RESTAURANTE = ?", [$especialidadRestaurante]);
+
+        $restaurantes = self::crearListaDeRestaurante($rs);
+
+        return $restaurantes;
     }
 
 }

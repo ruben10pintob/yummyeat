@@ -3,8 +3,7 @@
 require_once "../_comunes/dao.php";
 require_once "../_comunes/clases.php";
 
-$restaurantes = DAO::obtenerRestaurantesDestacados();
-
+$restaurantesDestacados = DAO::obtenerRestaurantesDestacados();
 
 ?>
 
@@ -38,7 +37,7 @@ $restaurantes = DAO::obtenerRestaurantesDestacados();
         <th>Especialidad</th>
     </tr>
 
-    <?php foreach ($restaurantes as $restaurante) { ?>
+    <?php foreach ($restaurantesDestacados as $restaurante) { ?>
         <tr>
             <td>
                 <a><?=$restaurante->getNombre()?></a>
@@ -61,8 +60,6 @@ $restaurantes = DAO::obtenerRestaurantesDestacados();
     <?php } ?>
 
 </table>
-
-
 
 </body>
 </html>

@@ -112,7 +112,8 @@
 
     }
 
-    class Cliente{
+    class Cliente
+    {
         use Identificable;
 
         private $codigoCookie;
@@ -135,136 +136,134 @@
             $this->setContrasenna($contrasenna);
         }
 
-        /**
-         * @return mixed
-         */
-        public function getId()
-        {
-            return $this->id;
-        }
-
-        /**
-         * @param mixed $id
-         */
-        public function setId($id)
-        {
-            $this->id = $id;
-        }
-
-        /**
-         * @return mixed
-         */
         public function getCodigoCookie()
         {
             return $this->codigoCookie;
         }
 
-        /**
-         * @param mixed $codigoCookie
-         */
         public function setCodigoCookie($codigoCookie)
         {
             $this->codigoCookie = $codigoCookie;
         }
 
-        /**
-         * @return mixed
-         */
         public function getNombre()
         {
             return $this->nombre;
         }
 
-        /**
-         * @param mixed $nombre
-         */
         public function setNombre($nombre)
         {
             $this->nombre = $nombre;
         }
 
-        /**
-         * @return mixed
-         */
         public function getApellidos()
         {
             return $this->apellidos;
         }
 
-        /**
-         * @param mixed $apellidos
-         */
         public function setApellidos($apellidos)
         {
             $this->apellidos = $apellidos;
         }
 
-        /**
-         * @return mixed
-         */
         public function getTelefono()
         {
             return $this->telefono;
         }
 
-        /**
-         * @param mixed $telefono
-         */
         public function setTelefono($telefono)
         {
             $this->telefono = $telefono;
         }
 
-        /**
-         * @return mixed
-         */
         public function getDireccion()
         {
             return $this->direccion;
         }
 
-        /**
-         * @param mixed $direccion
-         */
         public function setDireccion($direccion)
         {
             $this->direccion = $direccion;
         }
 
-        /**
-         * @return mixed
-         */
         public function getEmail()
         {
             return $this->email;
         }
 
-        /**
-         * @param mixed $email
-         */
         public function setEmail($email)
         {
             $this->email = $email;
         }
 
-        /**
-         * @return mixed
-         */
         public function getContrasenna()
         {
             return $this->contrasenna;
         }
 
-        /**
-         * @param mixed $contrasenna
-         */
         public function setContrasenna($contrasenna)
         {
             $this->contrasenna = $contrasenna;
         }
+    }
 
+    class Producto
+    {
+        use Identificable;
 
+        private $nombre;
+        private $descripcion;
+        private $categoria;
+        private $precio;
 
+        public function __construct($id, $nombre, $categoria, $descripcion, $precio)
+        {
+            $this->setId($id);
+            $this->setNombre($nombre);
+            $this->setCategoria($categoria);
+            $this->setDescripcion($descripcion);
+            $this->setPrecio($precio);
+        }
+
+        public function getNombre()
+        {
+            return $this->nombre;
+        }
+
+        public function setNombre($nombre)
+        {
+            $this->nombre = $nombre;
+        }
+
+        public function getDescripcion()
+        {
+            return $this->descripcion;
+        }
+
+        public function setDescripcion($descripcion)
+        {
+            $this->descripcion = $descripcion;
+        }
+
+        public function getCategoria()
+        {
+            return $this->categoria;
+        }
+
+        public function setCategoria($categoria)
+        {
+            $this->categoria = $categoria;
+        }
+
+        public function getPrecio()
+        {
+            return $this->precio;
+        }
+
+        public function setPrecio($precio)
+        {
+            $this->precio = $precio;
+        }
 
 
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-04-2020 a las 20:59:20
+-- Tiempo de generación: 06-05-2020 a las 21:23:02
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -35,16 +35,17 @@ CREATE TABLE `cliente` (
   `APELLIDOS_CLIENTE` varchar(40) NOT NULL,
   `TELEFONO_CLIENTE` char(11) NOT NULL,
   `DIRECCION_CLIENTE` varchar(120) DEFAULT NULL,
-  `EMAIL_CLIENTE` varchar(40) NOT NULL
+  `EMAIL_CLIENTE` varchar(40) NOT NULL,
+  `CONTRASENNA_CLIENTE` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`ID_CLIENTE`, `CODIGO_COOKIE`, `NOMBRE_CLIENTE`, `APELLIDOS_CLIENTE`, `TELEFONO_CLIENTE`, `DIRECCION_CLIENTE`, `EMAIL_CLIENTE`) VALUES
-(1, '', 'Jose Luis ', 'Sánchez Gómez', '629034519', 'C/ Sevilla 4, 3 A, 28901, Getafe, Madrid', 'Joseluis12@gmail.com'),
-(2, NULL, 'Julia', 'Gutiérrez Serrano', '612893018', 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', 'JuliaGS@gmail.com');
+INSERT INTO `cliente` (`ID_CLIENTE`, `CODIGO_COOKIE`, `NOMBRE_CLIENTE`, `APELLIDOS_CLIENTE`, `TELEFONO_CLIENTE`, `DIRECCION_CLIENTE`, `EMAIL_CLIENTE`, `CONTRASENNA_CLIENTE`) VALUES
+(1, NULL, 'Jose Luis ', 'Sánchez Gómez', '629034519', 'C/ Sevilla 4, 3 A, 28901, Getafe, Madrid', 'Joseluis12@gmail.com', '1234'),
+(2, NULL, 'Julia', 'Gutiérrez Serrano', '612893018', 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', 'JuliaGS@gmail.com', '1234');
 
 -- --------------------------------------------------------
 
