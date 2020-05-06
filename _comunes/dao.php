@@ -45,12 +45,35 @@ class DAO
         $actualizacion->execute($parametros);
     }
 
+    public static function clienteObtenerPorEmailYContrasenna($email, $contrasenna): Cliente
+    {
+        $rs = self::ejecutarConsulta("SELECT * FROM cliente WHERE EMAIL_CLIENTE=? AND BINARY CONTRASENNA=?",
+            [$email, $contrasenna]);
+        if ($rs) {
+            return self::crearClienteDesdeRs($rs);
+        } else {
+            return null;
+        }
+    }
+
+    private static function crearClienteDesdeRs(array $rs): Cliente
+    {
+        return new Cliente($rs[0]["ID_CLIENTE"], $rs[0]["CODIGO_COOKIE"], $rs[0]["NOMBRE_CLIENTE"], $rs[0]["APELLIDOS_CLIENTE"], $rs[0]["TELEFONO_CLIENTE"], $rs[0]["DIRECCION_CLIENTE"], $rs[0]["EMAIL_CLIENTE"],  $rs[0]["CONTRASENNA"]);
+    }
+
+    public static function clienteObtenerPorId(int $id): Cliente
+    {
+        $rs = self::ejecutarConsulta("SELECT * FROM cliente WHERE ID_CLIENTE=?", [$id]);
+        if ($rs) return self::crearClienteDesdeRs($rs);
+        else return null;
+    }
+
     // RESTAURANTES
 
     public static function obtenerRestaurantesDestacados(): array
     {
         $datos = [];
-        $rs = self::ejecutarConsulta("SELECT * FROM restaurante WHERE DESTACADO_RESTAURANTE = 1 GROUP BY NOMBRE_RESTAURANTE ORDER BY NOMBRE_RESTAURANTE", []);
+        $rs = self::ejecutarConsulta("SELECT * FROM restaurante WHERE DESTACADO_RESTAURANTE = 1", []);
 
         foreach ($rs as $fila) {
             $restaurante = new Restaurante($fila["ID_RESTAURANTE"], $fila["NOMBRE_RESTAURANTE"], $fila["TELEFONO_RESTAURANTE"], $fila["DIRECCION_RESTAURANTE"],
