@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-05-2020 a las 21:23:02
--- Versión del servidor: 10.1.35-MariaDB
--- Versión de PHP: 7.2.9
+-- Tiempo de generación: 07-05-2020 a las 16:17:08
+-- Versión del servidor: 10.4.8-MariaDB
+-- Versión de PHP: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -1068,15 +1068,15 @@ INSERT INTO `restaurante` (`ID_RESTAURANTE`, `NOMBRE_RESTAURANTE`, `TELEFONO_RES
 ('DPMA', 'Domino\'s Pizza', '916840212', 'Calle Arboleda, 24, 28901 Madrid', 'Madrid', 'DominosPizzaMadrid@gmail.com', 'Pizzas', 1),
 ('DPPI', 'Domino\'s Pizza', '910901532', 'Av. de Antonio López, 4, 28320 Pinto, Madrid', 'Pinto', 'DominosPizzaPinto@gmail.com', 'Pizzas', 1),
 ('DPVA', 'Domino\'s Pizza', '910906177', 'Av. de España, 6, 28342 Valdemoro, Madrid', 'Valdemoro', 'DominosPizzaValdemoro@gmail.com', 'Pizzas', 1),
-('FHFU', 'Foster\'s Hollywood', '916075582', 'C.C. La Estación, Calle de Hungría, s / n, 28943 Fuenlabrada, Madrid', 'Fuenlabrada', 'FosterHFuenlabrada@gmail.com', 'Comida Internacional', 0),
-('FHGE', 'Foster\'s Hollywood', '916213189', 'Nassica Centro Comercial y de Ocio Ctra. de Andalucía, Salida 17, 28906 Getafe, Madrid', 'Getafe', 'FosterHGetafe@gmail.com', 'Comida Internacional', 0),
-('FHPI', 'Foster\'s Hollywood', '916927967', 'Calle Pablo Picasso, 10, 28320 Pinto, Madrid', 'Pinto', 'FosterHPinto@gmail.com', 'Comida Internacional', 0),
-('JACO', 'Jade Colonial', '916842062', 'Calle de la Magdalena, 33, 28906 Getafe, Madrid', 'Getafe', 'Jadecolonialgetafe@gmail.com', 'Comida Japonesa', 0),
+('FHFU', 'Foster\'s Hollywood', '916075582', 'C.C. La Estación, Calle de Hungría, s / n, 28943 Fuenlabrada, Madrid', 'Fuenlabrada', 'FosterHFuenlabrada@gmail.com', 'Internacional', 0),
+('FHGE', 'Foster\'s Hollywood', '916213189', 'Nassica Centro Comercial y de Ocio Ctra. de Andalucía, Salida 17, 28906 Getafe, Madrid', 'Getafe', 'FosterHGetafe@gmail.com', 'Internacional', 0),
+('FHPI', 'Foster\'s Hollywood', '916927967', 'Calle Pablo Picasso, 10, 28320 Pinto, Madrid', 'Pinto', 'FosterHPinto@gmail.com', 'Internacional', 0),
+('JACO', 'Jade Colonial', '916842062', 'Calle de la Magdalena, 33, 28906 Getafe, Madrid', 'Getafe', 'Jadecolonialgetafe@gmail.com', 'Japonesa', 0),
 ('MCDG', 'McDonald\'s', '916213143', 'Avda. Rio Guadalquivir, 18 Centro Comercial Nassica, 28906 Getafe, Madrid', 'Getafe', 'McDonalsGetafe@gmil.com', 'Hamburguesas', 0),
 ('MCDM', 'McDonald\'s', '915313711', 'Calle de la Montera, 47, 28013 Madrid', 'Madrid', 'McDonalsMadrid@gmil.com', 'Hamburguesas', 0),
 ('MCDP', 'McDonald\'s', '912 91 08 6', 'Ctra. de Andalucía N-IV, Km.20,2 - 28320, 28320 Pinto, Madrid', 'Pinto', 'McDonalsPinto@gmil.com', 'Hamburguesas', 0),
 ('MCDV', 'McDonald\'s', '916991992', 'Avda. de España, 4 esquina Emilia Pardo Bazan, 28342 Valdemoro, Madrid', 'Valdemoro', 'McDonalsValdemoro@gmil.com', 'Hamburguesas', 0),
-('OKSU', 'Ok Sushi', '910181920', 'Calle Arboleda, 14, 28901 Getafe, Madrid', 'Getafe', 'Oksushigetafe@gmail.com', 'Comida Japonesa', 0),
+('OKSU', 'Ok Sushi', '910181920', 'Calle Arboleda, 14, 28901 Getafe, Madrid', 'Getafe', 'Oksushigetafe@gmail.com', 'Japonesa', 0),
 ('SDFA', 'Sublime dreams food', '914861073', 'Calle Oslo, 53, 28922 Alcorcón, Madrid', 'Alcorcón', 'Subliemdfalcorcon@gmail.com', 'Hamburguesas', 0),
 ('SDFM', 'Sublime dreams food', '910224197', 'Calle de Concepción Jerónima, 28, 28012 Madrid', 'Madrid', 'sublimedfmadrid@gmail.com', 'Hamburguesas', 0),
 ('TGBA', 'The Good Burger', '916428312', 'Av. de América, 7, 9, 28922 Alcorcón, Madrid', 'Alcorcón', 'Thegoodburgeralcorcon@gmail.com', 'Hamburguesas', 0),

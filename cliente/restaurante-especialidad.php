@@ -3,7 +3,9 @@
 require_once "../_comunes/dao.php";
 require_once "../_comunes/clases.php";
 
-$restaurantesDestacados = DAO::obtenerRestaurantesDestacados();
+$restaurantes = DAO::obtenerRestaurantePorEspecialidad($_REQUEST["especialidad"]);
+
+$especialidad = $_REQUEST["especialidad"];
 
 ?>
 
@@ -14,17 +16,10 @@ $restaurantesDestacados = DAO::obtenerRestaurantesDestacados();
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Yummyeat</title>
+    <title><?=$especialidad?></title>
 </head>
-<br>
-<h1>Bienvenidos a Yummyeat</h1>
-
-<header>
-    <a href="../sesion/inicio-sesion.php">Iniciar sesión</a>
-    <a>Registrarse</a>
-</header>
-
-<h2>Restaurantes destacados</h2>
+<body>
+<h1>Jummyeat <?=$especialidad?></h1>
 
 <table border="1">
 
@@ -37,7 +32,7 @@ $restaurantesDestacados = DAO::obtenerRestaurantesDestacados();
         <th>Especialidad</th>
     </tr>
 
-    <?php foreach ($restaurantesDestacados as $restaurante) { ?>
+    <?php foreach ($restaurantes as $restaurante) { ?>
         <tr>
             <td>
                 <a href="restaurante-detalle.php?id=<?=$restaurante->getId()?>"><?=$restaurante->getNombre()?></a>
@@ -60,12 +55,6 @@ $restaurantesDestacados = DAO::obtenerRestaurantesDestacados();
     <?php } ?>
 
 </table>
-
-<h2>Restaurantes por especialidades</h2> </br>
-<a href="restaurante-especialidad.php?especialidad=Hamburguesas">Hamburguesas</a></br>
-<a href="restaurante-especialidad.php?especialidad=Pizzas">Pizzas</a></br>
-<a href="restaurante-especialidad.php?especialidad=Internacional">Internacional</a></br>
-<a href="restaurante-especialidad.php?especialidad=Japonesa">Japonesa</a></br>
 
 
 </body>

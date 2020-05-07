@@ -114,5 +114,12 @@ class DAO
         return $restaurantes;
     }
 
+    public static function restauranteObtenerPorId( $id)
+    {
+        $rs = self::ejecutarConsulta("SELECT * FROM restaurante WHERE ID_RESTAURANTE = ?", [$id]);
+        $restaurante = new Restaurante($rs[0]["ID_RESTAURANTE"], $rs[0]["NOMBRE_RESTAURANTE"], $rs[0]["TELEFONO_RESTAURANTE"], $rs[0]["DIRECCION_RESTAURANTE"], $rs[0]["LOCALIDAD_RESTAURANTE"], $rs[0]["EMAIL_RESTAURANTE"], $rs[0]["ESPECIALIDAD_RESTAURANTE"], $rs[0]["DESTACADO_RESTAURANTE"]);
+        return $restaurante;
+    }
+
 }
 
