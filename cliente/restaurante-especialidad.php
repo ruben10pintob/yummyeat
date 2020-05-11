@@ -3,9 +3,8 @@
 require_once "../_comunes/dao.php";
 require_once "../_comunes/clases.php";
 
-$restaurantes = DAO::obtenerRestaurantePorEspecialidad($_REQUEST["especialidad"]);
-
 $especialidad = $_REQUEST["especialidad"];
+$restaurantes = DAO::obtenerRestaurantePorEspecialidad($especialidad);
 
 ?>
 

@@ -67,6 +67,13 @@ $restaurantesDestacados = DAO::obtenerRestaurantesDestacados();
 <a href="restaurante-especialidad.php?especialidad=Internacional">Internacional</a></br>
 <a href="restaurante-especialidad.php?especialidad=Japonesa">Japonesa</a></br>
 
+<h2>Restaurantes por localizacion</h2>
+<h3>Introduzca su ubicacion para buscar restaurantes cercanos</h3>
+<form action="restaurante-ubicacion.php" method="post">
+    <input type="text" name="ubicacion">
+    <input type="submit" name="enviar" value="Enviar">
+</form>
+
 
 </body>
 </html>

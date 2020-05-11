@@ -216,7 +216,7 @@
         private $categoria;
         private $precio;
 
-        public function __construct($id, $nombre, $categoria, $descripcion, $precio)
+        public function __construct($id, $nombre, $descripcion, $categoria, $precio)
         {
             $this->setId($id);
             $this->setNombre($nombre);

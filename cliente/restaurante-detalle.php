@@ -3,7 +3,17 @@
 require_once "../_comunes/dao.php";
 require_once "../_comunes/clases.php";
 
-$restaurantePorId = DAO::restauranteObtenerPorId($_REQUEST["id"]);
+$idRestaurante = $_REQUEST["id"];
+
+if (isset($_REQUEST["categoria"])) {
+    $categoria = $_REQUEST["categoria"];
+    $productosPorCategoria = DAO::obtenerProductosPorCategoria($categoria, $idRestaurante);
+}
+
+$restaurantePorId = DAO::restauranteObtenerPorId($idRestaurante);
+$productosRestaurante = DAO::obtenerProductosRestaurante($idRestaurante);
+$categoriaProductos = DAO::obtenerCategoriaProductosPorRestaurante($idRestaurante);
+
 
 
 
@@ -52,7 +62,36 @@ $restaurantePorId = DAO::restauranteObtenerPorId($_REQUEST["id"]);
 </table>
 
 <h2>Menú y especialidades del restaurante</h2>
-<!--Aqui tengo pensado hacer que salga toda la carta del restaurante -->
+
+<table border="1">
+
+    <tr>
+        <th>CATEGORIA</th>
+
+        <?php foreach ($categoriaProductos as $categorias) { ?>
+    <tr>
+        <td>
+            <a href="restaurante-detalle.php?id=<?=$idRestaurante?>&categoria=<?=$categorias?>"><?=$categorias?></a>
+        </td>
+    </tr>
+    <?php } ?>
+    </tr>
+
+
+</table>
+
+<?php if (isset($_REQUEST["categoria"])) { ?>
+<table border="1">
+
+    <tr>
+        <?php
+            foreach ($productosPorCategoria as $producto) { ?>
+                <td><?= $producto->getNombre() ?></td>
+            <?php }
+        }?>
+    </tr>
+
+</table>
 
 </body>
 </html>
