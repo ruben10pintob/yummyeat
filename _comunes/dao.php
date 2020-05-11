@@ -45,7 +45,7 @@ class DAO
         $actualizacion->execute($parametros);
     }
 
-    // CLIENTES
+    /**********************   CLIENTES   **********************/
 
     public static function clienteObtenerPorEmailYContrasenna($email, $contrasenna): Cliente
     {
@@ -70,7 +70,7 @@ class DAO
         else return null;
     }
 
-    // RESTAURANTES
+    /**********************   RESTAURANTES   **********************/
 
     private static function crearListaDeRestaurante($rs) // Para crear los restaurantes y añadirlos a un array
     {
@@ -112,6 +112,76 @@ class DAO
         $restaurantes = self::crearListaDeRestaurante($rs);
 
         return $restaurantes;
+    }
+
+    public static function restauranteObtenerPorId($id)
+    {
+        $rs = self::ejecutarConsulta("SELECT * FROM restaurante WHERE ID_RESTAURANTE = ?", [$id]);
+        $restaurante = new Restaurante($rs[0]["ID_RESTAURANTE"], $rs[0]["NOMBRE_RESTAURANTE"], $rs[0]["TELEFONO_RESTAURANTE"],
+                                       $rs[0]["DIRECCION_RESTAURANTE"], $rs[0]["LOCALIDAD_RESTAURANTE"], $rs[0]["EMAIL_RESTAURANTE"],
+                                       $rs[0]["ESPECIALIDAD_RESTAURANTE"], $rs[0]["DESTACADO_RESTAURANTE"]);
+        return $restaurante;
+    }
+
+    public static function obtenerRestaurantePorUbicacion($ubicacion)
+    {
+        $rs = self::ejecutarConsulta("SELECT * FROM restaurante WHERE LOCALIDAD_RESTAURANTE = ?", [$ubicacion]);
+
+        $restaurantes = self::crearListaDeRestaurante($rs);
+
+        return $restaurantes;
+
+
+    }
+
+
+    /**********************   PRODUCTOS   **********************/
+
+    private static function crearListaDeProductos($rs) // Para crear los productos y añadirlos a un array
+    {
+        $productos = [];
+        foreach ($rs as $fila) {
+            $producto = new Producto($fila["ID_PRODUCTO"], $fila["NOMBRE_PRODUCTO"], $fila["DESCRIPCION_PRODUCTO"],
+                $fila["CATEGORIA_PRODUCTO"], $fila["PRECIO_PRODUCTO"]);
+            array_push($productos, $producto); // añadimos el producto al array que vamos a retornar
+        }
+        return $productos;
+    }
+
+    public static function obtenerProductosRestaurante($id): array
+    {
+
+        $rs = self::ejecutarConsulta("SELECT p.ID_PRODUCTO, p.NOMBRE_PRODUCTO, p.DESCRIPCION_PRODUCTO, p.CATEGORIA_PRODUCTO, p.PRECIO_PRODUCTO 
+                                           FROM producto p, restaurante r, producto_restaurante pr WHERE p.ID_PRODUCTO = pr.ID_PRODUCTO 
+                                           AND r.ID_RESTAURANTE = pr.ID_RESTAURANTE AND r.ID_RESTAURANTE = ? GROUP BY p.NOMBRE_PRODUCTO",[$id]);
+        $productos = self::crearListaDeProductos($rs);
+        return $productos;
+    }
+
+    public static function obtenerCategoriaProductosPorRestaurante($idRestaurante): array
+    {
+        $categorias = [];
+        $rs = self::ejecutarConsulta("SELECT p.CATEGORIA_PRODUCTO FROM producto p, restaurante r, producto_restaurante pr WHERE p.ID_PRODUCTO = pr.ID_PRODUCTO 
+                                           AND r.ID_RESTAURANTE = pr.ID_RESTAURANTE AND r.ID_RESTAURANTE = ? GROUP BY p.CATEGORIA_PRODUCTO", [$idRestaurante]);
+
+        foreach ($rs as $fila) {
+            $categoria = $fila["CATEGORIA_PRODUCTO"];
+            array_push($categorias, $categoria);
+        }
+
+        return $categorias;
+
+    }
+
+    public static function obtenerProductosPorCategoria($categoria, $idRestaurante): array
+    {
+        $rs = self::ejecutarConsulta("SELECT p.ID_PRODUCTO, p.NOMBRE_PRODUCTO, p.DESCRIPCION_PRODUCTO, p.CATEGORIA_PRODUCTO, p.PRECIO_PRODUCTO 
+                                           FROM producto p, restaurante r, producto_restaurante pr WHERE p.ID_PRODUCTO = pr.ID_PRODUCTO AND 
+                                           r.ID_RESTAURANTE = pr.ID_RESTAURANTE AND p.CATEGORIA_PRODUCTO = ? AND r.ID_RESTAURANTE = ?",[$categoria, $idRestaurante]);
+
+        $productos = self::crearListaDeProductos($rs);
+
+        return $productos;
     }
 
 }
