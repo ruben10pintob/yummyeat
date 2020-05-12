@@ -70,6 +70,24 @@ class DAO
         else return null;
     }
 
+    public static function comprobarEmailUsado($email)
+    {
+        $rs = self::ejecutarConsulta("SELECT * FROM cliente WHERE EMAIL_CLIENTE=?", [$email]);
+        if ($rs) return 1;
+        else return 0;
+    }
+
+    public static function registrarNuevoCliente($nombre, $apellidos, $telefono, $direccion, $email, $contrasenna)
+    {
+        if (self::comprobarEmailUsado($email) == 1){
+            return 0;
+        }else{
+            self::ejecutarActualizacion("INSERT INTO cliente (NOMBRE_CLIENTE, APELLIDOS_CLIENTE, TELEFONO_CLIENTE, DIRECCION_CLIENTE, EMAIL_CLIENTE, CONTRASENNA_CLIENTE) VALUES (?,?,?,?,?,?)",[$nombre, $apellidos, $telefono, $direccion, $email, $contrasenna]);
+            return 1;
+        }
+    }
+
+
     /**********************   RESTAURANTES   **********************/
 
     private static function crearListaDeRestaurante($rs) // Para crear los restaurantes y añadirlos a un array
