@@ -21,7 +21,7 @@ $restaurantesDestacados = DAO::obtenerRestaurantesDestacados();
 
 <header>
     <a href="../sesion/inicio-sesion.php">Iniciar sesión</a>
-    <a>Registrarse</a>
+    <a href="registrarse.php">Registrarse</a>
 </header>
 
 <h2>Restaurantes destacados</h2>
