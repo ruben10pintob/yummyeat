@@ -1,7 +1,7 @@
 <?php
 
-require_once "../_comunes/dao.php";
-require_once "../_comunes/clases.php";
+require_once "../_comunes/comunes-app.php";
+
 
 $restaurantesDestacados = DAO::obtenerRestaurantesDestacados();
 
@@ -73,6 +73,8 @@ $restaurantesDestacados = DAO::obtenerRestaurantesDestacados();
     <input type="text" name="ubicacion">
     <input type="submit" name="enviar" value="Enviar">
 </form>
+
+<a href="../sesion/cerrar-sesion.php">Cerrar sesion</a>
 
 
 </body>

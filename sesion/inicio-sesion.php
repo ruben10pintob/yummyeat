@@ -1,6 +1,9 @@
 <?php
-require_once "../_comunes/sesiones.php";
-require_once "../_comunes/clases.php";
+
+require_once "../_comunes/requireonces-comunes.php";
+
+if(haySesionIniciada()) redireccionar("../cliente/inicio.php");
+
 ?>
 <html>
 
@@ -21,7 +24,7 @@ if (isset($_REQUEST["sesionCerrada"])) {
 
 <h1>Iniciar sesión</h1>
 
-<form action="inicio-sesion.php" method="POST">
+<form action="../cliente/inicio.php" method="POST">
     <label><b>Email: </b></label><input name="email" type="email" placeholder="Email"><br />
     <label><b>Contraseña: </b></label><input type="password" name="contrasenna" placeholder="Contraseña"/><br />
     <label><b>Recuérdame</b></label><input type="checkbox" name="recuerdame" /><br />

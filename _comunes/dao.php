@@ -1,6 +1,7 @@
 <?php
 
 require_once "clases.php";
+require_once "utilidades.php";
 
 class DAO
 {
@@ -49,7 +50,7 @@ class DAO
 
     public static function clienteObtenerPorEmailYContrasenna($email, $contrasenna): Cliente
     {
-        $rs = self::ejecutarConsulta("SELECT * FROM cliente WHERE EMAIL_CLIENTE=? AND BINARY CONTRASENNA=?",
+        $rs = self::ejecutarConsulta("SELECT * FROM cliente WHERE EMAIL_CLIENTE=? AND BINARY CONTRASENNA_CLIENTE=?",
             [$email, $contrasenna]);
         if ($rs) {
             return self::crearClienteDesdeRs($rs);
@@ -60,7 +61,8 @@ class DAO
 
     private static function crearClienteDesdeRs(array $rs): Cliente
     {
-        return new Cliente($rs[0]["ID_CLIENTE"], $rs[0]["CODIGO_COOKIE"], $rs[0]["NOMBRE_CLIENTE"], $rs[0]["APELLIDOS_CLIENTE"], $rs[0]["TELEFONO_CLIENTE"], $rs[0]["DIRECCION_CLIENTE"], $rs[0]["EMAIL_CLIENTE"],  $rs[0]["CONTRASENNA"]);
+        return new Cliente($rs[0]["ID_CLIENTE"], $rs[0]["CODIGO_COOKIE"], $rs[0]["NOMBRE_CLIENTE"], $rs[0]["APELLIDOS_CLIENTE"],
+                           $rs[0]["TELEFONO_CLIENTE"], $rs[0]["DIRECCION_CLIENTE"], $rs[0]["EMAIL_CLIENTE"],  $rs[0]["CONTRASENNA_CLIENTE"]);
     }
 
     public static function clienteObtenerPorId(int $id): Cliente
@@ -77,12 +79,24 @@ class DAO
         else return 0;
     }
 
+    public static function clienteGuardarCodigoCookie(string $email, string $codigoCookie = null)
+    {
+        if ($codigoCookie != null)
+        {
+            self::ejecutarActualizacion("UPDATE cliente SET codigo_cookie = ? WHERE email_cliente = ?", [$codigoCookie, $email]);
+        } else {
+            self::ejecutarActualizacion("UPDATE cliente SET codigo_cookie = NULL WHERE email_cliente = ?", [$email]);
+        }
+
+    }
+
     public static function registrarNuevoCliente($nombre, $apellidos, $telefono, $direccion, $email, $contrasenna)
     {
         if (self::comprobarEmailUsado($email) == 1){
             return 0;
         }else{
-            self::ejecutarActualizacion("INSERT INTO cliente (NOMBRE_CLIENTE, APELLIDOS_CLIENTE, TELEFONO_CLIENTE, DIRECCION_CLIENTE, EMAIL_CLIENTE, CONTRASENNA_CLIENTE) VALUES (?,?,?,?,?,?)",[$nombre, $apellidos, $telefono, $direccion, $email, $contrasenna]);
+            self::ejecutarActualizacion("INSERT INTO cliente (NOMBRE_CLIENTE, APELLIDOS_CLIENTE, TELEFONO_CLIENTE, DIRECCION_CLIENTE, EMAIL_CLIENTE, 
+                                        CONTRASENNA_CLIENTE) VALUES (?,?,?,?,?,?)",[$nombre, $apellidos, $telefono, $direccion, $email, $contrasenna]);
             return 1;
         }
     }
