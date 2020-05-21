@@ -7,6 +7,7 @@ function redireccionar($url)
     exit();
 }
 
+
 function obtenerFecha(): string
 {
     return date("Y-m-d H:i:s");

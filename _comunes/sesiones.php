@@ -67,11 +67,11 @@ function garantizarSesion()
                 borrarCookieRecuerdame($cliente->getEmail());
 
                 // REDIRIGIR A INICIAR SESIÓN PARA IMPEDIR QUE ESTE USUARIO VISUALICE CONTENIDO PRIVADO.
-                redireccionar("../sesion/inicio-sesion.php");
+                //redireccionar("../cliente/inicio.php");
             }
         } else { // NO hay ni sesión, ni cookie, ni formulario enviado.
             // REDIRIGIMOS PARA QUE NO SE VISUALICE CONTENIDO PRIVADO:
-            redireccionar("../sesion/inicio-sesion.php");
+            //redireccionar("../cliente/inicio.php");
         }
     }
 }
@@ -96,6 +96,7 @@ function generarCookieRecuerdame($cliente)
 function borrarCookieRecuerdame($email)
 {
     // Eliminamos el código cookie de nuestra BD.
+
     DAO::clienteGuardarCodigoCookie($email, null);
 
     setcookie("email", "", time() - 3600); // Tiempo en el pasado, para (pedir) borrar la cookie.

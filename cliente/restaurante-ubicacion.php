@@ -53,6 +53,8 @@ $restaurantesPorUbicacion = DAO::obtenerRestaurantePorUbicacion($ubicacion);
     <?php } ?>
 
 </table>
+</br>
+<a href="inicio.php">Volver a la página principal</a>
 
 </body>
 </html>
