@@ -124,11 +124,11 @@
         private $email;
         private $contrasenna;
 
-        public function __construct($id, $nombre, $codigoCookie, $apellidos, $telefono, $direccion, $email, $contrasenna)
+        public function __construct($id, $codigoCookie, $nombre, $apellidos, $telefono, $direccion, $email, $contrasenna)
         {
             $this->setId($id);
-            $this->setNombre($nombre);
             $this->setCodigoCookie($codigoCookie);
+            $this->setNombre($nombre);
             $this->setApellidos($apellidos);
             $this->setTelefono($telefono);
             $this->setDireccion($direccion);

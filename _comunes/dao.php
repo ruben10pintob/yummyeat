@@ -48,6 +48,12 @@ class DAO
 
     /**********************   CLIENTES   **********************/
 
+    private static function crearClienteDesdeRs(array $rs): Cliente
+    {
+        return new Cliente($rs[0]["ID_CLIENTE"], $rs[0]["CODIGO_COOKIE"], $rs[0]["NOMBRE_CLIENTE"], $rs[0]["APELLIDOS_CLIENTE"],
+            $rs[0]["TELEFONO_CLIENTE"], $rs[0]["DIRECCION_CLIENTE"], $rs[0]["EMAIL_CLIENTE"],  $rs[0]["CONTRASENNA_CLIENTE"]);
+    }
+
     public static function clienteObtenerPorEmailYContrasenna($email, $contrasenna): Cliente
     {
         $rs = self::ejecutarConsulta("SELECT * FROM cliente WHERE EMAIL_CLIENTE=? AND BINARY CONTRASENNA_CLIENTE=?",
@@ -59,10 +65,15 @@ class DAO
         }
     }
 
-    private static function crearClienteDesdeRs(array $rs): Cliente
+    public static function clienteObtenerPorEmailYCodigoCookie($email, $codigoCookie): Cliente
     {
-        return new Cliente($rs[0]["ID_CLIENTE"], $rs[0]["CODIGO_COOKIE"], $rs[0]["NOMBRE_CLIENTE"], $rs[0]["APELLIDOS_CLIENTE"],
-                           $rs[0]["TELEFONO_CLIENTE"], $rs[0]["DIRECCION_CLIENTE"], $rs[0]["EMAIL_CLIENTE"],  $rs[0]["CONTRASENNA_CLIENTE"]);
+        $rs = self::ejecutarConsulta("SELECT * FROM cliente WHERE EMAIL_CLIENTE=? AND BINARY CODIGO_COOKIE=?",
+            [$email, $codigoCookie]);
+        if ($rs) {
+            return self::crearClienteDesdeRs($rs);
+        } else {
+            return null;
+        }
     }
 
     public static function clienteObtenerPorId(int $id): Cliente
@@ -74,7 +85,7 @@ class DAO
 
     public static function comprobarEmailUsado($email)
     {
-        $rs = self::ejecutarConsulta("SELECT * FROM cliente WHERE EMAIL_CLIENTE=?", [$email]);
+        $rs = self::ejecutarConsulta("SELECT * FROM cliente WHERE EMAIL_CLIENTE = ?", [$email]);
         if ($rs) return 1;
         else return 0;
     }
@@ -100,7 +111,6 @@ class DAO
             return 1;
         }
     }
-
 
     /**********************   RESTAURANTES   **********************/
 
@@ -165,7 +175,6 @@ class DAO
 
 
     }
-
 
     /**********************   PRODUCTOS   **********************/
 

@@ -4,6 +4,10 @@ require_once "../_comunes/comunes-app.php";
 
 
 $restaurantesDestacados = DAO::obtenerRestaurantesDestacados();
+$nombreCliente = "";
+
+if(isset($_SESSION["nombre"])) $nombreCliente = $_SESSION["nombre"];
+
 
 ?>
 
@@ -17,7 +21,7 @@ $restaurantesDestacados = DAO::obtenerRestaurantesDestacados();
     <title>Yummyeat</title>
 </head>
 <br>
-<h1>Bienvenidos a Yummyeat</h1>
+<h1>Bienvenidos a Yummyeat <?=$nombreCliente?></h1>
 
 <header>
     <a href="../sesion/inicio-sesion.php">Iniciar sesión</a>
@@ -74,6 +78,7 @@ $restaurantesDestacados = DAO::obtenerRestaurantesDestacados();
     <input type="submit" name="enviar" value="Enviar">
 </form>
 
+<a href="../cliente/pedido-ver.php">Ver pedido</a>
 <a href="../sesion/cerrar-sesion.php">Cerrar sesion</a>
 
 

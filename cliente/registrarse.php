@@ -5,6 +5,8 @@ require_once "../_comunes/clases.php";
 require_once "../_comunes/utilidades.php";
 
 $mensaje = "Registrarse como nuevo usuario";
+$meta = "";
+
 
 if (isset($_REQUEST["Registrarse"])){
 
@@ -12,8 +14,11 @@ $clienteNuevo = DAO::registrarNuevoCliente($_REQUEST["nombre"], $_REQUEST["apell
 
     if ($clienteNuevo == 1){
         $mensaje = "Se ha registrado correctamente. Será redirigido a la página principal en unos instantes";
+        $meta = "<meta http-equiv=\"refresh\" content=\"5;URL=../cliente/inicio.php\" />";
+        //redireccionar("../cliente/inicio.php");
     }else{
         $mensaje = "El email utilizado ya esté en uso. Vuelva a intentarlo con otro email";
+        $meta = "";
     }
 
 
@@ -30,6 +35,7 @@ $clienteNuevo = DAO::registrarNuevoCliente($_REQUEST["nombre"], $_REQUEST["apell
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <?=$meta?>
     <title>Registro Yummyeat</title>
 </head>
 <body>
