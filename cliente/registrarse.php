@@ -1,8 +1,9 @@
 <?php
 
-require_once "../_comunes/dao.php";
-require_once "../_comunes/clases.php";
-require_once "../_comunes/utilidades.php";
+require_once "../_comunes/requireonces-comunes.php";
+//require_once "../_comunes/dao.php";
+//require_once "../_comunes/clases.php";
+//require_once "../_comunes/utilidades.php";
 
 $mensaje = "Registrarse como nuevo usuario";
 $meta = "";
@@ -13,19 +14,17 @@ if (isset($_REQUEST["Registrarse"])){
 $clienteNuevo = DAO::registrarNuevoCliente($_REQUEST["nombre"], $_REQUEST["apellidos"], $_REQUEST["telefono"], $_REQUEST["direccion"], $_REQUEST["email"], $_REQUEST["contrasenna"]);
 
     if ($clienteNuevo == 1){
-        $mensaje = "Se ha registrado correctamente. Será redirigido a la página principal en unos instantes";
-        $meta = "<meta http-equiv=\"refresh\" content=\"5;URL=../cliente/inicio.php\" />";
-        //redireccionar("../cliente/inicio.php");
+        //$mensaje = "Se ha registrado correctamente. Será redirigido a la página principal en unos instantes";
+        //$meta = "<meta http-equiv=\"refresh\" content=\"5;URL=../cliente/inicio.php\" />";
+        garantizarSesion();
+        redireccionar("../cliente/inicio.php");
     }else{
-        $mensaje = "El email utilizado ya esté en uso. Vuelva a intentarlo con otro email";
-        $meta = "";
+        //$mensaje = "El email utilizado ya esté en uso. Vuelva a intentarlo con otro email";
+        //$meta = "";
+        redireccionar("../cliente/inicio.php");
     }
 
-
 }
-
-
-
 ?>
 
 <!doctype html>
@@ -36,20 +35,76 @@ $clienteNuevo = DAO::registrarNuevoCliente($_REQUEST["nombre"], $_REQUEST["apell
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?=$meta?>
+    <script src="../bootstrap/bootstrap-4.5.0-dist/js/bootstrap.js"></script>
+    <script src="../bootstrap/bootstrap-4.5.0-dist/js/popper.min.js"></script>
+    <script src="../bootstrap/bootstrap-4.5.0-dist/js/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="../bootstrap/bootstrap-4.5.0-dist/css/bootstrap.css">
     <title>Registro Yummyeat</title>
 </head>
 <body>
-<h1>Yummyeat</h1>
-<h3><?=$mensaje?></h3>
-<form action="registrarse.php" method="post">
-    <label><b>Nombre </b></label><br /><input name="nombre" type="text" placeholder="Nombre"><br />
-    <label><b>Apellidos </b></label><br /><input name="apellidos" type="text" placeholder="Apellidos"><br />
-    <label><b>Teléfono </b></label><br /><input name="telefono" type="tel" placeholder="Telefono"><br />
-    <label><b>Dirección</b></label><br /><input name="direccion" type="text" placeholder="Dirección"><br />
-    <label><b>Email</b></label><br /><input name="email" type="email" placeholder="Email"><br />
-    <label><b>Contraseña</b></label><br /><input type="password" name="contrasenna" placeholder="Contraseña"/><br />
-    <br />
-    <input type="Submit" value="Registrarse" name="Registrarse"/>
-</form>
+
+<div class="container">
+    <h2><?=$mensaje?></h2>
+
+    <form action="registrarse.php" method="post">
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="validationTooltip01">Nombre</label>
+                <input type="text" class="form-control" id="validationTooltip01" name="nombre" placeholder="Nombre" required>
+                <div class="valid-tooltip">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationTooltip02">Apellidos</label>
+                <input type="text" class="form-control" id="validationTooltip02" name="apellidos" placeholder="Apelidos" required>
+                <div class="valid-tooltip">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationTooltipUsername">Teléfono</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="validationTooltipUsernamePrepend">+34</span>
+                    </div>
+                    <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" name="telefono" required>
+                    <div class="invalid-tooltip">
+                        Please choose a unique and valid username.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationTooltip03">Dirección</label>
+                <input type="text" class="form-control" id="validationTooltip03" name="direccion" placeholder="Calle..." required>
+                <div class="invalid-tooltip">
+                    Please provide a valid city.
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="validationTooltip04">Email</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                    </div>
+                    <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" name="email" required>
+                    <div class="invalid-tooltip">
+                        Please choose a unique and valid username.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="validationTooltip05">Contraseña</label>
+                <input type="password" class="form-control" id="validationTooltip05" name="contrasenna" required>
+                <div class="invalid-tooltip">
+                    Please provide a valid zip.
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit" name="Registrarse">Registrarse</button>
+    </form>
+</div>
 </body>
 </html>

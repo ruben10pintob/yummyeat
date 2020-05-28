@@ -1,0 +1,34 @@
+.container {
+	margin-top: 2%;
+}
+
+#carouselExampleIndicators {
+	margin-top: 2%;
+}
+
+#titulo-novedades {
+	margin-top: 2%;
+	padding: 1%; 
+	background-color: #343a40;
+	color: #fff;
+}
+
+#prendas-novedades {
+	margin-top: 2%;
+}
+
+#opciones {
+	margin-top: 10%;
+}
+
+#abrigos {
+	border-bottom: 1px solid black;
+}
+
+#camisetas {
+	border-bottom: 1px solid black;
+}
+
+#sudaderas {
+	border-bottom: 1px solid black;
+}
