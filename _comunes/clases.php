@@ -121,10 +121,11 @@
         private $apellidos;
         private $telefono;
         private $direccion;
+        private $localidad;
         private $email;
         private $contrasenna;
 
-        public function __construct($id, $codigoCookie, $nombre, $apellidos, $telefono, $direccion, $email, $contrasenna)
+        public function __construct($id, $codigoCookie, $nombre, $apellidos, $telefono, $direccion,$localidad, $email, $contrasenna)
         {
             $this->setId($id);
             $this->setCodigoCookie($codigoCookie);
@@ -132,6 +133,7 @@
             $this->setApellidos($apellidos);
             $this->setTelefono($telefono);
             $this->setDireccion($direccion);
+            $this->setLocalidad($localidad);
             $this->setEmail($email);
             $this->setContrasenna($contrasenna);
         }
@@ -184,6 +186,16 @@
         public function setDireccion($direccion)
         {
             $this->direccion = $direccion;
+        }
+
+        public function getLocalidad()
+        {
+            return $this->localidad;
+        }
+
+        public function setLocalidad($localidad)
+        {
+            $this->localidad = $localidad;
         }
 
         public function getEmail()

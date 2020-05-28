@@ -24,7 +24,8 @@ if(haySesionIniciada()) redireccionar("../cliente/inicio.php");
 if (isset($_REQUEST["incorrecto"])) {
     echo "<p>Usuario o contraseña incorrectos.</p>";
 }
-if (isset($_REQUEST["sesionCerrada"])) {
+if (isset($_REQUEST["SC"])) {
+    redireccionar("../cliente/inicio.php");
     echo "<p>Ha salido correctamente. Su sesión está ahora cerrada.</p>";
 }
 ?>

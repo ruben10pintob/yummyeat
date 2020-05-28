@@ -109,7 +109,7 @@ function anotarDatosSesionRam($cliente)
     $_SESSION["id"] = $cliente->getId();
     $_SESSION["email"] = $cliente->getEmail();
     $_SESSION["nombre"] = $cliente->getNombre();
-
+    $_SESSION["localidad"] = $cliente->getLocalidad();
 }
 
 function destruirSesionYCookies($email)

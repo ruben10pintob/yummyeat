@@ -51,7 +51,7 @@ class DAO
     private static function crearClienteDesdeRs(array $rs): Cliente
     {
         return new Cliente($rs[0]["ID_CLIENTE"], $rs[0]["CODIGO_COOKIE"], $rs[0]["NOMBRE_CLIENTE"], $rs[0]["APELLIDOS_CLIENTE"],
-            $rs[0]["TELEFONO_CLIENTE"], $rs[0]["DIRECCION_CLIENTE"], $rs[0]["EMAIL_CLIENTE"],  $rs[0]["CONTRASENNA_CLIENTE"]);
+            $rs[0]["TELEFONO_CLIENTE"], $rs[0]["DIRECCION_CLIENTE"], $rs[0]["LOCALIDAD"], $rs[0]["EMAIL_CLIENTE"],  $rs[0]["CONTRASENNA_CLIENTE"]);
     }
 
     public static function clienteObtenerPorEmailYContrasenna($email, $contrasenna): Cliente
@@ -101,13 +101,13 @@ class DAO
 
     }
 
-    public static function registrarNuevoCliente($nombre, $apellidos, $telefono, $direccion, $email, $contrasenna)
+    public static function registrarNuevoCliente($nombre, $apellidos, $telefono, $direccion, $localidad, $email, $contrasenna)
     {
         if (self::comprobarEmailUsado($email) == 1){
             return 0;
         }else{
-            self::ejecutarActualizacion("INSERT INTO cliente (NOMBRE_CLIENTE, APELLIDOS_CLIENTE, TELEFONO_CLIENTE, DIRECCION_CLIENTE, EMAIL_CLIENTE, 
-                                        CONTRASENNA_CLIENTE) VALUES (?,?,?,?,?,?)",[$nombre, $apellidos, $telefono, $direccion, $email, $contrasenna]);
+            self::ejecutarActualizacion("INSERT INTO cliente (NOMBRE_CLIENTE, APELLIDOS_CLIENTE, TELEFONO_CLIENTE, DIRECCION_CLIENTE, LOCALIDAD, EMAIL_CLIENTE, 
+                                        CONTRASENNA_CLIENTE) VALUES (?,?,?,?,?,?,?)",[$nombre, $apellidos, $telefono, $direccion, $localidad, $email, $contrasenna]);
             return 1;
         }
     }

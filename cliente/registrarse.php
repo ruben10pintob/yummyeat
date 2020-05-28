@@ -11,7 +11,8 @@ $meta = "";
 
 if (isset($_REQUEST["Registrarse"])){
 
-$clienteNuevo = DAO::registrarNuevoCliente($_REQUEST["nombre"], $_REQUEST["apellidos"], $_REQUEST["telefono"], $_REQUEST["direccion"], $_REQUEST["email"], $_REQUEST["contrasenna"]);
+$clienteNuevo = DAO::registrarNuevoCliente($_REQUEST["nombre"], $_REQUEST["apellidos"], $_REQUEST["telefono"],
+    $_REQUEST["direccion"], $_REQUEST["localidad"], $_REQUEST["email"], $_REQUEST["contrasenna"]);
 
     if ($clienteNuevo == 1){
         //$mensaje = "Se ha registrado correctamente. Será redirigido a la página principal en unos instantes";

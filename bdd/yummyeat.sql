@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-05-2020 a las 16:17:08
--- Versión del servidor: 10.4.8-MariaDB
--- Versión de PHP: 7.3.11
+-- Tiempo de generación: 28-05-2020 a las 21:05:12
+-- Versión del servidor: 10.1.35-MariaDB
+-- Versión de PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,6 +35,7 @@ CREATE TABLE `cliente` (
   `APELLIDOS_CLIENTE` varchar(40) NOT NULL,
   `TELEFONO_CLIENTE` char(11) NOT NULL,
   `DIRECCION_CLIENTE` varchar(120) DEFAULT NULL,
+  `LOCALIDAD` varchar(75) NOT NULL,
   `EMAIL_CLIENTE` varchar(40) NOT NULL,
   `CONTRASENNA_CLIENTE` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -43,9 +44,9 @@ CREATE TABLE `cliente` (
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`ID_CLIENTE`, `CODIGO_COOKIE`, `NOMBRE_CLIENTE`, `APELLIDOS_CLIENTE`, `TELEFONO_CLIENTE`, `DIRECCION_CLIENTE`, `EMAIL_CLIENTE`, `CONTRASENNA_CLIENTE`) VALUES
-(1, NULL, 'Jose Luis ', 'Sánchez Gómez', '629034519', 'C/ Sevilla 4, 3 A, 28901, Getafe, Madrid', 'Joseluis12@gmail.com', '1234'),
-(2, NULL, 'Julia', 'Gutiérrez Serrano', '612893018', 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', 'JuliaGS@gmail.com', '1234');
+INSERT INTO `cliente` (`ID_CLIENTE`, `CODIGO_COOKIE`, `NOMBRE_CLIENTE`, `APELLIDOS_CLIENTE`, `TELEFONO_CLIENTE`, `DIRECCION_CLIENTE`, `LOCALIDAD`, `EMAIL_CLIENTE`, `CONTRASENNA_CLIENTE`) VALUES
+(1, NULL, 'Jose Luis ', 'Sánchez Gómez', '629034519', 'C/ Sevilla 4, 3 A, 28901, Getafe, Madrid', 'Madrid', 'Joseluis12@gmail.com', '1234'),
+(2, NULL, 'Julia', 'Gutiérrez Serrano', '612893018', 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', 'Pinto', 'JuliaGS@gmail.com', '1234');
 
 -- --------------------------------------------------------
 
@@ -1175,7 +1176,7 @@ ALTER TABLE `restaurante`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `ID_CLIENTE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_CLIENTE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `menu`
