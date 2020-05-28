@@ -4,9 +4,16 @@ require_once "../_comunes/comunes-app.php";
 
 
 $restaurantesDestacados = DAO::obtenerRestaurantesDestacados();
-$nombreCliente = "";
 
-if(isset($_SESSION["nombre"])) $nombreCliente = $_SESSION["nombre"];
+$nombreCliente = "";
+$ubicacionClienteRegistrado = "Madrid";
+
+if (haySesionIniciada()) {
+    $nombreCliente = $_SESSION["nombre"];
+    $ubicacionClienteRegistrado = $_SESSION["localidad"];
+    $restaurantesPorUbicacion = DAO::obtenerRestaurantePorUbicacion($ubicacionClienteRegistrado);
+    $cantidadDeRestaurantes = sizeof($restaurantesPorUbicacion);
+}
 
 ?>
 
@@ -82,23 +89,21 @@ if(isset($_SESSION["nombre"])) $nombreCliente = $_SESSION["nombre"];
                                     <div class="modal-body">
                                         <form action="registrarse.php" method="post">
                                             <div class="form-row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <label for="validationTooltip01">Nombre</label>
                                                     <input type="text" class="form-control" id="validationTooltip01" name="nombre" placeholder="Nombre" required>
                                                     <div class="valid-tooltip">
                                                         Looks good!
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <label for="validationTooltip02">Apellidos</label>
                                                     <input type="text" class="form-control" id="validationTooltip02" name="apellidos" placeholder="Apelidos" required>
                                                     <div class="valid-tooltip">
                                                         Looks good!
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <label for="validationTooltipUsername">Teléfono</label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
@@ -110,9 +115,18 @@ if(isset($_SESSION["nombre"])) $nombreCliente = $_SESSION["nombre"];
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-8">
                                                     <label for="validationTooltip03">Dirección</label>
                                                     <input type="text" class="form-control" id="validationTooltip03" name="direccion" placeholder="Calle..." required>
+                                                    <div class="invalid-tooltip">
+                                                        Please provide a valid city.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="validationTooltip03">Localidad</label>
+                                                    <input type="text" class="form-control" id="validationTooltip03" name="localidad" placeholder="Madrid" required>
                                                     <div class="invalid-tooltip">
                                                         Please provide a valid city.
                                                     </div>
@@ -162,36 +176,36 @@ if(isset($_SESSION["nombre"])) $nombreCliente = $_SESSION["nombre"];
 
     <form action="restaurante-ubicacion.php" class="form-inline justify-content-center">
         <div class="form-group">
-            <input type="text" class="form-control" name="ubicacion" placeholder="Madrid" required>
+            <input type="text" class="form-control" name="ubicacion" placeholder="<?=$ubicacionClienteRegistrado?>" required>
         </div>
         <button type="submit" class="btn btn-primary">Buscar</button>
     </form>
 
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">Hamburguesas</a></li>
-                    <li><a href="#">Pizzas</a></li>
-                    <li><a href="#">Internacional</a></li>
-                    <li><a href="#">Japonesa</a></li>
-                </ul>
-            </div>
-        </nav>
+    <?php  if (haySesionIniciada()) { ?>
 
         <div class="row">
-            <div class="col-12">
-                <h2>Restaurantes destacados</h2>
+            <?php foreach ($restaurantesPorUbicacion as $restaurante) {?>
+            <div class="col-4 text-center"><a><?=$restaurante->getNombre()?></a></div>
+            <?php }?>
+        </div>
 
-                <table border="1" class="table-striped">
+    <?php } ?>
 
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Telefono</th>
-                        <th>direccion</th>
-                        <th>localidad</th>
-                        <th>email</th>
-                        <th>Especialidad</th>
-                    </tr>
+
+    <div class="row">
+        <div class="col-12">
+            <h2>Restaurantes destacados</h2>
+
+            <table border="1" class="table-striped">
+
+                <tr>
+                    <th>Nombre</th>
+                    <th>Telefono</th>
+                    <th>direccion</th>
+                    <th>localidad</th>
+                    <th>email</th>
+                    <th>Especialidad</th>
+                </tr>
 
                     <?php foreach ($restaurantesDestacados as $restaurante) { ?>
                         <tr>
