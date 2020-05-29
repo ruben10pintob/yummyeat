@@ -225,5 +225,16 @@ class DAO
         return $productos;
     }
 
+    public  static function obtenerDetallesProducto($id)
+    {
+        $rs = self::ejecutarConsulta("SELECT * FROM producto WHERE ID_PRODUCTO = ?", [$id]);
+        $producto = new Producto($rs[0]["ID_PRODUCTO"], $rs[0]["NOMBRE_PRODUCTO"], $rs[0]["DESCRIPCION_PRODUCTO"],
+            $rs[0]["CATEGORIA_PRODUCTO"], $rs[0]["PRECIO_PRODUCTO"]);
+
+        return $producto;
+    }
+
+
+
 }
 

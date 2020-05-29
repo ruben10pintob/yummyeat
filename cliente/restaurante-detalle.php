@@ -26,6 +26,15 @@ $categoriaProductos = DAO::obtenerCategoriaProductosPorRestaurante($idRestaurant
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-reboot.css">
+
+    <script src="../bootstrap/js/jquery.min.js"></script>
+    <script src="../bootstrap/js/popper.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
     <title><?=$restaurantePorId->getNombre()?></title>
 </head>
 <body>
@@ -62,34 +71,31 @@ $categoriaProductos = DAO::obtenerCategoriaProductosPorRestaurante($idRestaurant
 </table>
 
 <h2>Menú y especialidades del restaurante</h2>
-
-<table border="1">
-
-    <tr>
-        <th>CATEGORIA</th>
-
-        <?php foreach ($categoriaProductos as $categorias) { ?>
-    <tr>
-        <td>
+<div class="row">
+    <?php foreach ($categoriaProductos as $categorias) { ?>
+        <div class="col-3">
             <a href="restaurante-detalle.php?id=<?=$idRestaurante?>&categoria=<?=$categorias?>"><?=$categorias?></a>
-        </td>
-    </tr>
+        </div>
     <?php } ?>
-    </tr>
-
+</div>
 
 </table>
 
 <?php if (isset($_REQUEST["categoria"])) { ?>
 <table border="1">
 
-    <tr>
+    <th><?=$categoria?></th>
         <?php
             foreach ($productosPorCategoria as $producto) { ?>
-                <td><?= $producto->getNombre() ?></td>
+
+                <tr>
+                    <td><a href="producto-detalle.php?id=<?=$producto->getId()?>&restaurante=<?=$restaurantePorId->getId()?>" ><?= $producto->getNombre() ?></a></td>
+                    <td><?= $producto->getPrecio() ?></td>
+                    <td><a href="../cliente/carrito-annadir.php?id=<?=$producto->getId()?>&Unidades=1" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Añadir al carrito</a></td>
+                </tr>
             <?php }
         }?>
-    </tr>
+
 
 </table>
 

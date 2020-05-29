@@ -42,7 +42,7 @@ if (haySesionIniciada()) {
         <header>
             <div class="row">
                 <div class="col-9">
-                    <h1>Bienvenidos a Yummyeat <?=$nombreCliente?></h1>
+                    <h1>Bienvenido a Yummyeat <?=$nombreCliente?></h1>
                 </div>
                 <div class="col-3">
                     <?php if (!haySesionIniciada()) { ?>
@@ -183,19 +183,32 @@ if (haySesionIniciada()) {
 
     <?php  if (haySesionIniciada()) { ?>
 
+        <div class="row text-center">
+            <div class="col-12">
+                <h2>Restaurantes en <?=$ubicacionClienteRegistrado?></h2>
+            </div>
+        </div>
         <div class="row">
+
             <?php foreach ($restaurantesPorUbicacion as $restaurante) {?>
-            <div class="col-4 text-center"><a><?=$restaurante->getNombre()?></a></div>
+            <div class="col-4 text-center"><a href="restaurante-detalle.php?id=<?=$restaurante->getId()?>"><?=$restaurante->getNombre()?></a></div>
             <?php }?>
         </div>
 
     <?php } ?>
 
 
-    <div class="row">
+    <div class="row text-center">
         <div class="col-12">
-            <h2>Restaurantes destacados</h2>
+            <h2>Restaurantes Destacados</h2>
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="col-3">
+            <!-- Aqui quiero poner una imagen y en el otro lado de la tabla tambien para que quede mejor-->
+        </div>
+        <div class="col-6">
             <table border="1" class="table-striped">
 
                 <tr>
@@ -233,11 +246,7 @@ if (haySesionIniciada()) {
             </div>
         </div>
 
-        <div class="card-footer">
-            <a href="../cliente/pedido-ver.php">Ver pedido</a>
-        </div>
 
-    </div>
 </div>
 </body>
 </html>
