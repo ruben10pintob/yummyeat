@@ -148,6 +148,11 @@
             $this->codigoCookie = $codigoCookie;
         }
 
+        public function getId()
+        {
+            return $this->id;
+        }
+
         public function getNombre()
         {
             return $this->nombre;
@@ -276,6 +281,7 @@
         {
             $this->precio = $precio;
         }
+
 
 
     }

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-05-2020 a las 21:05:12
--- Versión del servidor: 10.1.35-MariaDB
--- Versión de PHP: 7.2.9
+-- Tiempo de generación: 01-06-2020 a las 20:35:17
+-- Versión del servidor: 10.4.8-MariaDB
+-- Versión de PHP: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,18 +35,19 @@ CREATE TABLE `cliente` (
   `APELLIDOS_CLIENTE` varchar(40) NOT NULL,
   `TELEFONO_CLIENTE` char(11) NOT NULL,
   `DIRECCION_CLIENTE` varchar(120) DEFAULT NULL,
-  `LOCALIDAD` varchar(75) NOT NULL,
   `EMAIL_CLIENTE` varchar(40) NOT NULL,
-  `CONTRASENNA_CLIENTE` varchar(40) NOT NULL
+  `CONTRASENNA_CLIENTE` varchar(40) NOT NULL,
+  `LOCALIDAD` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`ID_CLIENTE`, `CODIGO_COOKIE`, `NOMBRE_CLIENTE`, `APELLIDOS_CLIENTE`, `TELEFONO_CLIENTE`, `DIRECCION_CLIENTE`, `LOCALIDAD`, `EMAIL_CLIENTE`, `CONTRASENNA_CLIENTE`) VALUES
-(1, NULL, 'Jose Luis ', 'Sánchez Gómez', '629034519', 'C/ Sevilla 4, 3 A, 28901, Getafe, Madrid', 'Madrid', 'Joseluis12@gmail.com', '1234'),
-(2, NULL, 'Julia', 'Gutiérrez Serrano', '612893018', 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', 'Pinto', 'JuliaGS@gmail.com', '1234');
+INSERT INTO `cliente` (`ID_CLIENTE`, `CODIGO_COOKIE`, `NOMBRE_CLIENTE`, `APELLIDOS_CLIENTE`, `TELEFONO_CLIENTE`, `DIRECCION_CLIENTE`, `EMAIL_CLIENTE`, `CONTRASENNA_CLIENTE`, `LOCALIDAD`) VALUES
+(1, NULL, 'Jose Luis ', 'Sánchez Gómez', '629034519', 'C/ Sevilla 4, 3 A, 28901, Getafe, Madrid', 'Joseluis12@gmail.com', '1234', ''),
+(2, NULL, 'Julia', 'Gutiérrez Serrano', '612893018', 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', 'JuliaGS@gmail.com', '1234', ''),
+(10, '5xnk6NCbC5Nu09rGzNWTgDbvWSeeEBsa', 'Fernando', 'Gonzalez Perez', '678678678', 'Calle inventada 2', 'fernandoG@gmail.com', '1234', 'Getafe');
 
 -- --------------------------------------------------------
 
@@ -77,6 +78,32 @@ CREATE TABLE `detalle_pedido_producto` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `linea`
+--
+
+CREATE TABLE `linea` (
+  `ID_PEDIDO` int(11) NOT NULL,
+  `ID_PRODUCTO` int(11) NOT NULL,
+  `UNIDADES` int(11) NOT NULL,
+  `PRECIO_UNITARIO` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `linea`
+--
+
+INSERT INTO `linea` (`ID_PEDIDO`, `ID_PRODUCTO`, `UNIDADES`, `PRECIO_UNITARIO`) VALUES
+(27, 20, 1, '7.90'),
+(27, 37, 1, '1.50'),
+(27, 38, 1, '1.50'),
+(27, 39, 1, '2.30'),
+(27, 40, 1, '1.50'),
+(28, 19, 1, '7.90'),
+(28, 20, 1, '7.90');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `menu`
 --
 
@@ -98,12 +125,19 @@ CREATE TABLE `pedido` (
   `NUMERO_PEDIDO` int(11) NOT NULL,
   `ID_RESTAURANTE` char(4) NOT NULL,
   `ID_CLIENTE` int(11) NOT NULL,
-  `ID_REPARTIDOR` int(11) NOT NULL,
   `DIRECCION_ENTREGA` varchar(60) DEFAULT NULL COMMENT 'NULL -> PEDIDO NO CONFIRMADO',
   `PRECIO_PEDIDO` decimal(10,2) NOT NULL,
   `FECHA_PEDIDO_REALIZADO` datetime DEFAULT NULL COMMENT 'NULL -> PEDIDO NO CONFIRMADO',
   `FECHA_PEDIDO_ENTREGADO` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `pedido`
+--
+
+INSERT INTO `pedido` (`NUMERO_PEDIDO`, `ID_RESTAURANTE`, `ID_CLIENTE`, `DIRECCION_ENTREGA`, `PRECIO_PEDIDO`, `FECHA_PEDIDO_REALIZADO`, `FECHA_PEDIDO_ENTREGADO`) VALUES
+(27, 'DPAL', 1, NULL, '0.00', NULL, NULL),
+(28, 'DPAL', 10, NULL, '0.00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1015,36 +1049,6 @@ INSERT INTO `producto_restaurante` (`ID_PRODUCTO`, `ID_RESTAURANTE`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `repartidor`
---
-
-CREATE TABLE `repartidor` (
-  `ID_REPARTIDOR` int(11) NOT NULL,
-  `DNI_REPARTIDOR` char(11) NOT NULL,
-  `NOMBRE_REPARTIDOR` varchar(30) NOT NULL,
-  `APELLIDOS_REPARTIDOR` varchar(40) NOT NULL,
-  `TELEFONO_REPARTIDOR` char(11) NOT NULL,
-  `DIRECCION_REPARTIDOR` varchar(60) NOT NULL,
-  `EMAIL_REPARTIDOR` varchar(40) NOT NULL,
-  `SALARIO_REPARTIDOR` decimal(10,2) NOT NULL,
-  `DISPONIBILIDAD` int(11) NOT NULL COMMENT '0 -> NO DISPONIBLE 1 -> DISPONIBLE',
-  `ZONA_REPARTIDOR` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `repartidor`
---
-
-INSERT INTO `repartidor` (`ID_REPARTIDOR`, `DNI_REPARTIDOR`, `NOMBRE_REPARTIDOR`, `APELLIDOS_REPARTIDOR`, `TELEFONO_REPARTIDOR`, `DIRECCION_REPARTIDOR`, `EMAIL_REPARTIDOR`, `SALARIO_REPARTIDOR`, `DISPONIBILIDAD`, `ZONA_REPARTIDOR`) VALUES
-(1, '49251235M', 'Luis', 'Benítez García', '611230197', 'C/ José Rizal 17, 28930, Getafe, Madrid', 'Luisbenitez08@gmail.com', '1124.34', 1, 'Getafe'),
-(2, '529017356L', 'Sara', 'Jiménez Cuenca', '617200982', 'C/ Anselmo Lorenzo\r\n 2, 3 A, 28430, Alcorcón, Madrid', 'Sarajimenez14@gmail.com', '1267.65', 1, 'Madrid'),
-(3, '50192230J', 'Marcos', 'Serrano Escudero', '639178210', 'C/ del Alcalde Juan Durán y Pelayo 2, 4 B, 28530, Leganés, M', 'Marcosse12@gmail.com', '1098.00', 1, 'Alcorcón'),
-(4, '42911203L', 'Maria', 'García López', '633912768', 'C/ del Abedul 7, 28234, Ciempozuelos, Madrid', 'MariaGJ16@gmail.com', '1190.12', 1, 'Leganés'),
-(5, '47822368P', 'Estebán', 'Díaz Martínez', '617349987', 'C/ del Alcalde Manuel Gómez 6, 1 A, 28340, Leganés, Madrid', 'EstebanD12@gmail.com', '1134.98', 1, 'Pinto');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `restaurante`
 --
 
@@ -1120,6 +1124,13 @@ ALTER TABLE `detalle_pedido_producto`
   ADD KEY `ID_PRODUCTO` (`ID_PRODUCTO`);
 
 --
+-- Indices de la tabla `linea`
+--
+ALTER TABLE `linea`
+  ADD PRIMARY KEY (`ID_PEDIDO`,`ID_PRODUCTO`),
+  ADD KEY `ID_PRODUCTO` (`ID_PRODUCTO`) USING BTREE;
+
+--
 -- Indices de la tabla `menu`
 --
 ALTER TABLE `menu`
@@ -1132,8 +1143,7 @@ ALTER TABLE `menu`
 ALTER TABLE `pedido`
   ADD PRIMARY KEY (`NUMERO_PEDIDO`),
   ADD KEY `ID_CLIENTE` (`ID_CLIENTE`),
-  ADD KEY `ID_RESTAURANTE` (`ID_RESTAURANTE`),
-  ADD KEY `ID_REPARTIDOR` (`ID_REPARTIDOR`);
+  ADD KEY `ID_RESTAURANTE` (`ID_RESTAURANTE`);
 
 --
 -- Indices de la tabla `producto`
@@ -1156,13 +1166,6 @@ ALTER TABLE `producto_restaurante`
   ADD KEY `ID_RESTAURANTE` (`ID_RESTAURANTE`);
 
 --
--- Indices de la tabla `repartidor`
---
-ALTER TABLE `repartidor`
-  ADD PRIMARY KEY (`ID_REPARTIDOR`),
-  ADD UNIQUE KEY `ALTER_KEY2` (`DNI_REPARTIDOR`);
-
---
 -- Indices de la tabla `restaurante`
 --
 ALTER TABLE `restaurante`
@@ -1176,7 +1179,7 @@ ALTER TABLE `restaurante`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `ID_CLIENTE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `ID_CLIENTE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `menu`
@@ -1188,19 +1191,13 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `NUMERO_PEDIDO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `NUMERO_PEDIDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
   MODIFY `ID_PRODUCTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=196;
-
---
--- AUTO_INCREMENT de la tabla `repartidor`
---
-ALTER TABLE `repartidor`
-  MODIFY `ID_REPARTIDOR` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
@@ -1231,8 +1228,7 @@ ALTER TABLE `menu`
 --
 ALTER TABLE `pedido`
   ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`ID_CLIENTE`) REFERENCES `cliente` (`ID_CLIENTE`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`ID_RESTAURANTE`) REFERENCES `restaurante` (`ID_RESTAURANTE`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `pedido_ibfk_3` FOREIGN KEY (`ID_REPARTIDOR`) REFERENCES `repartidor` (`ID_REPARTIDOR`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`ID_RESTAURANTE`) REFERENCES `restaurante` (`ID_RESTAURANTE`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `productos_menu`
