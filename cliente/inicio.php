@@ -9,7 +9,7 @@ $nombreCliente = "";
 $ubicacionClienteRegistrado = "Madrid";
 
 if (haySesionIniciada()) {
-    $nombreCliente = $_SESSION["nombre"];
+    $id = $_SESSION["id"];
     $ubicacionClienteRegistrado = $_SESSION["localidad"];
     $restaurantesPorUbicacion = DAO::obtenerRestaurantePorUbicacion($ubicacionClienteRegistrado);
     $cantidadDeRestaurantes = sizeof($restaurantesPorUbicacion);
@@ -162,6 +162,8 @@ if (haySesionIniciada()) {
                         </div>
                     <?php } else { ?>
                         <a href="../sesion/cerrar-sesion.php" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Cerrar sesion</a>
+                        <a href="../cliente/pedido-ver.php" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Ver pedidos</a>
+                        <a href="carrito-ver.php"><img src="../img/5367202ad4dd11725544cb3008049f96-shoppingcart-icono-plana.png" width="40" height="40"></a>
                     <?php } ?>
                 </div>
             </div>

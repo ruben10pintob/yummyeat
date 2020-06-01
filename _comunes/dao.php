@@ -234,7 +234,58 @@ class DAO
         return $producto;
     }
 
+    public static function obtenerPrecioProducto($idProducto){
+        $rs = self::ejecutarConsulta("SELECT * FROM PRODUCTO WHERE ID_PRODUCTO = ?", [$idProducto]);
+        $precio = $rs[0]["PRECIO_PRODUCTO"];
+        return $precio;
+    }
+
+
+
+    //CARRITO
+
+    public static function crearNuevoCarrito($cliente, $restaurante){
+        self::ejecutarActualizacion("INSERT INTO PEDIDO (ID_RESTAURANTE, ID_CLIENTE) VALUES (?,?)", [$restaurante,$cliente]);
+    }
+
+    public static function annadirProductoCarrito($pedido, $producto, $unidades, $precio){
+        self::ejecutarActualizacion("INSERT INTO LINEA (ID_PEDIDO, ID_PRODUCTO, UNIDADES, PRECIO_UNITARIO) VALUES (?,?,?,?)", [$pedido, $producto, $unidades, $precio]);
+    }
+
+
+    public static function obtenerCarrito($clienteId)
+    {
+        $rsPedidoId = self::ejecutarConsulta(
+            "SELECT NUMERO_PEDIDO FROM PEDIDO WHERE ID_CLIENTE=? AND FECHA_PEDIDO_REALIZADO IS NULL",
+            [$clienteId]
+        );
+        if ($rsPedidoId == null){
+            return null;
+        }else{
+            $pedidoID = $rsPedidoId[0]["NUMERO_PEDIDO"];
+            return $pedidoID;
+        }
+
+    }
+
+    public static function obtenerDetalleCarrito($pedidoId)
+    {
+         $rs = self::ejecutarConsulta("SELECT l.ID_PRODUCTO, l.PRECIO_UNITARIO, p.NOMBRE_PRODUCTO, p.DESCRIPCION_PRODUCTO FROM LINEA l, PRODUCTO p WHERE ID_PEDIDO = ?", [$pedidoId]);
+         return $rs;
+    }
+
+
+    //PEDIDOS
+    public static function obtenerPedidosCliente($idCliente)
+    {
+
+        $rsPedidos = self::ejecutarConsulta("SELECT pedido.NUMERO_PEDIDO, pedido.ID_RESTAURANTE, pedido.DIRECCION_ENTREGA, pedido.PRECIO_PEDIDO FROM pedido, cliente WHERE pedido.ID_CLIENTE=cliente.ID_CLIENTE AND pedido.ID_CLIENTE=? AND pedido.FECHA_PEDIDO_REALIZADO IS NOT NULL", [$idCliente]);
+        return $rsPedidos;
+
+    }
 
 
 }
+
+
 

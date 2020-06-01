@@ -4,17 +4,17 @@ require_once "../_comunes/dao.php";
 require_once "../_comunes/clases.php";
 
 $idProducto= $_REQUEST["id"];
-$idRestaurante = $_REQUEST["restaurante"];
+$restaurante = $_REQUEST["restaurante"];
 
 $producto = DAO::obtenerDetallesProducto($idProducto);
 
-$restaurante = DAO::restauranteObtenerPorId($idRestaurante);
+$restaurante = DAO::restauranteObtenerPorId($restaurante);
 
 ?>
 
 
 <!doctype html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -37,7 +37,7 @@ $restaurante = DAO::restauranteObtenerPorId($idRestaurante);
 <p><?=$producto->getDescripcion()?></p>
 <p><?=$producto->getPrecio()?></p>
 
-<a href="../cliente/carrito-annadir.php?id=<?=$producto->getId()?>&Unidades=1" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Añadir al carrito</a>
-<a href="../cliente/restaurante-detalle.php?id=<?=$idRestaurante?>" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Volver al listado de productos</a>
+<a href="carrito-annadir.php?id=<?=$producto->getId()?>&restaurante=<?=$restaurante?>&Unidades=1" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Añadir al carrito</a>
+<a href="restaurante-detalle.php?id=<?=$restaurante?>" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Volver al listado de productos</a>
 </body>
 </html>
