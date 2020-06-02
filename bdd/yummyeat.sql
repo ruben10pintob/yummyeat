@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-06-2020 a las 20:35:17
--- Versión del servidor: 10.4.8-MariaDB
--- Versión de PHP: 7.3.11
+-- Tiempo de generación: 02-06-2020 a las 23:07:13
+-- Versión del servidor: 10.1.35-MariaDB
+-- Versión de PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -45,9 +45,9 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`ID_CLIENTE`, `CODIGO_COOKIE`, `NOMBRE_CLIENTE`, `APELLIDOS_CLIENTE`, `TELEFONO_CLIENTE`, `DIRECCION_CLIENTE`, `EMAIL_CLIENTE`, `CONTRASENNA_CLIENTE`, `LOCALIDAD`) VALUES
-(1, NULL, 'Jose Luis ', 'Sánchez Gómez', '629034519', 'C/ Sevilla 4, 3 A, 28901, Getafe, Madrid', 'Joseluis12@gmail.com', '1234', ''),
-(2, NULL, 'Julia', 'Gutiérrez Serrano', '612893018', 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', 'JuliaGS@gmail.com', '1234', ''),
-(10, '5xnk6NCbC5Nu09rGzNWTgDbvWSeeEBsa', 'Fernando', 'Gonzalez Perez', '678678678', 'Calle inventada 2', 'fernandoG@gmail.com', '1234', 'Getafe');
+(1, NULL, 'Jose Luis ', 'Sánchez Gómez', '629034519', 'C/ Sevilla 4, 3 A, 28901, Getafe, Madrid', 'Joseluis12@gmail.com', '1234', 'Pinto'),
+(2, NULL, 'Julia', 'Gutiérrez Serrano', '612893018', 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', 'JuliaGS@gmail.com', '1234', 'Madrid'),
+(10, NULL, 'Fernando', 'Gonzalez Perez', '678678678', 'Calle inventada 2', 'fernandoG@gmail.com', '1234', 'Getafe');
 
 -- --------------------------------------------------------
 
@@ -99,7 +99,11 @@ INSERT INTO `linea` (`ID_PEDIDO`, `ID_PRODUCTO`, `UNIDADES`, `PRECIO_UNITARIO`) 
 (27, 39, 1, '2.30'),
 (27, 40, 1, '1.50'),
 (28, 19, 1, '7.90'),
-(28, 20, 1, '7.90');
+(28, 20, 1, '7.90'),
+(29, 9, 1, '10.90'),
+(29, 37, 1, '1.50'),
+(29, 39, 1, '2.30'),
+(29, 40, 1, '1.50');
 
 -- --------------------------------------------------------
 
@@ -137,7 +141,8 @@ CREATE TABLE `pedido` (
 
 INSERT INTO `pedido` (`NUMERO_PEDIDO`, `ID_RESTAURANTE`, `ID_CLIENTE`, `DIRECCION_ENTREGA`, `PRECIO_PEDIDO`, `FECHA_PEDIDO_REALIZADO`, `FECHA_PEDIDO_ENTREGADO`) VALUES
 (27, 'DPAL', 1, NULL, '0.00', NULL, NULL),
-(28, 'DPAL', 10, NULL, '0.00', NULL, NULL);
+(28, 'DPAL', 10, NULL, '0.00', NULL, NULL),
+(29, 'DPMA', 2, NULL, '0.00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1073,15 +1078,15 @@ INSERT INTO `restaurante` (`ID_RESTAURANTE`, `NOMBRE_RESTAURANTE`, `TELEFONO_RES
 ('DPMA', 'Domino\'s Pizza', '916840212', 'Calle Arboleda, 24, 28901 Madrid', 'Madrid', 'DominosPizzaMadrid@gmail.com', 'Pizzas', 1),
 ('DPPI', 'Domino\'s Pizza', '910901532', 'Av. de Antonio López, 4, 28320 Pinto, Madrid', 'Pinto', 'DominosPizzaPinto@gmail.com', 'Pizzas', 1),
 ('DPVA', 'Domino\'s Pizza', '910906177', 'Av. de España, 6, 28342 Valdemoro, Madrid', 'Valdemoro', 'DominosPizzaValdemoro@gmail.com', 'Pizzas', 1),
-('FHFU', 'Foster\'s Hollywood', '916075582', 'C.C. La Estación, Calle de Hungría, s / n, 28943 Fuenlabrada, Madrid', 'Fuenlabrada', 'FosterHFuenlabrada@gmail.com', 'Internacional', 0),
-('FHGE', 'Foster\'s Hollywood', '916213189', 'Nassica Centro Comercial y de Ocio Ctra. de Andalucía, Salida 17, 28906 Getafe, Madrid', 'Getafe', 'FosterHGetafe@gmail.com', 'Internacional', 0),
-('FHPI', 'Foster\'s Hollywood', '916927967', 'Calle Pablo Picasso, 10, 28320 Pinto, Madrid', 'Pinto', 'FosterHPinto@gmail.com', 'Internacional', 0),
-('JACO', 'Jade Colonial', '916842062', 'Calle de la Magdalena, 33, 28906 Getafe, Madrid', 'Getafe', 'Jadecolonialgetafe@gmail.com', 'Japonesa', 0),
+('FHFU', 'Foster\'s Hollywood', '916075582', 'C.C. La Estación, Calle de Hungría, s / n, 28943 Fuenlabrada, Madrid', 'Fuenlabrada', 'FosterHFuenlabrada@gmail.com', 'Comida Internacional', 0),
+('FHGE', 'Foster\'s Hollywood', '916213189', 'Nassica Centro Comercial y de Ocio Ctra. de Andalucía, Salida 17, 28906 Getafe, Madrid', 'Getafe', 'FosterHGetafe@gmail.com', 'Comida Internacional', 0),
+('FHPI', 'Foster\'s Hollywood', '916927967', 'Calle Pablo Picasso, 10, 28320 Pinto, Madrid', 'Pinto', 'FosterHPinto@gmail.com', 'Comida Internacional', 0),
+('JACO', 'Jade Colonial', '916842062', 'Calle de la Magdalena, 33, 28906 Getafe, Madrid', 'Getafe', 'Jadecolonialgetafe@gmail.com', 'Comida Japonesa', 0),
 ('MCDG', 'McDonald\'s', '916213143', 'Avda. Rio Guadalquivir, 18 Centro Comercial Nassica, 28906 Getafe, Madrid', 'Getafe', 'McDonalsGetafe@gmil.com', 'Hamburguesas', 0),
 ('MCDM', 'McDonald\'s', '915313711', 'Calle de la Montera, 47, 28013 Madrid', 'Madrid', 'McDonalsMadrid@gmil.com', 'Hamburguesas', 0),
 ('MCDP', 'McDonald\'s', '912 91 08 6', 'Ctra. de Andalucía N-IV, Km.20,2 - 28320, 28320 Pinto, Madrid', 'Pinto', 'McDonalsPinto@gmil.com', 'Hamburguesas', 0),
 ('MCDV', 'McDonald\'s', '916991992', 'Avda. de España, 4 esquina Emilia Pardo Bazan, 28342 Valdemoro, Madrid', 'Valdemoro', 'McDonalsValdemoro@gmil.com', 'Hamburguesas', 0),
-('OKSU', 'Ok Sushi', '910181920', 'Calle Arboleda, 14, 28901 Getafe, Madrid', 'Getafe', 'Oksushigetafe@gmail.com', 'Japonesa', 0),
+('OKSU', 'Ok Sushi', '910181920', 'Calle Arboleda, 14, 28901 Getafe, Madrid', 'Getafe', 'Oksushigetafe@gmail.com', 'Comida Japonesa', 0),
 ('SDFA', 'Sublime dreams food', '914861073', 'Calle Oslo, 53, 28922 Alcorcón, Madrid', 'Alcorcón', 'Subliemdfalcorcon@gmail.com', 'Hamburguesas', 0),
 ('SDFM', 'Sublime dreams food', '910224197', 'Calle de Concepción Jerónima, 28, 28012 Madrid', 'Madrid', 'sublimedfmadrid@gmail.com', 'Hamburguesas', 0),
 ('TGBA', 'The Good Burger', '916428312', 'Av. de América, 7, 9, 28922 Alcorcón, Madrid', 'Alcorcón', 'Thegoodburgeralcorcon@gmail.com', 'Hamburguesas', 0),
@@ -1191,7 +1196,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `NUMERO_PEDIDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `NUMERO_PEDIDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
