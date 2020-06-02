@@ -1,9 +1,12 @@
 <?php
-require_once "../_comunes/dao.php";
-require_once "../_comunes/clases.php";
+
 require_once "../_comunes/comunes-app.php";
+
+if (haySesionIniciada()) {
+    $idCliente = $_SESSION["id"];
+}
+
 $idProducto = $_REQUEST["id"];
-$idCliente = $_SESSION["id"];
 $unidades = $_REQUEST["Unidades"];
 $precio = DAO::obtenerPrecioProducto($idProducto);
 $restaurante = $_REQUEST["restaurante"];
