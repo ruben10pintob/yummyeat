@@ -10,7 +10,12 @@ $restaurante = $_REQUEST["restaurante"];
 
 if(DAO::obtenerCarrito($idCliente) != null){
     $carrito = DAO::obtenerCarrito($idCliente);
-    DAO::annadirProductoCarrito($carrito, $idProducto, $unidades, $precio);
+    if (DAO::comprobarSiExisteProducto($idProducto,$carrito) == null){
+        DAO::annadirProductoCarrito($carrito, $idProducto, $unidades, $precio);
+    }else{
+        $nuevasUnidades = DAO::modificarUnidades($unidades,$idProducto,$carrito);
+    }
+
 }else{
     DAO::crearNuevoCarrito($idCliente, $restaurante);
     $carrito = DAO::obtenerCarrito($idCliente);

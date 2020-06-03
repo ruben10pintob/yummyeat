@@ -82,17 +82,23 @@ $categoriaProductos = DAO::obtenerCategoriaProductosPorRestaurante($idRestaurant
 </table>
 
 <?php if (isset($_REQUEST["categoria"])) { ?>
-<table border="1">
+<table border="1" class="table-hover">
 
     <th><?=$categoria?></th>
+    <th>Precio</th>
+    <th>Cantidad</th>
         <?php
             foreach ($productosPorCategoria as $producto) { ?>
-
+                <form action="carrito-annadir.php?id=?&restaurante=?&Unidades=?">
+                    <input type="hidden" value="<?=$producto->getId()?>" name="id">
+                    <input type="hidden" value="<?=$restaurantePorId->getId()?>" name="restaurante">
                 <tr>
                     <td><a href="producto-detalle.php?id=<?=$producto->getId()?>&restaurante=<?=$restaurantePorId->getId()?>" ><?= $producto->getNombre() ?></a></td>
                     <td><?= $producto->getPrecio() ?></td>
-                    <td><a href="../cliente/carrito-annadir.php?id=<?=$producto->getId()?>&restaurante=<?=$idRestaurante?>&Unidades=1" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Añadir al carrito</a></td>
+                    <td><input type="number" name="Unidades" value="1" min="1" placeholder="Unidades del producto" id="Unidades"></td>
+                    <td><input type="submit" name="Enviar" value="Añadir al carrito" class="btn btn-primary"></td>
                 </tr>
+                </form>
             <?php }
         }?>
 
