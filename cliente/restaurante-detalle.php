@@ -1,7 +1,6 @@
 <?php
 
-require_once "../_comunes/dao.php";
-require_once "../_comunes/clases.php";
+require_once "../_comunes/comunes-app.php";
 
 $idRestaurante = $_REQUEST["id"];
 

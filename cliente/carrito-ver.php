@@ -1,9 +1,13 @@
 <?php
-require_once "../_comunes/dao.php";
-require_once "../_comunes/clases.php";
+
 require_once "../_comunes/comunes-app.php";
-$pedidoId=DAO::obtenerCarrito($_SESSION["id"]);
-$lineas = DAO::obtenerDetalleCarrito($pedidoId);
+
+$pedidoId = DAO::obtenerCarrito($_SESSION["id"]);
+$precioCarrito = 0;
+$carrito = DAO::obtenerDetalleCarrito($pedidoId);
+
+
+
 ?>
 
 <!doctype html>
@@ -26,20 +30,16 @@ $lineas = DAO::obtenerDetalleCarrito($pedidoId);
 </head>
 <body>
 <table class="table">
-    <th>Nombre del producto</th>
-    <th>Descripcion del producto</th>
-    <th>Categoria del producto</th>
-    <th>Precio del producto</th>
-<?
-foreach ($lineas as $l){?>
+<?php
+foreach ($carrito as $linea){ ?>
     <tr>
-        <td><?=$l[0]['NOMBRE_PRODUCTO']?></td>
-        <td><?=$l[0]['DESCRIPCION_PRODUCTO']?></td>
-        <td><?=$l[0]['CATEGORIA_PRODUCTO']?></td>
-        <td><?=$l[0]['PRECIO_UNITARIO']?></td>
+        <th><?=$linea["NOMBRE_PRODUCTO"]?></th>
+        <th><?=$linea["PRECIO_UNITARIO"]?>€</th>
+        <th><?=$linea["UNIDADES"]?></th>
+        <th><a href="carrito-eliminar.php?idPedido=<?=$linea["ID_PEDIDO"]?>&idProducto=<?=$linea["ID_PRODUCTO"]?>">Eliminar producto</a></th>
     </tr>
+<?php } ?>
 
-    <?}?>
 
 </table>
 </body>

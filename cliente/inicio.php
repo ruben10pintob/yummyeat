@@ -61,11 +61,8 @@ if (haySesionIniciada()) {
                     <li class="nav-item">
                         <a href="../sesion/cerrar-sesion.php" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Cerrar sesion</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="../cliente/pedido-ver.php" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Ver pedidos</a>
-                    </li>
                     <li>
-                        <a href="carrito-ver.php"><img src="../img/5367202ad4dd11725544cb3008049f96-shoppingcart-icono-plana.png" width="40" height="40"></a>
+                        <a href="carrito-ver.php"><img src="../img/carrito.png" width="40" height="40"></a>
                     </li>
                 </ul>
             <?php } ?>
@@ -241,7 +238,7 @@ if (haySesionIniciada()) {
                             <h2><a></a><?=$especialidad?></h2>
                         </a>
                     </div>
-                    <a href="restaurante-especialidad.php?especialidad=<?=$especialidad?>"><?=$especialidad?>"><img src="#" class="img-fluid" alt="<?=$especialidad?>"></a>
+                    <a href="restaurante-especialidad.php?especialidad=<?=$especialidad?>"><img src="../img/<?=$especialidad?>.jpg" class="img-fluid" alt="<?=$especialidad?>"></a>
                 </div>
             </div>
             <?php } ?>

@@ -266,14 +266,15 @@ class DAO
 
     public static function obtenerCarrito($clienteId)
     {
+
         $rsPedidoId = self::ejecutarConsulta(
-            "SELECT NUMERO_PEDIDO FROM PEDIDO WHERE ID_CLIENTE=? AND FECHA_PEDIDO_REALIZADO IS NULL",
+            "SELECT * FROM linea INNER JOIN pedido ON linea.ID_PEDIDO = pedido.NUMERO_PEDIDO WHERE ID_CLIENTE=? AND FECHA_PEDIDO_REALIZADO IS null",
             [$clienteId]
         );
         if ($rsPedidoId == null){
             return null;
         }else{
-            $pedidoID = $rsPedidoId[0]["NUMERO_PEDIDO"];
+            $pedidoID = $rsPedidoId[0]["ID_PEDIDO"];
             return $pedidoID;
         }
 
@@ -281,7 +282,7 @@ class DAO
 
     public static function obtenerDetalleCarrito($pedidoId)
     {
-         $rs = self::ejecutarConsulta("SELECT l.ID_PRODUCTO, l.PRECIO_UNITARIO, p.NOMBRE_PRODUCTO, p.DESCRIPCION_PRODUCTO FROM LINEA l, PRODUCTO p WHERE ID_PEDIDO = ?", [$pedidoId]);
+         $rs = self::ejecutarConsulta("SELECT l.ID_PRODUCTO, l.ID_PEDIDO, l.PRECIO_UNITARIO, p.NOMBRE_PRODUCTO, l.UNIDADES, p.DESCRIPCION_PRODUCTO FROM LINEA l, PRODUCTO p WHERE l.ID_PRODUCTO = p.ID_PRODUCTO AND ID_PEDIDO = ?", [$pedidoId]);
          return $rs;
     }
 
@@ -300,6 +301,11 @@ class DAO
         self::ejecutarActualizacion("UPDATE linea SET UNIDADES=? WHERE ID_PEDIDO=? AND ID_PRODUCTO=?",[$unidadesNuevas,$pedidoId,$productoId]);
     }
 
+    public static function eliminarTodasUnidadesProductoCarrito($idPedido, $idProducto)
+    {
+        self::ejecutarActualizacion("DELETE FROM `linea` WHERE ID_PEDIDO = ? AND ID_PRODUCTO = ?",[$idPedido, $idProducto]);
+    }
+
 
     //PEDIDOS
     public static function obtenerPedidosCliente($idCliente)
@@ -309,7 +315,6 @@ class DAO
         return $rsPedidos;
 
     }
-
 
 }
 
