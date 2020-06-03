@@ -285,6 +285,21 @@ class DAO
          return $rs;
     }
 
+    public static function comprobarSiExisteProducto($productoId, $pedidoId)
+    {
+        $rs = self::ejecutarConsulta("SELECT * FROM linea WHERE ID_PRODUCTO = ? AND ID_PEDIDO = ?",[$productoId,$pedidoId]);
+        return $rs;
+    }
+
+    public static function modificarUnidades($unidadesNuevas,$productoId, $pedidoId)
+    {
+        $rs = self::ejecutarConsulta("SELECT UNIDADES FROM linea WHERE ID_PRODUCTO = ? AND ID_PEDIDO = ?",[$productoId,$pedidoId]);
+        foreach ($rs as $linea){
+            $unidadesNuevas+= $linea["UNIDADES"];
+        }
+        self::ejecutarActualizacion("UPDATE linea SET UNIDADES=? WHERE ID_PEDIDO=? AND ID_PRODUCTO=?",[$unidadesNuevas,$pedidoId,$productoId]);
+    }
+
 
     //PEDIDOS
     public static function obtenerPedidosCliente($idCliente)
