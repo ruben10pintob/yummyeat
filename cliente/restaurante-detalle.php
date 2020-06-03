@@ -90,7 +90,7 @@ $categoriaProductos = DAO::obtenerCategoriaProductosPorRestaurante($idRestaurant
                 <tr>
                     <td><a href="producto-detalle.php?id=<?=$producto->getId()?>&restaurante=<?=$restaurantePorId->getId()?>" ><?= $producto->getNombre() ?></a></td>
                     <td><?= $producto->getPrecio() ?></td>
-                    <td><a href="../cliente/carrito-annadir.php?id=<?=$producto->getId()?>&restaurante=<?=$idRestaurante?>&Unidades=1" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Añadir al carrito</a></td>
+                    <td><a href="../cliente/carrito-annadir.php?id=<?=$producto->getId()?>&restaurante=<?=$restaurantePorId->getId()?>&Unidades=1" class="btn btn-dark btn-lg active" role="button" aria-pressed="true">Añadir al carrito</a></td>
                 </tr>
             <?php }
         }?>
