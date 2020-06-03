@@ -173,7 +173,18 @@ class DAO
 
         return $restaurantes;
 
+    }
 
+    public static function obtenerEspecialidadesRestaurante(): array
+    {
+        $especialidades = [];
+        $rs = self::ejecutarConsulta("SELECT * FROM restaurante GROUP by ESPECIALIDAD_RESTAURANTE", []);
+
+        foreach ($rs as $fila) {
+            $especialidad = $fila["ESPECIALIDAD_RESTAURANTE"];
+            array_push($especialidades, $especialidad);
+        }
+        return $especialidades;
     }
 
     /**********************   PRODUCTOS   **********************/
