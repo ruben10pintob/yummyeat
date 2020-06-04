@@ -29,18 +29,42 @@ $carrito = DAO::obtenerDetalleCarrito($pedidoId);
     <title>Carrito</title>
 </head>
 <body>
-<table class="table">
+
+<table class="table table-hover">
+    <th>Producto</th>
+    <th>Precio Producto</th>
+    <th>Unidades</th>
+    <th>Precio Total Producto</th>
 <?php
-foreach ($carrito as $linea){ ?>
+$precioTotalCarrito=0;
+foreach ($carrito as $linea){
+
+    $precioTotalProducto = $linea["UNIDADES"]*$linea["PRECIO_UNITARIO"];
+    $precioTotalCarrito+=$precioTotalProducto;
+    ?>
     <tr>
-        <th><?=$linea["NOMBRE_PRODUCTO"]?></th>
-        <th><?=$linea["PRECIO_UNITARIO"]?>€</th>
-        <th><?=$linea["UNIDADES"]?></th>
-        <th><a href="carrito-eliminar.php?idPedido=<?=$linea["ID_PEDIDO"]?>&idProducto=<?=$linea["ID_PRODUCTO"]?>">Eliminar producto</a></th>
+        <form action="modificar-unidades-carrito.php">
+            <input type="hidden" name="idPedido" value="<?=$linea["ID_PEDIDO"]?>">
+            <input type="hidden" name="idProducto" value="<?=$linea["ID_PRODUCTO"]?>">
+            <td><?=$linea["NOMBRE_PRODUCTO"]?></td>
+            <td><?=$linea["PRECIO_UNITARIO"]?>€</td>
+            <td><input type="number" name="cantidad" value="<?=$linea["UNIDADES"]?>"></td>
+            <td><?=$precioTotalProducto?>€</td>
+            <td><input type="submit" name="Modificar" value="Modificar Unidades" class="btn btn-warning btn-lg active" role="button" aria-pressed="true"></td>
+        </form>
+        <td><a href="carrito-eliminar.php?idPedido=<?=$linea["ID_PEDIDO"]?>&idProducto=<?=$linea["ID_PRODUCTO"]?>" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Eliminar Producto</a></td>
     </tr>
 <?php } ?>
 
-
+    <tr>
+        <td class="font-weight-bold">Precio Total del Carrito</td>
+        <td></td>
+        <td></td>
+        <td class="font-weight-bold"><?=$precioTotalCarrito?>€</td>
+    </tr>
 </table>
+<a href="../cliente/crear-pedido.php" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Hacer Pedido</a>
+
 </body>
 </html>
+

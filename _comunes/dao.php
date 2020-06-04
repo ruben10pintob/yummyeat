@@ -306,6 +306,11 @@ class DAO
         self::ejecutarActualizacion("DELETE FROM `linea` WHERE ID_PEDIDO = ? AND ID_PRODUCTO = ?",[$idPedido, $idProducto]);
     }
 
+    public static function modificarUnidadesDelCarrito($idPedido, $idProducto, $unidades)
+    {
+        self::ejecutarActualizacion("UPDATE linea SET UNIDADES = ? WHERE ID_PEDIDO = ? AND ID_PRODUCTO = ?", [$unidades, $idPedido, $idProducto]);
+    }
+
 
     //PEDIDOS
     public static function obtenerPedidosCliente($idCliente)
