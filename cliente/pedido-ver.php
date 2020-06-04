@@ -1,6 +1,5 @@
 <?php
-require_once "../_comunes/dao.php";
-require_once "../_comunes/clases.php";
+
 require_once "../_comunes/comunes-app.php";
 $pedidos = DAO::obtenerPedidosCliente($_SESSION["id"]);
 print_r($pedidos) ;
