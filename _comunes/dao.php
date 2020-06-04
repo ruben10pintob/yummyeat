@@ -259,6 +259,11 @@ class DAO
         self::ejecutarActualizacion("INSERT INTO PEDIDO (ID_RESTAURANTE, ID_CLIENTE) VALUES (?,?)", [$restaurante,$cliente]);
     }
 
+    public static function obtenerIdPedido($idCliente){
+        $rs = self::ejecutarConsulta("SELECT * FROM pedido WHERE ID_CLIENTE = ? ORDER by NUMERO_PEDIDO DESC",[$idCliente]);
+        return $rs[0]["NUMERO_PEDIDO"];
+    }
+
     public static function annadirProductoCarrito($pedido, $producto, $unidades, $precio){
         self::ejecutarActualizacion("INSERT INTO LINEA (ID_PEDIDO, ID_PRODUCTO, UNIDADES, PRECIO_UNITARIO) VALUES (?,?,?,?)", [$pedido, $producto, $unidades, $precio]);
     }
@@ -314,6 +319,14 @@ class DAO
         $rsPedidos = self::ejecutarConsulta("SELECT pedido.NUMERO_PEDIDO, pedido.ID_RESTAURANTE, pedido.DIRECCION_ENTREGA, pedido.PRECIO_PEDIDO FROM pedido, cliente WHERE pedido.ID_CLIENTE=cliente.ID_CLIENTE AND pedido.ID_CLIENTE=? AND pedido.FECHA_PEDIDO_REALIZADO IS NOT NULL", [$idCliente]);
         return $rsPedidos;
 
+    }
+
+    public static function realizarPedido($direccionEntrega, $numeroPedido)
+    {
+        $fecha = obtenerFecha();
+
+        self::ejecutarActualizacion("UPDATE pedido SET DIRECCION_ENTREGA = ?, FECHA_PEDIDO_REALIZADO = ? WHERE pedido.NUMERO_PEDIDO = ?"
+                                        ,[$direccionEntrega, $fecha, $numeroPedido]);
     }
 
 }

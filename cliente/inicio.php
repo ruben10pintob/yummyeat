@@ -214,7 +214,7 @@ if (haySesionIniciada()) {
                             <h2><a></a><?=$restaurante->getNombre()?></h2>
                         </a>
                     </div>
-                    <a href="restaurante-detalle.php?id=<?=$restaurante->getId()?>"><img src="../img/<?=$restaurante->getNombre()?>.jpg" class="img-fluid" alt="<?=$restaurante->getNombre()?>"></a>
+                    <a href="restaurante-detalle.php?id=<?=$restaurante->getId()?>"><img src="../img/Restaurantes/<?=$restaurante->getNombre()?>.jpg" class="img-fluid" alt="<?=$restaurante->getNombre()?>"></a>
                 </div>
             </div>
             <?php } ?>
@@ -238,7 +238,7 @@ if (haySesionIniciada()) {
                             <h2><a></a><?=$especialidad?></h2>
                         </a>
                     </div>
-                    <a href="restaurante-especialidad.php?especialidad=<?=$especialidad?>"><img src="../img/<?=$especialidad?>.jpg" class="img-fluid" alt="<?=$especialidad?>"></a>
+                    <a href="restaurante-especialidad.php?especialidad=<?=$especialidad?>"><img src="../img/Especialidades<?=$especialidad?>.jpg" class="img-fluid" alt="<?=$especialidad?>"></a>
                 </div>
             </div>
             <?php } ?>

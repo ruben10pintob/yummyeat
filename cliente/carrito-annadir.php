@@ -21,10 +21,13 @@ if(DAO::obtenerCarrito($idCliente) != null){
 
 }else{
     DAO::crearNuevoCarrito($idCliente, $restaurante);
-    $carrito = DAO::obtenerCarrito($idCliente);
+    $carrito = DAO::obtenerIdPedido($idCliente);
     DAO::annadirProductoCarrito($carrito, $idProducto, $unidades, $precio);
+    if (DAO::comprobarSiExisteProducto($idProducto,$carrito) == null) {
+        DAO::annadirProductoCarrito($carrito, $idProducto, $unidades, $precio);
+    }
 }
-
+    redireccionar("../cliente/restaurante-detalle.php?id=".$restaurante);
 ?>
 
 <!doctype html>
