@@ -112,6 +112,11 @@ class DAO
         }
     }
 
+    public static function modificarInfoCliente($nombre, $apellidos, $telefono, $direccion, $localidad, $id)
+    {
+        self::ejecutarActualizacion("UPDATE cliente SET NOMBRE_CLIENTE=?,APELLIDOS_CLIENTE=?,TELEFONO_CLIENTE=?,DIRECCION_CLIENTE=?,LOCALIDAD=? WHERE ID_CLIENTE = ?", [$nombre, $apellidos, $telefono, $direccion, $localidad, $id]);
+    }
+
     /**********************   RESTAURANTES   **********************/
 
     private static function crearListaDeRestaurante($rs) // Para crear los restaurantes y añadirlos a un array
@@ -321,7 +326,7 @@ class DAO
     public static function obtenerPedidosCliente($idCliente)
     {
 
-        $rsPedidos = self::ejecutarConsulta("SELECT pedido.NUMERO_PEDIDO, pedido.ID_RESTAURANTE, pedido.DIRECCION_ENTREGA, pedido.PRECIO_PEDIDO FROM pedido, cliente WHERE pedido.ID_CLIENTE=cliente.ID_CLIENTE AND pedido.ID_CLIENTE=? AND pedido.FECHA_PEDIDO_REALIZADO IS NOT NULL", [$idCliente]);
+        $rsPedidos = self::ejecutarConsulta("SELECT pedido.NUMERO_PEDIDO, pedido.ID_RESTAURANTE, pedido.DIRECCION_ENTREGA, pedido.PRECIO_PEDIDO, pedido.FECHA_PEDIDO_REALIZADO FROM pedido, cliente WHERE pedido.ID_CLIENTE=cliente.ID_CLIENTE AND pedido.ID_CLIENTE=? AND pedido.FECHA_PEDIDO_REALIZADO IS NOT NULL", [$idCliente]);
         return $rsPedidos;
 
     }
@@ -332,6 +337,12 @@ class DAO
 
         self::ejecutarActualizacion("UPDATE pedido SET DIRECCION_ENTREGA = ?, FECHA_PEDIDO_REALIZADO = ? WHERE pedido.NUMERO_PEDIDO = ?"
                                         ,[$direccionEntrega, $fecha, $numeroPedido]);
+    }
+
+    public static function obtenerDetallePedido($idPedido)
+    {
+        $rs = self::ejecutarConsulta("SELECT l.ID_PRODUCTO, l.ID_PEDIDO, l.PRECIO_UNITARIO, p.NOMBRE_PRODUCTO, l.UNIDADES, p.DESCRIPCION_PRODUCTO FROM LINEA l, PRODUCTO p WHERE l.ID_PRODUCTO = p.ID_PRODUCTO AND ID_PEDIDO = ?", [$idPedido]);
+        return $rs;
     }
 
 }
