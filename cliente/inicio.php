@@ -39,9 +39,9 @@ if (haySesionIniciada()) {
     <title>Yummyeat</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg fixed-top">
+<nav class="navbar navbar-expand-lg fixed-top align-content-end">
     <div class="container">
-        <h2>Yummyeat</h2>
+        <h2><a href="../cliente/inicio.php">Yummyeat</a></h2>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         </button>
@@ -59,10 +59,13 @@ if (haySesionIniciada()) {
             <?php } else { ?>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
+                        <a href="../cliente/perfil-cliente.php" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Perfil</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="../sesion/cerrar-sesion.php" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Cerrar sesion</a>
                     </li>
-                    <li>
-                        <a href="carrito-ver.php"><img src="../img/carrito.png" width="40" height="40"></a>
+                    <li  class="nav-item">
+                        <a href="carrito-ver.php" class="btn btn-success btn-lg active" role="button" aria-pressed="true"><img src="../img/carrito.png" width="18" height="18""></a>
                     </li>
                 </ul>
             <?php } ?>
@@ -115,14 +118,14 @@ if (haySesionIniciada()) {
                             <label for="validationTooltip01">Nombre</label>
                             <input type="text" class="form-control" id="validationTooltip01" name="nombre" placeholder="Nombre" required>
                             <div class="valid-tooltip">
-                                Looks good!
+                                Se ve bien!
                             </div>
                         </div>
                         <div class="col-md-4">
                             <label for="validationTooltip02">Apellidos</label>
                             <input type="text" class="form-control" id="validationTooltip02" name="apellidos" placeholder="Apelidos" required>
                             <div class="valid-tooltip">
-                                Looks good!
+                                Se ve bien!
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -133,7 +136,7 @@ if (haySesionIniciada()) {
                                 </div>
                                 <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" name="telefono" required>
                                 <div class="invalid-tooltip">
-                                    Please choose a unique and valid username.
+                                    Por favor, escoja un solo nombre válido.
                                 </div>
                             </div>
                         </div>
@@ -143,14 +146,14 @@ if (haySesionIniciada()) {
                             <label for="validationTooltip03">Dirección</label>
                             <input type="text" class="form-control" id="validationTooltip03" name="direccion" placeholder="Calle..." required>
                             <div class="invalid-tooltip">
-                                Please provide a valid city.
+                                Por favor, escriba una dirección válida.
                             </div>
                         </div>
                         <div class="col-md-4">
                             <label for="validationTooltip03">Localidad</label>
                             <input type="text" class="form-control" id="validationTooltip03" name="localidad" placeholder="Madrid" required>
                             <div class="invalid-tooltip">
-                                Please provide a valid city.
+                                Por favor, escriba una localidad válida.
                             </div>
                         </div>
                     </div>
@@ -163,7 +166,7 @@ if (haySesionIniciada()) {
                                 </div>
                                 <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" name="email" required>
                                 <div class="invalid-tooltip">
-                                    Please choose a unique and valid username.
+                                    Por favor, escoja un solo nombre válido.
                                 </div>
                             </div>
                         </div>
@@ -171,7 +174,7 @@ if (haySesionIniciada()) {
                             <label for="validationTooltip05">Contraseña</label>
                             <input type="password" class="form-control" id="validationTooltip05" name="contrasenna" required>
                             <div class="invalid-tooltip">
-                                Please provide a valid zip.
+                                Por favor, escriba una contraseña válida.
                             </div>
                         </div>
                     </div>

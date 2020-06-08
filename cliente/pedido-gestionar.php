@@ -20,6 +20,5 @@ DAO::realizarPedido($direccionCliente, $idPedido);
 </head>
 <body>
 <p>Gracias por pedir con nosotros</p>
-<a href="inicio.php">Volver a inicio</a>
 </body>
 </html>

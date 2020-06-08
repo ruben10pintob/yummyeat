@@ -2,7 +2,6 @@
 
 require_once "../_comunes/comunes-app.php";
 $pedidos = DAO::obtenerPedidosCliente($_SESSION["id"]);
-print_r($pedidos) ;
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,7 +23,7 @@ print_r($pedidos) ;
 <body>
 <h1>Listado de pedidos</h1>
 
-<table border="1">
+<table class="table table-hover">
 
     <tr>
         <th>Código de pedido</th>
@@ -35,12 +34,15 @@ print_r($pedidos) ;
     <?php foreach ($pedidos as $pedido) {?>
         <tr>
             <td>
-                <a href='pedido-detalle.php?id=<?=$pedido["id"]?>'><?=$pedido["NUMERO_PEDIDO"]?></a>
+                <?=$pedido["NUMERO_PEDIDO"]?>
             </td>
             <td>
-                <a href='pedido-detalle.php?id=<?=$pedido["id"]?>'><?=$pedido["direccionEnvio"]?></a>
+                <?=$pedido["DIRECCION_ENTREGA"]?>
             <td>
-                <a href='pedido-detalle.php?id=<?=$pedido["id"]?>'><?=$pedido["fechaConfirmacion"]?></a>
+                <?=$pedido["FECHA_PEDIDO_REALIZADO"]?>
+            </td>
+            <td>
+                <a href='pedido-detalle.php?id=<?=$pedido["NUMERO_PEDIDO"]?>' class="btn btn-warning btn-lg active" role="button" aria-pressed="true">Ver detalle del pedido</a>
             </td>
         </tr>
     <?php } ?>

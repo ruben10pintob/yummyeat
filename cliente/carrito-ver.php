@@ -2,9 +2,9 @@
 
 require_once "../_comunes/comunes-app.php";
 
-$pedidoId = DAO::obtenerCarrito($_SESSION["id"]);
+Id = DAO::obtenerCarrito($_SESSION["id"]);
 $precioCarrito = 0;
-$carrito = DAO::obtenerDetalleCarrito($pedidoId);
+$carrito = DAO::obtenerDetalleCarrito(Id);
 $direccionCliente = $_SESSION["direccionCliente"];
 
 
@@ -65,15 +65,15 @@ foreach ($carrito as $linea){
     </tr>
 </table>
 
-<form action="pedido-gestionar.php">
+<form action="pedido-gestionar.php" method="post">
     <div class="form-group">
         <label for="direccionCliente">Direccion de envío</label>
         <input id="direccionCliente" name="direccionCliente"
                class="form-control" type="text"
                value="<?=$direccionCliente?>">
     </div>
-</form>
     <button type="submit" class="btn btn-primary mb-2">Confirmar pedido</button>
+</form>
 </body>
 </html>
 
