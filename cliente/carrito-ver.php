@@ -2,9 +2,9 @@
 
 require_once "../_comunes/comunes-app.php";
 
-Id = DAO::obtenerCarrito($_SESSION["id"]);
+$idCarrito = DAO::obtenerCarrito($_SESSION["id"]);
 $precioCarrito = 0;
-$carrito = DAO::obtenerDetalleCarrito(Id);
+$carrito = DAO::obtenerDetalleCarrito($idCarrito);
 $direccionCliente = $_SESSION["direccionCliente"];
 
 
