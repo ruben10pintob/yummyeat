@@ -1,4 +1,7 @@
 <?php
+
+$restaurantesEspecialidad = DAO::obtenerEspecialidadesRestaurante();
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -37,21 +40,11 @@
                 <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Especialidades</h5>
 
                 <ul class="list-unstyled">
+                    <?php foreach ($restaurantesEspecialidad as $especialidd) {?>
                     <li>
-                        <a href="restaurante-especialidad.php?especialidad=Comida Internacional">Comida Internacional</a>
+                        <a href="restaurante-especialidad.php?<?=$especialidd?>"><?=$especialidd?></a>
                     </li>
-                    <li>
-                        <a href="restaurante-especialidad.php?especialidad=Comida Japonesa">Comida Japonesa</a>
-                    </li>
-                    <li>
-                        <a href="restaurante-especialidad.php?especialidad=Comida Mexicana">Comida Mexicana</a>
-                    </li>
-                    <li>
-                        <a href="restaurante-especialidad.php?especialidad=Hamburguesas">Hamburguesas</a>
-                    </li>
-                    <li>
-                        <a href="restaurante-especialidad.php?especialidad=Pizzas">Pizzas</a>
-                    </li>
+                    <?php } ?>
                 </ul>
 
             </div>

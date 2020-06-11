@@ -1,4 +1,13 @@
 <?php
+if (haySesionIniciada()){
+    $idCliente = $_SESSION["id"];
+    $cliente = DAO::clienteObtenerPorId($idCliente);
+
+    $idCarrito = DAO::obtenerCarrito($idCliente);
+    $precioCarrito = 0;
+    $carrito = DAO::obtenerDetalleCarrito($idCarrito);
+    $direccionCliente = $_SESSION["direccionCliente"];
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -15,6 +24,7 @@
         <h2 ><a href="../cliente/inicio.php" style="color: #212529">Yummyeat</a></h2>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <ion-icon name="menu"></ion-icon>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -24,19 +34,16 @@
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#iniciarsesion">Iniciar sesion</button>
                     </li>
                     <li class="nav-item">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#registrarse">Registrarse</button>
+                        <button type="button" class="btn btn-success margin-left" data-toggle="modal" data-target="#registrarse">Registrarse</button>
                     </li>
                 </ul>
             <?php } else { ?>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="../cliente/perfil-cliente.php" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Perfil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../sesion/cerrar-sesion.php" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Cerrar sesion</a>
+                        <a href="#" data-toggle="modal" data-target="#perfil"><ion-icon name="person-outline"></ion-icon></a>
                     </li>
                     <li  class="nav-item">
-                        <a href="carrito-ver.php" class="btn btn-success btn-lg active" role="button" aria-pressed="true"><img src="../img/carrito.png" width="18" height="18""></a>
+                        <a href="#" data-toggle="modal" data-target="#carrito"><ion-icon name="cart-outline"></ion-icon></a>
                     </li>
                 </ul>
             <?php } ?>
@@ -44,6 +51,7 @@
     </div>
 </nav>
 
+<!-- VENTANAS EMERGENTES -->
 
 <div class="modal fade" id="iniciarsesion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -75,7 +83,7 @@
         </div>
     </div>
 </div>
-<!-- VENTANAS EMERGENTES -->
+
 <div class="modal fade" id="registrarse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -156,5 +164,77 @@
         </div>
     </div>
 </div>
+
+<?php if (haySesionIniciada()) { ?>
+<div class="modal fade" id="perfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tú perfil</h5>
+            </div>
+            <div class="modal-body">
+                <form action="modificar-info-cliente.php" METHOD="post">
+                    <div class="form-group row">
+                        <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="nombre" value="<?=$cliente->getNombre()?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="apellidos" class="col-sm-2 col-form-label">Apellidos</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="apellidos" value="<?=$cliente->getApellidos()?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="telefono" class="col-sm-2 col-form-label">Telefono</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="telefono" value="<?=$cliente->getTelefono()?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="Direccion" class="col-sm-2 col-form-label">Dirección</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="direccion" value="<?=$cliente->getDireccion()?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="localidad" class="col-sm-2 col-form-label">Localidad</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="localidad" value="<?=$cliente->getLocalidad()?>">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6"><input type="submit" name="submit" value="Modificar" class="btn btn-warning"></div>
+                        <div class="col-6"><a href="../sesion/cerrar-sesion.php" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Cerrar sesion</a></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="modal fade" id="carrito" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Carrito</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">Producto</div>
+                        <div class="col">Precio U</div>
+                        <div class="col">Unidades</div>
+                        <div class="col">Precio total</div>
+                    </div>
+                    <div class="row carrito">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php } ?>
 </body>
 </html>
