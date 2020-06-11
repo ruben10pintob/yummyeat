@@ -43,8 +43,15 @@ foreach ($carrito as $linea){
     $precioTotalProducto = $linea["UNIDADES"]*$linea["PRECIO_UNITARIO"];
     $precioTotalCarrito+=$precioTotalProducto;
     ?>
+    <script>
+        function cargar_pagina() {
+            alert("Hola");
+        }
+        document.getElementById("prueba").addEventListener("click", cargar_pagina);
+    </script>
+    <a id="prueba" href="#">Prueba</a>
     <tr>
-        <form action="modificar-unidades-carrito.php">
+        <form action="modificar-unidades-carrito.php" name="form1">
             <input type="hidden" name="idPedido" value="<?=$linea["ID_PEDIDO"]?>">
             <input type="hidden" name="idProducto" value="<?=$linea["ID_PRODUCTO"]?>">
             <td><?=$linea["NOMBRE_PRODUCTO"]?></td>
@@ -75,5 +82,6 @@ foreach ($carrito as $linea){
     <button type="submit" class="btn btn-primary mb-2">Confirmar pedido</button>
 </form>
 </body>
+<script src="../js/envioFormulario.js"></script>
 </html>
 

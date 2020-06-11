@@ -5,9 +5,12 @@ if (haySesionIniciada()){
 
     $idCarrito = DAO::obtenerCarrito($idCliente);
     $precioCarrito = 0;
+    $precioTotalCarrito = 0;
     $carrito = DAO::obtenerDetalleCarrito($idCarrito);
     $direccionCliente = $_SESSION["direccionCliente"];
 }
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -44,6 +47,7 @@ if (haySesionIniciada()){
                     </li>
                     <li  class="nav-item">
                         <a href="#" data-toggle="modal" data-target="#carrito"><ion-icon name="cart-outline"></ion-icon></a>
+                        <a href="carrito-ver.php">Carrito</a>
                     </li>
                 </ul>
             <?php } ?>
@@ -57,7 +61,19 @@ if (haySesionIniciada()){
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                    <?php if (isset($_REQUEST["incorrecto"])) {
+                        $errorMensaje = "Error al introducir datos de inicio de sesion";
+                        ?>
+                        <h5 class="modal-title" id="exampleModalLabel"><?=$errorMensaje?></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    <?php } else { ?>
                 <h5 class="modal-title" id="exampleModalLabel">Inicia sesión</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <?php } ?>
             </div>
             <div class="modal-body">
                 <form action="inicio.php" method="post">
@@ -89,6 +105,9 @@ if (haySesionIniciada()){
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Registrate gratis</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <form action="registrarse.php" method="post">
@@ -171,6 +190,9 @@ if (haySesionIniciada()){
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Tú perfil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <form action="modificar-info-cliente.php" METHOD="post">
@@ -219,17 +241,33 @@ if (haySesionIniciada()){
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Carrito</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col">Producto</div>
-                        <div class="col">Precio U</div>
-                        <div class="col">Unidades</div>
-                        <div class="col">Precio total</div>
-                    </div>
-                    <div class="row carrito">
-                       
-                    </div>
+                    <form method="post" name="form1">
+                        <table class="table table-hover">
+                            <tr>
+                                <th>Producto</th>
+                                <th>Precio U</th>
+                                <th>Unidades</th>
+                                <th>Precio total</th>
+                            </tr>
+                            <?php foreach ($carrito as $linea) {
+                                $precioTotalProducto = $linea["UNIDADES"]*$linea["PRECIO_UNITARIO"];
+                                $precioTotalCarrito+=$precioTotalProducto;
+                                ?>
+                                <tr>
+                                    <td><?=$linea["NOMBRE_PRODUCTO"]?></td>
+                                    <td><?=$linea["PRECIO_UNITARIO"]?>€</td>
+                                    <td><input type="number" name="cantidad" value="<?=$linea["UNIDADES"]?>"></td>
+                                    <td><?=$precioTotalProducto?>€</td>
+                                </tr>
+                            <?php } ?>
+                        </table>
+                    </form>
+
                 </div>
             </div>
         </div>

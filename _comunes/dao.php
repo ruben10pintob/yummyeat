@@ -54,7 +54,7 @@ class DAO
             $rs[0]["TELEFONO_CLIENTE"], $rs[0]["DIRECCION_CLIENTE"], $rs[0]["LOCALIDAD"], $rs[0]["EMAIL_CLIENTE"],  $rs[0]["CONTRASENNA_CLIENTE"]);
     }
 
-    public static function clienteObtenerPorEmailYContrasenna($email, $contrasenna): Cliente
+    public static function clienteObtenerPorEmailYContrasenna($email, $contrasenna)
     {
         $rs = self::ejecutarConsulta("SELECT * FROM cliente WHERE EMAIL_CLIENTE=? AND BINARY CONTRASENNA_CLIENTE=?",
             [$email, $contrasenna]);
@@ -65,7 +65,7 @@ class DAO
         }
     }
 
-    public static function clienteObtenerPorEmailYCodigoCookie($email, $codigoCookie): Cliente
+    public static function clienteObtenerPorEmailYCodigoCookie($email, $codigoCookie)
     {
         $rs = self::ejecutarConsulta("SELECT * FROM cliente WHERE EMAIL_CLIENTE=? AND BINARY CODIGO_COOKIE=?",
             [$email, $codigoCookie]);

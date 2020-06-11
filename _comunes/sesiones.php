@@ -51,7 +51,7 @@ function garantizarSesion()
                 }
                 // >>> Y DEJAMOS QUE SE CONTINÚE EJECUTANDO EL PHP QUE NOS LLAMÓ... >>>
             } else { // Si cliente es null, o no existe ese cliente o la contraseña no coincide.
-                redireccionar("../sesion/inicio-sesion.php?incorrecto=true");
+                redireccionar("../cliente/inicio.php?incorrecto=true");
             }
         } else if (vieneCookieRecuerdame()) {
             $cliente = DAO::clienteObtenerPorEmailYCodigoCookie($_COOKIE["email"], $_COOKIE["codigoCookie"]);
