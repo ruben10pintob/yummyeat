@@ -1,9 +1,13 @@
 html {
     scroll-behavior: smooth;
+    min-height: 100%;
+    position: relative;
 }
 
 body {
     font-family: 'Titillium Web', sans-serif;
+    margin: 0;
+    margin-bottom: 350px;
 }
 
 h1 { font-size: 66px; font-weight: 700; line-height: 80px; }
@@ -124,7 +128,8 @@ footer a {
 }
 
 footer a:hover {
-    color: white;
+    color: black;
+    background-color: white;
 }
 
 footer .list-inline .list-inline-item {
@@ -163,3 +168,21 @@ footer .list-inline .list-inline-item {
 @media (min-width: 992px) and (max-width: 1199.98px) { }
 
 @media (min-width: 1200px) { }
+
+
+#hover{
+    color: white;
+}
+#hover:hover{
+    color: black;
+    background-color: white;
+}
+
+#categorias{
+    color: black;
+}
+
+#categorias:hover{
+    color: white;
+    background-color: #343a40;
+}

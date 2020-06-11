@@ -36,10 +36,18 @@ $clienteNuevo = DAO::registrarNuevoCliente($_REQUEST["nombre"], $_REQUEST["apell
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?=$meta?>
-    <script src="../bootstrap/bootstrap-4.5.0-dist/js/bootstrap.js"></script>
-    <script src="../bootstrap/bootstrap-4.5.0-dist/js/popper.min.js"></script>
-    <script src="../bootstrap/bootstrap-4.5.0-dist/js/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href="../bootstrap/bootstrap-4.5.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="../css/main.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+
+    <script src="../bootstrap/js/jquery.min.js"></script>
+    <script src="../bootstrap/js/popper.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
     <title>Registro Yummyeat</title>
 </head>
 <body>

@@ -3,14 +3,14 @@
 require_once "../_comunes/comunes-app.php";
 
 $idProducto= $_REQUEST["id"];
-$restaurante = $_REQUEST["restaurante"];
+$idRestaurante = $_REQUEST["restaurante"];
+$categoria = $_REQUEST["categoria"];
 
 $producto = DAO::obtenerDetallesProducto($idProducto);
 
-$restaurante = DAO::restauranteObtenerPorId($restaurante);
+$restaurante = DAO::restauranteObtenerPorId($idRestaurante);
 
 ?>
-
 
 <!doctype html>
 <html lang="en">
@@ -24,19 +24,29 @@ $restaurante = DAO::restauranteObtenerPorId($restaurante);
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-reboot.css">
 
+
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+
     <script src="../bootstrap/js/jquery.min.js"></script>
     <script src="../bootstrap/js/popper.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
-    <title>Detalles del producto</title>
+    <title>Detalle del producto</title>
 </head>
 <body>
-<h2><?=$restaurante->getNombre()?></h2>
-<p><?=$producto->getNombre()?></p>
-<p><?=$producto->getDescripcion()?></p>
-<p><?=$producto->getPrecio()?></p>
+<h2 style="color: black"><?=$restaurante->getNombre()?></h2>
+<p style="color: black"><?=$producto->getNombre()?></p>
+<p style="color: black"><?=$producto->getDescripcion()?></p>
+<p style="color: black"><?=$producto->getPrecio()?></p>
 
-<a href="carrito-annadir.php?id=<?=$producto->getId()?>&restaurante=<?=$restaurante?>&Unidades=1" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Añadir al carrito</a>
-<a href="restaurante-detalle.php?id=<?=$restaurante?>" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Volver al listado de productos</a>
+<form action="carrito-annadir.php?id=?&restaurante=?&Unidades=?" method="post">
+    <input type="hidden" value="<?=$idProducto?>" name="id">
+    <input type="hidden" value="<?=$idRestaurante?>" name="restaurante">
+    <input type="number" name="Unidades" value="1" min="1" placeholder="Unidades del producto" id="Unidades">
+    <input type="submit" name="Enviar" value="Añadir al carrito" class="btn btn-dark" id="hover">
+</form>
+
+<a href="../cliente/restaurante-detalle.php?id=<?=$idRestaurante?>&categoria=<?=$categoria?>" class="btn btn-dark" style="margin-top: 20px">Volver al listado de productos</a>
 </body>
 </html>

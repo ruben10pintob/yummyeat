@@ -41,6 +41,10 @@ if(DAO::obtenerCarrito($idCliente) != null){
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="../css/main.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
     <script src="../bootstrap/js/jquery.min.js"></script>
     <script src="../bootstrap/js/popper.min.js"></script>

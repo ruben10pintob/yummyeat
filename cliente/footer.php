@@ -13,7 +13,10 @@ $restaurantesEspecialidad = DAO::obtenerEspecialidadesRestaurante();
     <title>Footer</title>
 </head>
 <body>
-<footer class="page-footer font-small pt-4" style="background-color: #3e4551">
+<footer class="page-footer  font-small pt-4" style="background-color: #343a40;  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 300px;">
 
     <!-- Footer Links -->
     <div class="container text-center text-md-left" style="color: white">
@@ -25,7 +28,7 @@ $restaurantesEspecialidad = DAO::obtenerEspecialidadesRestaurante();
             <div class="col-md-4 mx-auto">
 
                 <!-- Content -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Yummyeat</h5>
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4" >Yummyeat</h5>
                 <p>Página web dedicada a descubrir nuevos restaurantes en los que pedir a domicilio. A disfrutar!</p>
 
             </div>

@@ -29,16 +29,22 @@ $categoriaProductos = DAO::obtenerCategoriaProductosPorRestaurante($idRestaurant
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="../css/main.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
     <script src="../bootstrap/js/jquery.min.js"></script>
     <script src="../bootstrap/js/popper.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
-
     <title><?=$restaurantePorId->getNombre()?></title>
 </head>
 <body>
-<h1>Yummyeat <?=$restaurantePorId->getNombre()?></h1>
-<table border="1">
+
+<?php require_once "../cliente/header.php";?>
+
+<h1 style="margin-top: 100px">Yummyeat <?=$restaurantePorId->getNombre()?></h1>
+<table class="table-hover" border="1">
 
     <tr>
         <th>Telefono</th>
@@ -73,15 +79,14 @@ $categoriaProductos = DAO::obtenerCategoriaProductosPorRestaurante($idRestaurant
 <div class="row">
     <?php foreach ($categoriaProductos as $categorias) { ?>
         <div class="col-3">
-            <a href="restaurante-detalle.php?id=<?=$idRestaurante?>&categoria=<?=$categorias?>"><?=$categorias?></a>
+            <a href="restaurante-detalle.php?id=<?=$idRestaurante?>&categoria=<?=$categorias?>" id="categorias" "><?=$categorias?></a>
         </div>
     <?php } ?>
 </div>
 
-</table>
 
 <?php if (isset($_REQUEST["categoria"])) { ?>
-<table border="1" class="table-hover">
+<table border="1" class="table-dark" style="margin-top: 20px;">
 
     <th><?=$categoria?></th>
     <th>Precio</th>
@@ -91,17 +96,18 @@ $categoriaProductos = DAO::obtenerCategoriaProductosPorRestaurante($idRestaurant
                 <form action="carrito-annadir.php?id=?&restaurante=?&Unidades=?">
                     <input type="hidden" value="<?=$producto->getId()?>" name="id">
                     <input type="hidden" value="<?=$restaurantePorId->getId()?>" name="restaurante">
+
                 <tr>
-                    <td><a href="producto-detalle.php?id=<?=$producto->getId()?>&restaurante=<?=$restaurantePorId->getId()?>" ><?= $producto->getNombre() ?></a></td>
+                    <td><a href="producto-detalle.php?id=<?=$producto->getId()?>&restaurante=<?=$restaurantePorId->getId()?>&categoria=<?=$categoria?>"  id="hover"><?= $producto->getNombre() ?></a></td>
                     <td><?= $producto->getPrecio() ?></td>
-                    <td><input type="number" name="Unidades" value="1" min="1" placeholder="Unidades del producto" id="Unidades"></td>
-                    <td><input type="submit" name="Enviar" value="Añadir al carrito" class="btn btn-primary"></td>
+                    <td><input type="number" name="Unidades" value="1" min="1" placeholder="Unidades del producto" id="Unidades" ></td>
+                    <td><input type="submit" name="Enviar" value="Añadir al carrito" class="btn btn-black"  id="hover"></td>
                 </tr>
                 </form>
             <?php }
         }?>
 
-
+    <?php require_once "../cliente/footer.php";?>
 </table>
 
 </body>
