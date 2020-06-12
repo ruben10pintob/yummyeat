@@ -13,7 +13,7 @@ $restaurantesEspecialidad = DAO::obtenerEspecialidadesRestaurante();
     <title>Footer</title>
 </head>
 <body>
-<footer class="page-footer  font-small pt-4" style="background-color: #343a40;  position: absolute;
+<footer class="page-footer  font-small pt-4 container-fluid" style="background-color: #343a40;  position: absolute;
   bottom: 0;
   width: 100%;
   height: 300px;">
@@ -29,7 +29,7 @@ $restaurantesEspecialidad = DAO::obtenerEspecialidadesRestaurante();
 
                 <!-- Content -->
                 <h5 class="font-weight-bold text-uppercase mt-3 mb-4" >Yummyeat</h5>
-                <p>Página web dedicada a descubrir nuevos restaurantes en los que pedir a domicilio. A disfrutar!</p>
+                <p style="color: white">Página web dedicada a descubrir nuevos restaurantes en los que pedir a domicilio. A disfrutar!</p>
 
             </div>
             <!-- Grid column -->
@@ -45,7 +45,7 @@ $restaurantesEspecialidad = DAO::obtenerEspecialidadesRestaurante();
                 <ul class="list-unstyled">
                     <?php foreach ($restaurantesEspecialidad as $especialidd) {?>
                     <li>
-                        <a href="restaurante-especialidad.php?<?=$especialidd?>"><?=$especialidd?></a>
+                        <a href="restaurante-especialidad.php?especialidad=<?=$especialidd?>"><?=$especialidd?></a>
                     </li>
                     <?php } ?>
                 </ul>
@@ -116,7 +116,7 @@ $restaurantesEspecialidad = DAO::obtenerEspecialidadesRestaurante();
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3" style="color: white">© 2020 Copyright:
-        <a href="https://mdbootstrap.com/"> Yummyeat.com</a>
+        <a href="../cliente/inicio.php"> Yummyeat.com</a>
     </div>
     <!-- Copyright -->
 

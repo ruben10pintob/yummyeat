@@ -34,8 +34,8 @@ $direccionCliente = $_SESSION["direccionCliente"];
     <title>Carrito</title>
 </head>
 <body>
-
-<table class="table table-hover">
+<?php require_once "header.php"?>
+<table class="table table-hover" style="margin-top: 100px">
     <th>Producto</th>
     <th>Precio Producto</th>
     <th>Unidades</th>
@@ -54,6 +54,7 @@ foreach ($carrito as $linea){
         document.getElementById("prueba").addEventListener("click", cargar_pagina);
     </script>
     <a id="prueba" href="#">Prueba</a>
+
     <tr>
         <form action="modificar-unidades-carrito.php" name="form1">
             <input type="hidden" name="idPedido" value="<?=$linea["ID_PEDIDO"]?>">
@@ -83,8 +84,10 @@ foreach ($carrito as $linea){
                class="form-control" type="text"
                value="<?=$direccionCliente?>">
     </div>
-    <button type="submit" class="btn btn-primary mb-2">Confirmar pedido</button>
+    <button type="submit" class="btn btn-success mb-2">Confirmar pedido</button>
 </form>
+<a href="../cliente/inicio.php" class="btn btn-dark" style="margin-top: 20px" id="hover">Volver a la página de inicio</a>
+<?php require_once "footer.php"?>
 </body>
 <script src="../js/envioFormulario.js"></script>
 </html>

@@ -3,11 +3,14 @@
 require_once "../_comunes/comunes-app.php";
 
 $pedidoId = $_REQUEST["id"];
+$idCliente = $_SESSION["id"];
 $precioCarrito = 0;
-$pedido = DAO::obtenerDetallePedido($pedidoId);
+$pedido = DAO::obtenerDetallePedido($pedidoId, $idCliente);
+if ($pedido == false){
+    require_once "../sesion/cerrar-sesion.php";
+    redireccionar("inicio.php");
+}
 $precioTotalPedido = 0;
-
-
 
 ?>
 
@@ -63,6 +66,6 @@ $precioTotalPedido = 0;
         <td class="font-weight-bold"><?=$precioTotalPedido?>€</td>
     </tr>
 </table>
-<a href="../cliente/pedido-ver.php" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Volver al listado de pedidos</a>
+<a href="../cliente/pedido-ver.php" class="btn btn-dark btn-lg active" role="button" aria-pressed="true">Volver al listado de pedidos</a>
 </body>
 </html>

@@ -25,7 +25,8 @@ $pedidos = DAO::obtenerPedidosCliente($_SESSION["id"]);
     <title>Pedidos</title>
 </head>
 <body>
-<h1>Listado de pedidos</h1>
+<?php require_once "header.php"?>
+<h1 style="margin-top: 100px">Listado de pedidos</h1>
 
 <table class="table table-hover">
 
@@ -46,12 +47,13 @@ $pedidos = DAO::obtenerPedidosCliente($_SESSION["id"]);
                 <?=$pedido["FECHA_PEDIDO_REALIZADO"]?>
             </td>
             <td>
-                <a href='pedido-detalle.php?id=<?=$pedido["NUMERO_PEDIDO"]?>' class="btn btn-warning btn-lg active" role="button" aria-pressed="true">Ver detalle del pedido</a>
+                <a href='pedido-detalle.php?id=<?=$pedido["NUMERO_PEDIDO"]?>' class="btn btn-dark btn-lg active" role="button" aria-pressed="true">Ver detalle del pedido</a>
             </td>
         </tr>
     <?php } ?>
 
 </table>
-
+<a href="../cliente/inicio.php" class="btn btn-dark btn-lg active" role="button" aria-pressed="true">Volver a la página de inicio</a>
+<?php require_once "footer.php"?>
 </body>
 </html>

@@ -4,6 +4,8 @@ require_once "../_comunes/comunes-app.php";
 
 if (haySesionIniciada()) {
     $idCliente = $_SESSION["id"];
+}else{
+    redireccionar("../sesion/inicio-sesion.php");
 }
 
 $idProducto = $_REQUEST["id"];

@@ -7,15 +7,24 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-reboot.css">
     <link rel="stylesheet" href="../css/main.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
+    <script src="../bootstrap/js/jquery.min.js"></script>
+    <script src="../bootstrap/js/popper.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
     <title>Política de Privacidad</title>
 </head>
 <body>
-<h1>Quiénes somos</h1>
+<?php require_once "header.php"?>
+<h1 style="margin-top: 100px">Política de Privacidad</h1>
 <h3>Introducción</h3>
 <p>En Yummyeat estamos comprometidos con la creación de la comunidad gastronómica más grande del mundo, lo cual empieza con la protección de la privacidad de todos los integrantes de nuestra comunidad. Esto significa que protegeremos los datos personales y demás información de todos los visitantes que accedan a nuestros sitios web o servicios a través de cualquier aplicación móvil, plataforma o dispositivo (colectivamente, los "Servicios").</p>
 <p>Esta política de privacidad ("Política de Privacidad") explica cómo Yummyeat, nuestras subsidiarias y afiliados recopilan, comparten y utilizan sus datos personales. También encontrará información sobre cómo puede ejercer sus derechos de privacidad. Al utilizar nuestros Servicios, acepta que Yummyeat utilice sus datos personales como se describe en esta Política de Privacidad. Los términos "nosotros", "nos" o "nuestro/a" hacen referencia a Yummyeat, y todos los términos que no estén definidos en esta Política de Privacidad se definen en nuestros Términos.</p>
@@ -33,5 +42,6 @@
 <p>Podemos transferir sus datos personales a países que no sean el país en el que reside y en los que opere Yummyeat o nuestros proveedores de servicios. Las leyes de protección de datos de estos países pueden diferir de las leyes de su país, pero Yummyeat se asegura de implementar medidas de seguridad adecuadas para proteger sus datos personales en esos países de conformidad con esta Política de Privacidad.</p>
 <h3>Seguridad</h3>
 <p>Yummyeat le da gran importancia a la protección de sus datos personales contra el acceso no autorizado, el tratamiento ilegal, la pérdida accidental, la destrucción y el daño de los mismos. Implementamos medidas técnicas y organizativas apropiadas para salvaguardar dicha información.</p>
+<?php require_once "footer.php"?>
 </body>
 </html>

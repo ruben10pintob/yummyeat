@@ -7,15 +7,24 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-reboot.css">
     <link rel="stylesheet" href="../css/main.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
+    <script src="../bootstrap/js/jquery.min.js"></script>
+    <script src="../bootstrap/js/popper.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
     <title>Política de Cookies</title>
 </head>
 <body>
-<h1>Política de Cookies</h1>
+<?php require_once "header.php"?>
+<h1 style="margin-top: 100px">Política de Cookies</h1>
 <h3>¿Qué son las cookies?</h3>
 <p>Las cookies constituyen pequeñas cantidades de información que almacenamos en nuestro ordenador. Salvo que usted haya manifestado su disconformidad, nuestro sistema emitirá cookies a su ordenador cuando usted utilice la Página Web (con independencia de que usted sea un usuario registrado o no registrado).</p>
 <p>Las cookies le facilitan su conexión y uso de la Página Web durante futuras visitas. También nos permiten controlar el tráfico de la Página Web y personalizar el contenido de la página para usted. Si no deseara recibir cookies usted puede configurar el buscador de su ordenador de modo que el mismo borre las cookies de su disco duro, bloquee la entrada de las mismas o bien para que usted reciba un aviso antes de que una cookie quede registrada en el disco duro de su ordenador. No obstante ello, en el supuesto de que lo haga, es posible que no pueda utilizar algunas de las características de la Página Web. Por favor, tenga en cuenta que nuestros anunciantes también pueden usar cookies, sobre las que no tenemos control.</p>
@@ -32,7 +41,7 @@
 <p>Las cookies de funcionalidad permiten que Yummyeat recuerde las opciones que selecciona cuando navega.</p>
 <p>Las cookies sobre comportamiento permiten recoger información sobre el uso de la página web por parte de los usuarios. Estas cookies no contienen información que permitan identificarle.</p>
 <p>Le recordamos que puede bloquear el acceso de cookies a su ordenador cambiando los parámetros sobre cookies de su navegador.</p>
-
+<?php require_once "footer.php"?>
 </body>
 </html>
 

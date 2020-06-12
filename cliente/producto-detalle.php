@@ -23,6 +23,7 @@ $restaurante = DAO::restauranteObtenerPorId($idRestaurante);
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="../css/main.css">
 
 
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&display=swap" rel="stylesheet">
@@ -35,10 +36,11 @@ $restaurante = DAO::restauranteObtenerPorId($idRestaurante);
     <title>Detalle del producto</title>
 </head>
 <body>
-<h2 style="color: black"><?=$restaurante->getNombre()?></h2>
-<p style="color: black"><?=$producto->getNombre()?></p>
-<p style="color: black"><?=$producto->getDescripcion()?></p>
-<p style="color: black"><?=$producto->getPrecio()?></p>
+<?php require_once "../cliente/header.php"?>
+<h1 style="color: black; margin-top: 100px"><?=$restaurante->getNombre()?></h1>
+<p><?=$producto->getNombre()?></p>
+<p><?=$producto->getDescripcion()?></p>
+<p><?=$producto->getPrecio()?></p>
 
 <form action="carrito-annadir.php?id=?&restaurante=?&Unidades=?" method="post">
     <input type="hidden" value="<?=$idProducto?>" name="id">
@@ -47,6 +49,7 @@ $restaurante = DAO::restauranteObtenerPorId($idRestaurante);
     <input type="submit" name="Enviar" value="Añadir al carrito" class="btn btn-dark" id="hover">
 </form>
 
-<a href="../cliente/restaurante-detalle.php?id=<?=$idRestaurante?>&categoria=<?=$categoria?>" class="btn btn-dark" style="margin-top: 20px">Volver al listado de productos</a>
+<a href="../cliente/restaurante-detalle.php?id=<?=$idRestaurante?>&categoria=<?=$categoria?>" class="btn btn-dark" style="margin-top: 20px" id="hover">Volver al listado de productos</a>
+<?php require_once "../cliente/footer.php"?>
 </body>
 </html>

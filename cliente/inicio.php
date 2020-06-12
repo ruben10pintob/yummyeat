@@ -55,7 +55,7 @@ if (haySesionIniciada()) {
                 <div class="form-group">
                     <input type="text" class="form-control" name="ubicacion" placeholder="<?=$ubicacionClienteRegistrado?>" required>
                 </div>
-                <button type="submit" class="btn btn-primary margin-left">Buscar</button>
+                <button type="submit" class="btn btn-dark margin-left" id="hover">Buscar</button>
             </form>
         </div>
     </div>

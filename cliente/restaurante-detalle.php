@@ -43,7 +43,8 @@ $categoriaProductos = DAO::obtenerCategoriaProductosPorRestaurante($idRestaurant
 
 <?php require_once "../cliente/header.php";?>
 
-<h1 style="margin-top: 100px">Yummyeat <?=$restaurantePorId->getNombre()?></h1>
+<h1 style="margin-top: 100px"><?=$restaurantePorId->getNombre()?></h1>
+<h3>Información sobre el restaurante</h3>
 <table class="table-hover" border="1">
 
     <tr>
@@ -86,16 +87,17 @@ $categoriaProductos = DAO::obtenerCategoriaProductosPorRestaurante($idRestaurant
 
 
 <?php if (isset($_REQUEST["categoria"])) { ?>
-<table border="1" class="table-dark" style="margin-top: 20px;">
+<div class="offset-3 col-6">
+    <table border="1" class="table-dark" style="margin-top: 20px;">
 
-    <th><?=$categoria?></th>
-    <th>Precio</th>
-    <th>Cantidad</th>
+        <th><?=$categoria?></th>
+        <th>Precio Unitario</th>
+        <th>Cantidad</th>
         <?php
-            foreach ($productosPorCategoria as $producto) { ?>
-                <form action="carrito-annadir.php?id=?&restaurante=?&Unidades=?">
-                    <input type="hidden" value="<?=$producto->getId()?>" name="id">
-                    <input type="hidden" value="<?=$restaurantePorId->getId()?>" name="restaurante">
+        foreach ($productosPorCategoria as $producto) { ?>
+            <form action="carrito-annadir.php?id=?&restaurante=?&Unidades=?" name="form1">
+                <input type="hidden" value="<?=$producto->getId()?>" name="id">
+                <input type="hidden" value="<?=$restaurantePorId->getId()?>" name="restaurante">
 
                 <tr>
                     <td><a href="producto-detalle.php?id=<?=$producto->getId()?>&restaurante=<?=$restaurantePorId->getId()?>&categoria=<?=$categoria?>"  id="hover"><?= $producto->getNombre() ?></a></td>
@@ -103,12 +105,14 @@ $categoriaProductos = DAO::obtenerCategoriaProductosPorRestaurante($idRestaurant
                     <td><input type="number" name="Unidades" value="1" min="1" placeholder="Unidades del producto" id="Unidades" ></td>
                     <td><input type="submit" name="Enviar" value="Añadir al carrito" class="btn btn-black"  id="hover"></td>
                 </tr>
-                </form>
-            <?php }
+            </form>
+        <?php }
         }?>
 
-    <?php require_once "../cliente/footer.php";?>
-</table>
 
+    </table>
+</div>
+<a href="../cliente/inicio.php" class="btn btn-dark" style="margin-top: 20px" id="hover">Volver a la página de inicio</a>
+<?php require_once "../cliente/footer.php";?>
 </body>
 </html>

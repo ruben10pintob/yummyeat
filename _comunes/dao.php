@@ -339,10 +339,16 @@ class DAO
                                         ,[$direccionEntrega, $fecha, $numeroPedido]);
     }
 
-    public static function obtenerDetallePedido($idPedido)
+    public static function obtenerDetallePedido($idPedido, $idCLiente)
     {
-        $rs = self::ejecutarConsulta("SELECT l.ID_PRODUCTO, l.ID_PEDIDO, l.PRECIO_UNITARIO, p.NOMBRE_PRODUCTO, l.UNIDADES, p.DESCRIPCION_PRODUCTO FROM LINEA l, PRODUCTO p WHERE l.ID_PRODUCTO = p.ID_PRODUCTO AND ID_PEDIDO = ?", [$idPedido]);
-        return $rs;
+        $valido = self::ejecutarConsulta("SELECT * FROM pedido WHERE NUMERO_PEDIDO=? AND ID_CLIENTE=?",[$idPedido,$idCLiente]);
+        if ($valido == null){
+            return false;
+        }else{
+            $rs = self::ejecutarConsulta("SELECT l.ID_PRODUCTO, l.ID_PEDIDO, l.PRECIO_UNITARIO, p.NOMBRE_PRODUCTO, l.UNIDADES, p.DESCRIPCION_PRODUCTO FROM LINEA l, PRODUCTO p WHERE l.ID_PRODUCTO = p.ID_PRODUCTO AND ID_PEDIDO = ?", [$idPedido]);
+            return $rs;
+        }
+
     }
 
 }

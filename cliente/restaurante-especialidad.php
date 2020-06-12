@@ -30,9 +30,10 @@ $restaurantes = DAO::obtenerRestaurantePorEspecialidad($especialidad);
     <title><?=$especialidad?></title>
 </head>
 <body>
-<h1>Jummyeat <?=$especialidad?></h1>
+<?php require_once "header.php"?>
+<h1 style="margin-top: 100px"><?=$especialidad?></h1>
 
-<table border="1">
+<table border="1" class="table-hover">
 
     <tr>
         <th>Nombre</th>
@@ -46,7 +47,7 @@ $restaurantes = DAO::obtenerRestaurantePorEspecialidad($especialidad);
     <?php foreach ($restaurantes as $restaurante) { ?>
         <tr>
             <td>
-                <a href="restaurante-detalle.php?id=<?=$restaurante->getId()?>"><?=$restaurante->getNombre()?></a>
+                <a href="restaurante-detalle.php?id=<?=$restaurante->getId()?>" style="color: black"><?=$restaurante->getNombre()?></a>
             </td>
             <td>
                 <a><?=$restaurante->getTelefono()?></a>
@@ -67,6 +68,6 @@ $restaurantes = DAO::obtenerRestaurantePorEspecialidad($especialidad);
 
 </table>
 
-
+<?php require_once "footer.php" ?>
 </body>
 </html>

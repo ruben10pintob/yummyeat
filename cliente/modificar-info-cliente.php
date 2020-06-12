@@ -10,7 +10,7 @@ require_once "../_comunes/comunes-app.php";
 
 DAO::modificarInfoCliente($nombre, $apellidos, $telefono, $direccion, $localidad, $id);
 
-redireccionar("../cliente/perfil-cliente.php?modificado=true");
+redireccionar("../cliente/inicio.php");
 
 
 ?>

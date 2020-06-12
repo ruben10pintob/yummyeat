@@ -1,4 +1,5 @@
 <?php
+require_once "../_comunes/comunes-app.php";
 if (haySesionIniciada()){
     $idCliente = $_SESSION["id"];
     $cliente = DAO::clienteObtenerPorId($idCliente);
@@ -46,8 +47,7 @@ if (haySesionIniciada()){
                         <a href="#" data-toggle="modal" data-target="#perfil"><ion-icon name="person-outline"></ion-icon></a>
                     </li>
                     <li  class="nav-item">
-                        <a href="#" data-toggle="modal" data-target="#carrito"><ion-icon name="cart-outline"></ion-icon></a>
-                        <a href="carrito-ver.php">Carrito</a>
+                        <a href="carrito-ver.php"><ion-icon name="cart-outline"></ion-icon></a>
                     </li>
                 </ul>
             <?php } ?>
@@ -187,9 +187,9 @@ if (haySesionIniciada()){
 <?php if (haySesionIniciada()) { ?>
 <div class="modal fade" id="perfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="padding-right: 50px">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tú perfil</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tu perfil</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -227,8 +227,9 @@ if (haySesionIniciada()){
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6"><input type="submit" name="submit" value="Modificar" class="btn btn-warning"></div>
-                        <div class="col-6"><a href="../sesion/cerrar-sesion.php" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Cerrar sesion</a></div>
+                        <div class="col-4"><input type="submit" name="submit" value="Modificar" class="btn btn-warning"></div>
+                        <div class="col-4"><a href="../cliente/pedido-ver.php" class="btn btn-primary btn-active" role="button" aria-pressed="true">Ver pedidos</a></div>
+                        <div class="col-4"><a href="../sesion/cerrar-sesion.php" class="btn btn-danger btn-active" role="button" aria-pressed="true">Cerrar sesion</a></div>
                     </div>
                 </form>
             </div>
