@@ -37,6 +37,8 @@ $pedidos = DAO::obtenerPedidosCliente($_SESSION["id"]);
     </tr>
 
     <?php foreach ($pedidos as $pedido) {?>
+        <?php $date = date_create($pedido["FECHA_PEDIDO_REALIZADO"]);
+         date_format($date, 'd-m-Y H:i:s');?>
         <tr>
             <td>
                 <?=$pedido["NUMERO_PEDIDO"]?>
@@ -44,7 +46,7 @@ $pedidos = DAO::obtenerPedidosCliente($_SESSION["id"]);
             <td>
                 <?=$pedido["DIRECCION_ENTREGA"]?>
             <td>
-                <?=$pedido["FECHA_PEDIDO_REALIZADO"]?>
+                <?=date_format($date, 'd-m-Y H:i:s')?>
             </td>
             <td>
                 <a href='pedido-detalle.php?id=<?=$pedido["NUMERO_PEDIDO"]?>' class="btn btn-dark btn-lg active" role="button" aria-pressed="true">Ver detalle del pedido</a>

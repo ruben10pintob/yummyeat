@@ -37,8 +37,8 @@ $precioTotalPedido = 0;
     <title>Detalle del pedido</title>
 </head>
 <body>
-
-<table class="table table-hover">
+<?php require_once "header.php"?>
+<table class="table table-hover" style="margin-top: 100px">
     <th>Producto</th>
     <th>Precio Producto</th>
     <th>Unidades</th>
@@ -67,5 +67,6 @@ $precioTotalPedido = 0;
     </tr>
 </table>
 <a href="../cliente/pedido-ver.php" class="btn btn-dark btn-lg active" role="button" aria-pressed="true">Volver al listado de pedidos</a>
+<?php require_once "footer.php"?>
 </body>
 </html>
