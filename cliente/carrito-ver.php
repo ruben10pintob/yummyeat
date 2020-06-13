@@ -35,6 +35,7 @@ $direccionCliente = $_SESSION["direccionCliente"];
 </head>
 <body>
 <?php require_once "header.php"?>
+
 <table class="table table-hover" style="margin-top: 100px">
     <th>Producto</th>
     <th>Precio Producto</th>
@@ -47,23 +48,15 @@ foreach ($carrito as $linea){
     $precioTotalProducto = $linea["UNIDADES"]*$linea["PRECIO_UNITARIO"];
     $precioTotalCarrito+=$precioTotalProducto;
     ?>
-    <script>
-        function cargar_pagina() {
-            alert("Hola");
-        }
-        document.getElementById("prueba").addEventListener("click", cargar_pagina);
-    </script>
-    <a id="prueba" href="#">Prueba</a>
 
     <tr>
-        <form action="modificar-unidades-carrito.php" name="form1">
+        <form action="modificar-unidades-carrito.php" name="FormularioCantidades">
             <input type="hidden" name="idPedido" value="<?=$linea["ID_PEDIDO"]?>">
             <input type="hidden" name="idProducto" value="<?=$linea["ID_PRODUCTO"]?>">
             <td><?=$linea["NOMBRE_PRODUCTO"]?></td>
             <td><?=$linea["PRECIO_UNITARIO"]?>€</td>
-            <td><input type="number" name="cantidad" value="<?=$linea["UNIDADES"]?>"></td>
+            <td><input id="cantidad" type="number" name="cantidad" value="<?=$linea["UNIDADES"]?>" step=""></td>
             <td><?=$precioTotalProducto?>€</td>
-            <td><input type="submit" name="Modificar" value="Modificar Unidades" class="btn btn-warning btn-lg active" role="button" aria-pressed="true"></td>
         </form>
         <td><a href="carrito-eliminar.php?idPedido=<?=$linea["ID_PEDIDO"]?>&idProducto=<?=$linea["ID_PRODUCTO"]?>" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Eliminar Producto</a></td>
     </tr>
@@ -87,8 +80,11 @@ foreach ($carrito as $linea){
     <button type="submit" class="btn btn-success mb-2">Confirmar pedido</button>
 </form>
 <a href="../cliente/inicio.php" class="btn btn-dark" style="margin-top: 20px" id="hover">Volver a la página de inicio</a>
+
 <?php require_once "footer.php"?>
 </body>
-<script src="../js/envioFormulario.js"></script>
+
+<script src="../js/envioFormularios.js"></script>
 </html>
+
 

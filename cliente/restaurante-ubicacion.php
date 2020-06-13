@@ -30,44 +30,31 @@ $restaurantesPorUbicacion = DAO::obtenerRestaurantePorUbicacion($ubicacion);
     <title>Document</title>
 </head>
 <body>
+<?php require_once "../cliente/header.php"?>
+
 <h2>Has buscado restaurantes en <?=$ubicacion?></h2>
 
-<table border="1">
+<section>
+    <?php if (haySesionIniciada()) { ?>
+        <div class="container-fluid">
+            <div class="content-center text-center">
+                <h2>Restaurantes cerca de ti.</b></h2>
+            </div>
 
-    <tr>
-        <th>Nombre</th>
-        <th>Telefono</th>
-        <th>direccion</th>
-        <th>localidad</th>
-        <th>email</th>
-        <th>Especialidad</th>
-    </tr>
-
-    <?php foreach ($restaurantesPorUbicacion as $restaurante) { ?>
-        <tr>
-            <td>
-                <a href="restaurante-detalle.php?id=<?=$restaurante->getId()?>"><?=$restaurante->getNombre()?></a>
-            </td>
-            <td>
-                <a><?=$restaurante->getTelefono()?></a>
-            </td>
-            <td>
-                <a><?=$restaurante->getDireccion()?></a>
-            </td>
-            <td>
-                <a><?=$restaurante->getLocalidad()?></a>
-            </td>
-            <td>
-                <a><?=$restaurante->getEmail()?></a>
-            </td>            <td>
-                <a><?=$restaurante->getEspecialidad()?></a>
-            </td>
-        </tr>
+            <div class="row">
+                <?php foreach ($restaurantesPorUbicacion as $restaurante) {?>
+                    <div class="col-md-4">
+                        <div class="restaurantes-cercanos-container">
+                            <a href="restaurante-detalle.php?id=<?=$restaurante->getId()?>"><img src="../img/Restaurantes/<?=$restaurante->getNombre()?>.jpg" class="img-fluid" alt="<?=$restaurante->getNombre()?>"></a>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
     <?php } ?>
+</section>
 
-</table>
-</br>
-<a href="inicio.php">Volver a la página principal</a>
+<?php require_once "../cliente/footer.php"?>
 
 </body>
 </html>

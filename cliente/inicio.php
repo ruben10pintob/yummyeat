@@ -106,7 +106,5 @@ if (haySesionIniciada()) {
 
 <?php require_once "../cliente/footer.php";?>
 
-<script src="../js/envioFormulario.js"></script>
-
 </body>
 </html>
