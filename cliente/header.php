@@ -262,7 +262,7 @@ if (haySesionIniciada()){
                                 <tr>
                                     <td><?=$linea["NOMBRE_PRODUCTO"]?></td>
                                     <td><?=$linea["PRECIO_UNITARIO"]?>€</td>
-                                    <td><input type="number" name="cantidad" value="<?=$linea["UNIDADES"]?>"></td>
+                                    <td><input type="number" name="cantidad" value="<?=$linea["UNIDADES"]?>" readonly></td>
                                     <td><?=$precioTotalProducto?>€</td>
                                 </tr>
                             <?php } ?>
