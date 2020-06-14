@@ -55,7 +55,7 @@ foreach ($carrito as $linea){
             <input type="hidden" name="idProducto" value="<?=$linea["ID_PRODUCTO"]?>">
             <td><?=$linea["NOMBRE_PRODUCTO"]?></td>
             <td><?=$linea["PRECIO_UNITARIO"]?>€</td>
-            <td><input id="cantidad" type="number" name="cantidad" value="<?=$linea["UNIDADES"]?>" step=""></td>
+            <td><input id="cantidad" type="number" name="cantidad" value="<?=$linea["UNIDADES"]?>" min="1"></td>
             <td><?=$precioTotalProducto?>€</td>
         </form>
         <td><a href="carrito-eliminar.php?idPedido=<?=$linea["ID_PEDIDO"]?>&idProducto=<?=$linea["ID_PRODUCTO"]?>" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Eliminar Producto</a></td>
@@ -84,7 +84,7 @@ foreach ($carrito as $linea){
 <?php require_once "footer.php"?>
 </body>
 
-<script src="../js/envioFormularios.js"></script>
+<script src="../js/envioFormulario.js"></script>
 </html>
 
 

@@ -35,7 +35,6 @@ $restaurantesPorUbicacion = DAO::obtenerRestaurantePorUbicacion($ubicacion);
 <h2>Has buscado restaurantes en <?=$ubicacion?></h2>
 
 <section>
-    <?php if (haySesionIniciada()) { ?>
         <div class="container-fluid">
             <div class="content-center text-center">
                 <h2>Restaurantes cerca de ti.</b></h2>
@@ -51,7 +50,6 @@ $restaurantesPorUbicacion = DAO::obtenerRestaurantePorUbicacion($ubicacion);
                 <?php } ?>
             </div>
         </div>
-    <?php } ?>
 </section>
 
 <?php require_once "../cliente/footer.php"?>

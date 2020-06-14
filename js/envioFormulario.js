@@ -1,14 +1,10 @@
 let valor = document.getElementById("cantidad").value;
 
 function enviarFormulario() {
-    if (valor !== document.getElementById("cantidad").value){
+    var anexo =  document.getElementById("cantidad").value;
+    if (valor !== anexo){
         document.FormularioCantidades.submit();
-    } else {
-
     }
 }
 
 document.getElementById("cantidad").addEventListener("click", enviarFormulario);
-
-
-
