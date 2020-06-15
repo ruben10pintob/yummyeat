@@ -237,43 +237,6 @@ if (haySesionIniciada()){
     </div>
 </div>
 
-    <div class="modal fade" id="carrito" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Carrito</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form method="post" name="form1">
-                        <table class="table table-hover">
-                            <tr>
-                                <th>Producto</th>
-                                <th>Precio U</th>
-                                <th>Unidades</th>
-                                <th>Precio total</th>
-                            </tr>
-                            <?php foreach ($carrito as $linea) {
-                                $precioTotalProducto = $linea["UNIDADES"]*$linea["PRECIO_UNITARIO"];
-                                $precioTotalCarrito+=$precioTotalProducto;
-                                ?>
-                                <tr>
-                                    <td><?=$linea["NOMBRE_PRODUCTO"]?></td>
-                                    <td><?=$linea["PRECIO_UNITARIO"]?>€</td>
-                                    <td><input type="number" name="cantidad" value="<?=$linea["UNIDADES"]?>" readonly></td>
-                                    <td><?=$precioTotalProducto?>€</td>
-                                </tr>
-                            <?php } ?>
-                        </table>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
 <?php } ?>
 </body>
 </html>

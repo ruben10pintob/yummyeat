@@ -16,7 +16,7 @@ if(haySesionIniciada()) redireccionar("../cliente/inicio.php");
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-reboot.css">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/inicioSesion.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
@@ -38,15 +38,31 @@ if (isset($_REQUEST["SC"])) {
 }
 ?>
 
-<h1>Iniciar sesión</h1>
 
-<form action="../cliente/inicio.php" method="POST">
-    <label><b>Email: </b></label><input name="email" type="email" placeholder="Email"><br />
-    <label><b>Contraseña: </b></label><input type="password" name="contrasenna" placeholder="Contraseña"/><br />
-    <label><b>Recuérdame</b></label><input type="checkbox" name="recuerdame" /><br />
-    <br />
-    <input type="Submit" value="Iniciar sesión" class="btn-dark" />
-</form>
+<div class="global-container">
+    <div class="card login-form">
+        <div class="card-body">
+            <h3 class="card-title text-center">Inicia sesión</h3>
+            <div class="card-text">
+                <form action="../cliente/inicio.php" method="post">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Dirección de correo</label>
+                        <input type="email" class="form-control form-control-sm" name="email" placeholder="Email@gmail.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Contraseña</label>
+                        <input type="password" class="form-control form-control-sm" name="contrasenna" placeholder="Contraseña">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputRecuerdame">Recuérdame</label>
+                        <input type="checkbox" class="form-control form-control-sm" name="recuerdame">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

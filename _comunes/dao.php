@@ -65,7 +65,7 @@ class DAO
         }
     }
 
-    public static function clienteObtenerPorEmailYCodigoCookie($email, $codigoCookie): Cliente
+    public static function clienteObtenerPorEmailYCodigoCookie($email, $codigoCookie)
     {
         $rs = self::ejecutarConsulta("SELECT * FROM cliente WHERE EMAIL_CLIENTE=? AND BINARY CODIGO_COOKIE=?",
             [$email, $codigoCookie]);

@@ -64,7 +64,7 @@ function garantizarSesion()
                 generarCookieRecuerdame($cliente);
             } else { // Parecía que venía una cookie válida pero... No es válida o pasa algo raro.
                 // Borrar la cookie mala que nos están enviando (si no, la enviarán otra vez, y otra, y otra...)
-                borrarCookieRecuerdame($cliente->getEmail());
+                borrarCookieRecuerdame($_COOKIE["email"]);
 
                 // REDIRIGIR A INICIAR SESIÓN PARA IMPEDIR QUE ESTE USUARIO VISUALICE CONTENIDO PRIVADO.
                 //redireccionar("../cliente/inicio.php");

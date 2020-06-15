@@ -34,13 +34,18 @@ $direccionCliente = $_SESSION["direccionCliente"];
     <title>Carrito</title>
 </head>
 <body>
+
 <?php require_once "header.php"?>
 
-<table class="table table-hover" style="margin-top: 100px">
-    <th>Producto</th>
-    <th>Precio Producto</th>
-    <th>Unidades</th>
-    <th>Precio Total Producto</th>
+<div id="tabla">
+<table class="table table-hover" style="margin-top: 150px">
+    <tr>
+        <td>Producto</td>
+        <td>Precio Producto</td>
+        <td>Unidades</td>
+        <td>Precio Total Producto</td>
+    </tr>
+    <tr>
 <?php
 $precioTotalCarrito=0;
 foreach ($carrito as $linea){
@@ -49,17 +54,19 @@ foreach ($carrito as $linea){
     $precioTotalCarrito+=$precioTotalProducto;
     ?>
 
-    <tr>
         <form action="modificar-unidades-carrito.php" name="FormularioCantidades">
-            <input type="hidden" name="idPedido" value="<?=$linea["ID_PEDIDO"]?>">
-            <input type="hidden" name="idProducto" value="<?=$linea["ID_PRODUCTO"]?>">
-            <td><?=$linea["NOMBRE_PRODUCTO"]?></td>
-            <td><?=$linea["PRECIO_UNITARIO"]?>€</td>
-            <td><input id="cantidad" type="number" name="cantidad" value="<?=$linea["UNIDADES"]?>" min="1"></td>
-            <td><?=$precioTotalProducto?>€</td>
+                <input type="hidden" name="idPedido" value="<?=$linea["ID_PEDIDO"]?>">
+                <input type="hidden" name="idProducto" value="<?=$linea["ID_PRODUCTO"]?>">
+                <td><?=$linea["NOMBRE_PRODUCTO"]?></td>
+                <td><?=$linea["PRECIO_UNITARIO"]?>€</td>
+                <td><input id="cantidad" type="number" name="cantidad" value="<?=$linea["UNIDADES"]?>" min="1"></td>
+                <td><?=$precioTotalProducto?>€</td>
+                <td><button class="btn btn-warning btn-lg active" type="submit" value="Modificar" name="Modificar producto">Modificar Producto</td>
         </form>
-        <td><a href="carrito-eliminar.php?idPedido=<?=$linea["ID_PEDIDO"]?>&idProducto=<?=$linea["ID_PRODUCTO"]?>" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Eliminar Producto</a></td>
+            <td><a href="carrito-eliminar.php?idPedido=<?=$linea["ID_PEDIDO"]?>&idProducto=<?=$linea["ID_PRODUCTO"]?>" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Eliminar Producto</a></td>
+
     </tr>
+
 <?php } ?>
 
     <tr>
@@ -69,7 +76,7 @@ foreach ($carrito as $linea){
         <td class="font-weight-bold"><?=$precioTotalCarrito?>€</td>
     </tr>
 </table>
-
+</div>
 <form action="pedido-gestionar.php" method="post">
     <div class="form-group">
         <label for="direccionCliente">Direccion de envío</label>

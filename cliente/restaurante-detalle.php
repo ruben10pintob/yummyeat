@@ -103,7 +103,7 @@ $categoriaProductos = DAO::obtenerCategoriaProductosPorRestaurante($idRestaurant
                     <td><a href="producto-detalle.php?id=<?=$producto->getId()?>&restaurante=<?=$restaurantePorId->getId()?>&categoria=<?=$categoria?>"  id="hover"><?= $producto->getNombre() ?></a></td>
                     <td><?= $producto->getPrecio() ?></td>
                     <td><input type="number" name="Unidades" value="1" min="1" placeholder="Unidades del producto" id="Unidades" ></td>
-                    <td><input type="submit" name="Enviar" value="Añadir al carrito" class="btn btn-black"  id="hover"></td>
+                    <td><input type="submit" name="Enviar" value="Añadir al carrito" class="btn btn-black" id="hover"></td>
                 </tr>
             </form>
         <?php }
