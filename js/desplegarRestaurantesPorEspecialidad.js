@@ -1,4 +1,4 @@
-function f(){
+function desplegarRestaurantes(){
     let section = document.getElementById("restaurantesOcultos");
 
     if (section.style.display == "") {
@@ -11,4 +11,4 @@ function f(){
 
 
 }
-document.getElementById("botones").querySelectorAll("a")[1].addEventListener("click", f);
+document.getElementById("botones").querySelectorAll("a")[1].addEventListener("click", desplegarRestaurantes);
