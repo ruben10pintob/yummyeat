@@ -2,10 +2,15 @@
 
 require_once "../_comunes/comunes-app.php";
 
+
 $especialidad = $_REQUEST["especialidad"];
 $localidades = DAO::obtenerUbicacionesRestaurante();
 //$restaurantes = DAO::obtenerRestaurantePorEspecialidad($especialidad);
 
+if (haySesionIniciada()) {
+    $localidadClienteRegistrado = $_SESSION["localidad"];
+    $restauranteEspecialidUbicacionCliente = DAO::obtenerRestaurantesPorEspecialidadYUbicacion($localidadClienteRegistrado, $especialidad);
+}
 ?>
 
 <!doctype html>
@@ -32,7 +37,65 @@ $localidades = DAO::obtenerUbicacionesRestaurante();
 </head>
 <body>
 <?php require_once "header.php"?>
-<h1 style="margin-top: 100px"><?=$especialidad?></h1>
+
+<?php if (haySesionIniciada() && empty($restauranteEspecialidUbicacionCliente)) {?>
+
+    <div style="margin-top: 100px" id="botones">
+        <h1>En estos momentos no hay retaurantes de <?=$especialidad?> en <?=$localidadClienteRegistrado?></h1>
+        <a href="../cliente/inicio.php" class="btn btn-dark" style="margin-top: 20px" id="hover">Volver a la página de inicio</a>
+        <a href="#" class="btn btn-dark" style="margin-top: 20px" id="hover" name="DesplegarRestaurantes">Ver restaurante de <?=$especialidad?> en otras localidades</a>
+    </div>
+
+    <?php foreach ($localidades as $fila) {
+    $restaurantesPorEspecialidadUbicacion = DAO::obtenerRestaurantesPorEspecialidadYUbicacion($fila, $especialidad);
+
+if (!empty($restaurantesPorEspecialidadUbicacion)) { ?>
+
+<section style="display: none" id="restaurantesOcultos">
+    <div class="container-fluid">
+        <div class="content-center text-center">
+            <h2>Restaurantes en <?=$fila?></b></h2>
+        </div>
+
+        <div class="row">
+            <?php foreach ($restaurantesPorEspecialidadUbicacion as $restaurante) {?>
+                <div class="col-md-4">
+                    <div class="restaurantes-cercanos-container">
+                        <a href="restaurante-detalle.php?id=<?=$restaurante->getId()?>"><img src="../img/Restaurantes/<?=$restaurante->getNombre()?>.jpg" class="img-fluid" alt="<?=$restaurante->getNombre()?>"></a>
+                        </figure>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+</section>
+<?php   }
+    }?>
+
+<?php } else if (haySesionIniciada() && !empty($restauranteEspecialidUbicacionCliente)) {?>
+
+<h1 class="text-center" style="margin-top: 100px"><?=$especialidad?></h1>
+
+    <section>
+        <div class="container-fluid">
+            <div class="content-center text-center">
+                <h2>Restaurantes en <?=$localidadClienteRegistrado?></b></h2>
+            </div>
+
+            <div class="row">
+                <?php foreach ($restauranteEspecialidUbicacionCliente as $restaurante) {?>
+                    <div class="col-md-4">
+                        <div class="restaurantes-cercanos-container">
+                            <a href="restaurante-detalle.php?id=<?=$restaurante->getId()?>"><img src="../img/Restaurantes/<?=$restaurante->getNombre()?>.jpg" class="img-fluid" alt="<?=$restaurante->getNombre()?>"></a>
+                            </figure>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </section>
+
+<?php } else { ?>
 
 <?php foreach ($localidades as $fila) {
     $restaurantesPorEspecialidadUbicacion = DAO::obtenerRestaurantesPorEspecialidadYUbicacion($fila, $especialidad);
@@ -57,11 +120,12 @@ if (!empty($restaurantesPorEspecialidadUbicacion)) { ?>
         </div>
     </div>
 </section>
-<?php }
-}
-?>
+<?php   }
+    }
+}?>
 
-<a href="../cliente/inicio.php" class="btn btn-dark" style="margin-top: 20px" id="hover">Volver a la página de inicio</a>
 <?php require_once "footer.php" ?>
+
+<script src="../js/desplegarRestaurantesPorEspecialidad.js"></script>
 </body>
 </html>
