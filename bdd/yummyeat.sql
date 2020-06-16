@@ -12,6 +12,10 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+DROP DATABASE IF EXISTS yummyeat;
+CREATE DATABASE yummyeat;
+USE yummyeat;
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -588,7 +592,28 @@ INSERT INTO `producto` (`ID_PRODUCTO`, `NOMBRE_PRODUCTO`, `DESCRIPCION_PRODUCTO`
 (430, 'Tarrina Magnum White', 'Delicioso helado de vainilla y láminas de chocolate blanco recubierto de una cruiente capa de chocolate blanco.', 'Postre', '6.50'),
 (431, 'arrina Magnum Blanco y Cookie', 'Indulgente helado de nata con deliciosa salsa de cookies láminas de chocolate blanco. Todo recubierto por una crujiente capade chocolate blanco.', 'Postre', '6.50'),
 (432, 'Tarrina Magnum Double Chocolat', 'Cremoso helado de chocolate con una indulgente salsa de chocolate y con láminas de chocolate. Todo recubierto por una capa de crujiente chocolate Magnum', 'Postre', '6.50'),
-(433, 'Tarrina Magnum Double Salted C', 'Cremoso helado de vainilla con una indulgente salsa de caramelo a la sal y con trozos de chocolate. Todo recubierto por una capa de crujiente chocolate Magnum', 'Postre', '6.50');
+(433, 'Tarrina Magnum Double Salted C', 'Cremoso helado de vainilla con una indulgente salsa de caramelo a la sal y con trozos de chocolate. Todo recubierto por una capa de crujiente chocolate Magnum', 'Postre', '6.50'),
+(434, 'Nachos Zacatecas', 'Totopos, queso cheddar, guacamole, pico de gallo y tinga de pollo', 'Entrante', '6.00'),
+(435, 'Nachos Mayas', 'Totopos, salsa de frijol, queso gratinado, guacamole y cebolla morada.', 'Entrante', '8.00'),
+(436, 'Nachos Malinches', 'Totopos, frijoles. queso grtinado, guacamole y jalapeños', 'Entrante', '8.00'),
+(437, 'Quesadilla', 'Tres tortillas de harina, rellenas de queso y con guarnición', 'Entrante', '5.00'),
+(438, 'Guacamole', 'Centro de guacamole, totoposy cortezas de cerdo', 'Entrante', '6.50'),
+(439, 'Garnachitas', '3 croquetas de pollo. aritos de cebolla, jalapeños y guacamole', 'Entrante', '12.00'),
+(440, 'Tostadas', 'Tortilla de maíz frita con base de frijol, lechuga y queso', 'Principal', '5.00'),
+(441, 'Sopa Azteca', 'Sopa azteca con tomates mexicanos, aguacate, chicharrones  y pollo', 'Principal', '6.50'),
+(442, 'Ensalada Mediterránea', 'Lechuga, maíz, piña, frutos, cebolla y queso de cabra', 'Principal', '8.00'),
+(443, 'Tamalitos', 'Masa de maíz envuelta en hoja de plátano, cocida al baño maría.', 'Principal', '5.00'),
+(444, 'Alitas de pollo', 'Alitas de pollo maceradas artesanalmente durante 48 horas con nuestro aliño mexicano', 'Principal', '12.00'),
+(445, 'Tacos Dorados', 'Cuatro rollitos de torta de maíz crujientes, con pollo desmigado ligeramente', 'Principal', '12.00'),
+(446, 'Hamburguesa', 'Mezla ibérica macerada, mostaza, cilantro. Con patatas fritas y ketchup', 'Principal', '9.00'),
+(447, 'Burritos', 'Una tortilla de harina rellena de frijoles, arroz y pimientos rojos', 'Principal', '9.00'),
+(448, 'Chimichanga', 'Una tortilla de harina de 30 cm frita, pimiento rojo, pimiento verde, cebolla, queso Gouda con guarnición de pico de gallo, guacamole, bañada en nata agria y salsa al Pedro Ximénez', 'Principal', '9.00'),
+(449, 'Fajitas', 'Bacon y chorizo salteado, acompañados de seis tortillas, tiras de pimientos verdes y rojos', 'Principal', '17.00'),
+(450, 'Pecado Mexicano', 'Pastel de chocolate esponjoso, sobre helado de vainilla', 'Postre', '5.00'),
+(451, 'Mouse de queso', 'Esponjosa crema de queso con crujiente galleta de chocolate y salsa de frutos rojos', 'Postre', '5.00'),
+(452, 'Cajeta Mexicana', 'Crepe rellena de cajeta mexicana y helado de vainilla', 'Postre', '5.00'),
+(453, 'Pastel de Elote', 'Bizcocho de maíz, crema dulce y ligera con helado de fresa', 'Postre', '5.00'),
+(454, 'Copas de Helados Variados', 'Helados de chocolate, fresa, vainilla...', 'Postre', '5.00');
 
 -- --------------------------------------------------------
 
@@ -1983,7 +2008,37 @@ INSERT INTO `producto_restaurante` (`ID_PRODUCTO`, `ID_RESTAURANTE`) VALUES
 (430, 'TPVA'),
 (431, 'TPVA'),
 (432, 'TPVA'),
-(433, 'TPVA');
+(433, 'TPVA'),
+(37, 'VMGE'),
+(38, 'VMGE'),
+(39, 'VMGE'),
+(40, 'VMGE'),
+(41, 'VMGE'),
+(42, 'VMGE'),
+(43, 'VMGE'),
+(44, 'VMGE'),
+(434, 'VMGE'),
+(435, 'VMGE'),
+(436, 'VMGE'),
+(437, 'VMGE'),
+(438, 'VMGE'),
+(439, 'VMGE'),
+(440, 'VMGE'),
+(441, 'VMGE'),
+(442, 'VMGE'),
+(443, 'VMGE'),
+(444, 'VMGE'),
+(445, 'VMGE'),
+(446, 'VMGE'),
+(447, 'VMGE'),
+(448, 'VMGE'),
+(449, 'VMGE'),
+(450, 'VMGE'),
+(451, 'VMGE'),
+(452, 'VMGE'),
+(453, 'VMGE'),
+(454, 'VMGE');
+
 
 -- --------------------------------------------------------
 
