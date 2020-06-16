@@ -4,10 +4,10 @@ require_once "../_comunes/comunes-app.php";
 
 $idRestaurante = $_REQUEST["id"];
 
-if (isset($_REQUEST["categoria"])) {
+/*if (isset($_REQUEST["categoria"])) {
     $categoria = $_REQUEST["categoria"];
     $productosPorCategoria = DAO::obtenerProductosPorCategoria($categoria, $idRestaurante);
-}
+}*/
 
 $restaurantePorId = DAO::restauranteObtenerPorId($idRestaurante);
 $productosRestaurante = DAO::obtenerProductosRestaurante($idRestaurante);
@@ -77,15 +77,25 @@ $categoriaProductos = DAO::obtenerCategoriaProductosPorRestaurante($idRestaurant
 </table>
 
 <h2>Menú y especialidades del restaurante</h2>
-<div class="row">
+
+    <table class="table-hover" border="1" width="50%" id="tabla">
     <?php foreach ($categoriaProductos as $categorias) { ?>
-        <div class="col-3">
-            <a href="restaurante-detalle.php?id=<?=$idRestaurante?>&categoria=<?=$categorias?>" id="categorias" "><?=$categorias?></a>
-        </div>
+        <tr>
+            <!--<td width="600"><a href="restaurante-detalle.php?id=<?=$idRestaurante?>&categoria=<?=$categorias?>" id="categorias"><?=$categorias?></a><ion-icon name="arrow-down-outline" id="<?=$categorias?>"></ion-icon>-->
+            <td width="600"><span><?=$categorias?></span><span class="offset-11"><ion-icon name="arrow-down-outline" id="<?=$categorias?>"></ion-icon></span>
+            </td>
+            <div id="contenedorProductos">
+        <?php $productosPorCategoria = DAO::obtenerProductosPorCategoria($categorias, $idRestaurante);
+        foreach ($productosPorCategoria as $producto) { ?>
+                <tr style="display: none" name="<?=$categorias?>">
+                    <td><?=$producto->getNombre()?></td></a>
+                </tr>
+        <?php } ?>
+            </div>
+        </tr>
     <?php } ?>
-</div>
-
-
+    </table>
+<!--
 <?php if (isset($_REQUEST["categoria"])) { ?>
 <div class="offset-3 col-6">
     <table border="1" class="table-dark" style="margin-top: 20px;">
@@ -112,7 +122,10 @@ $categoriaProductos = DAO::obtenerCategoriaProductosPorRestaurante($idRestaurant
 
     </table>
 </div>
+-->
 <a href="../cliente/inicio.php" class="btn btn-dark" style="margin-top: 20px" id="hover">Volver a la página de inicio</a>
 <?php require_once "../cliente/footer.php";?>
+
+<script src="../js/desplegarProductos.js"></script>
 </body>
 </html>

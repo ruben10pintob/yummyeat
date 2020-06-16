@@ -57,7 +57,7 @@ if (isset($_REQUEST["SC"])) {
                         <label for="exampleInputRecuerdame">Recuérdame</label>
                         <input type="checkbox" class="form-control form-control-sm" name="recuerdame">
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                    <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
                 </form>
             </div>
         </div>

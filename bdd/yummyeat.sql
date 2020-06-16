@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-06-2020 a las 23:07:13
+-- Tiempo de generación: 15-06-2020 a las 19:48:20
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -47,20 +47,8 @@ CREATE TABLE `cliente` (
 INSERT INTO `cliente` (`ID_CLIENTE`, `CODIGO_COOKIE`, `NOMBRE_CLIENTE`, `APELLIDOS_CLIENTE`, `TELEFONO_CLIENTE`, `DIRECCION_CLIENTE`, `EMAIL_CLIENTE`, `CONTRASENNA_CLIENTE`, `LOCALIDAD`) VALUES
 (1, NULL, 'Jose Luis ', 'Sánchez Gómez', '629034519', 'C/ Sevilla 4, 3 A, 28901, Getafe, Madrid', 'Joseluis12@gmail.com', '1234', 'Pinto'),
 (2, NULL, 'Julia', 'Gutiérrez Serrano', '612893018', 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', 'JuliaGS@gmail.com', '1234', 'Madrid'),
-(10, NULL, 'Fernando', 'Gonzalez Perez', '678678678', 'Calle inventada 2', 'fernandoG@gmail.com', '1234', 'Getafe');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `detalle_pedido_menu`
---
-
-CREATE TABLE `detalle_pedido_menu` (
-  `NUMERO_PEDIDO` int(11) NOT NULL,
-  `ID_MENU` int(11) NOT NULL,
-  `PRECIO_UNITARIO_MENU` decimal(10,2) NOT NULL,
-  `UNIDADES_MENU` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(10, NULL, 'Fernando', 'Gonzalez Perez', '678678678', 'Calle inventada 2', 'fernandoG@gmail.com', '1234', 'Getafe'),
+(11, NULL, 'Ruben', 'García Mier', '616860338', 'Calle Cartuja 2, Escalera derecha, 2º A', 'ruben10pintob@gmail.com', '1234', 'Madrid');
 
 -- --------------------------------------------------------
 
@@ -94,16 +82,36 @@ CREATE TABLE `linea` (
 
 INSERT INTO `linea` (`ID_PEDIDO`, `ID_PRODUCTO`, `UNIDADES`, `PRECIO_UNITARIO`) VALUES
 (27, 20, 1, '7.90'),
-(27, 37, 1, '1.50'),
+(27, 37, 2, '1.50'),
 (27, 38, 1, '1.50'),
 (27, 39, 1, '2.30'),
 (27, 40, 1, '1.50'),
 (28, 19, 1, '7.90'),
 (28, 20, 1, '7.90'),
-(29, 9, 1, '10.90'),
-(29, 37, 1, '1.50'),
+(29, 37, 6, '1.50'),
+(29, 38, 1, '1.50'),
 (29, 39, 1, '2.30'),
-(29, 40, 1, '1.50');
+(45, 21, 1, '9.90'),
+(45, 28, 1, '0.00'),
+(45, 30, 2, '4.95'),
+(45, 36, 1, '3.95'),
+(45, 37, 7, '1.50'),
+(45, 42, 1, '0.00'),
+(69, 37, 1, '1.50'),
+(70, 37, 1, '1.50'),
+(71, 37, 1, '1.50'),
+(72, 37, 1, '1.50'),
+(73, 37, 1, '1.50'),
+(74, 37, 1, '1.50'),
+(75, 37, 3, '1.50'),
+(77, 37, 1, '1.50'),
+(78, 37, 1, '1.50'),
+(79, 37, 1, '1.50'),
+(80, 22, 1, '9.90'),
+(80, 37, 2, '1.50'),
+(82, 19, 7, '7.90'),
+(84, 20, 5, '7.90'),
+(84, 37, 4, '1.50');
 
 -- --------------------------------------------------------
 
@@ -142,7 +150,24 @@ CREATE TABLE `pedido` (
 INSERT INTO `pedido` (`NUMERO_PEDIDO`, `ID_RESTAURANTE`, `ID_CLIENTE`, `DIRECCION_ENTREGA`, `PRECIO_PEDIDO`, `FECHA_PEDIDO_REALIZADO`, `FECHA_PEDIDO_ENTREGADO`) VALUES
 (27, 'DPAL', 1, NULL, '0.00', NULL, NULL),
 (28, 'DPAL', 10, NULL, '0.00', NULL, NULL),
-(29, 'DPMA', 2, NULL, '0.00', NULL, NULL);
+(29, 'DPMA', 2, 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', '0.00', '2020-06-04 18:45:01', NULL),
+(45, 'DPMA', 11, 'Calle Cartuja 2, Escalera derecha, 2º A', '0.00', '2020-06-04 19:46:34', NULL),
+(69, 'DPMA', 2, 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', '0.00', '2020-06-04 20:01:26', NULL),
+(70, 'DPMA', 2, 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', '0.00', '2020-06-04 20:04:47', NULL),
+(71, 'DPMA', 2, 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', '0.00', '2020-06-04 20:05:22', NULL),
+(72, 'DPMA', 2, 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', '0.00', '2020-06-04 20:09:05', NULL),
+(73, 'DPMA', 2, 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', '0.00', '2020-06-04 20:13:26', NULL),
+(74, 'DPMA', 2, 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', '0.00', '2020-06-04 20:18:42', NULL),
+(75, 'DPMA', 2, 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', '0.00', '2020-06-04 20:35:23', NULL),
+(76, 'DPMA', 2, NULL, '0.00', NULL, NULL),
+(77, 'DPMA', 2, 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', '0.00', '2020-06-07 17:19:48', NULL),
+(78, 'DPMA', 2, 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', '0.00', '2020-06-07 17:20:08', NULL),
+(79, 'DPMA', 2, 'C/ Martin Velasco 17, 5 D, 28320, Pinto, Madrid', '0.00', '2020-06-08 20:40:14', NULL),
+(80, 'DPMA', 11, 'Calle Cartuja 2, Escalera derecha, 2º A', '0.00', '2020-06-11 19:52:53', NULL),
+(81, 'DPMA', 11, NULL, '0.00', NULL, NULL),
+(82, 'DPMA', 11, 'Calle Cartuja 2, Escalera derecha, 2º A', '0.00', '2020-06-13 22:14:00', NULL),
+(83, 'DPPI', 11, NULL, '0.00', NULL, NULL),
+(84, 'DPMA', 11, NULL, '0.00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -163,23 +188,23 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`ID_PRODUCTO`, `NOMBRE_PRODUCTO`, `DESCRIPCION_PRODUCTO`, `CATEGORIA_PRODUCTO`, `PRECIO_PRODUCTO`) VALUES
-(1, 'New York MeatBalls', 'Salsa de tomate, queso 100% mozzarella, pepperoni, meatballs, salsa BBQ por encima y queso cheddar en los bordes.', 'Principal', '12.90'),
-(2, 'Oklahoma Bacon Crispy', 'Salsa BBQ original, queso 100% mozzarella, pepperoni, york, bacon cripy y queso cheddar en el borde.', 'Principal', '12.90'),
-(3, 'Texas BBQ Crispy', 'Salsa BBQ Texas, queso 100% mozzarella, bacon crispy, bacon, pollo a la parrilla, carne de vacuno, queso cheddar en el borde y salsa.', 'Principal', '12.90'),
-(4, 'Cremozza al estilo Bourbon', 'Base de crema fresca, queso 100% mozzarella, bacon, pollo a la parrilla, cebolla y salsa Bourbon', 'Principal', '11.90'),
-(5, 'Cremozza BBQ', 'Base de crema fresca, queso 100% mozzarella, bacon, pollo a la parrila, cebolla, salsa barbacoa.', 'Principal', '11.90'),
-(6, 'Cabramelizada', 'Crema fresca, queso 100% mozzarella, queso de cabra, cebolla caramelizada.', 'Principal', '11.90'),
-(7, 'Cheesix', 'Crema fresca, queso 100% mozzarella, cheddar, emmental, parmesano, gorgonzola, queso de cabra.', 'Principal', '11.90'),
-(8, 'Pecado Carnal', 'Salsa de tomate, extra de queso 100% mozzarella, carne de vacuno, bacon, pepperoni, york.', 'Principal', '10.90'),
-(9, 'Carbonara', 'Crema fresca, queso 100% mozzarella, bacon, champiñon y cebolla.', 'Principal', '10.90'),
-(10, 'Extravaganzza', 'Sala de tomate, mozzarella, carne de vacuno, pepperoni, York, bacon, cebolla, pimiento verde, champiñon y aceitunas negras.', 'Principal', '10.90'),
-(11, 'Barbacoa', 'Salsa barbacoa, queso 100% mozzarella, carne de vacuno, cebolla, bacon, maiz', 'Principal', '10.90'),
-(12, 'Hawaiana Plus', 'Salsa de tomate, extra de queso 100% mozzarella, doble de York y piña.', 'Principal', '10.90'),
-(13, 'Pollo a la Parrilla', 'Salsa de tomate, queso 100% mozzarella, doble de pollo a la parrilla, cebolla, champiñon y maíz.', 'Principal', '10.90'),
-(14, 'Cuatro  Quesos', 'Salsa de tomate, queso 100% mozzarella, cheddar, emmental y gorgonzola.', 'Principal', '10.90'),
-(15, 'Tony Pepperoni', 'Salsa de tomate, extra de queso 100% mozzarella y doble de pepperoni.', 'Principal', '10.90'),
-(16, 'Patanegra', 'Salsa de tomate, queso 100% mozzarella, jamón serrano, aceite de oliva, aceitunas negras, tomate natural y orégano.', 'Principal', '10.90'),
-(17, 'Campiña', 'Salsa de tomate, extra de queso 100% mozzarella, champiñón, pimiento verde, cebolla, aceitunas negras y tomate natural.', 'Principal', '10.90'),
+(1, 'New York MeatBalls', 'Salsa de tomate, queso 100% mozzarella, pepperoni, meatballs, salsa BBQ por encima y queso cheddar en los bordes.', 'Pizzas', '12.90'),
+(2, 'Oklahoma Bacon Crispy', 'Salsa BBQ original, queso 100% mozzarella, pepperoni, york, bacon cripy y queso cheddar en el borde.', 'Pizzas', '12.90'),
+(3, 'Texas BBQ Crispy', 'Salsa BBQ Texas, queso 100% mozzarella, bacon crispy, bacon, pollo a la parrilla, carne de vacuno, queso cheddar en el borde y salsa.', 'Pizzas', '12.90'),
+(4, 'Cremozza al estilo Bourbon', 'Base de crema fresca, queso 100% mozzarella, bacon, pollo a la parrilla, cebolla y salsa Bourbon', 'Pizzas', '11.90'),
+(5, 'Cremozza BBQ', 'Base de crema fresca, queso 100% mozzarella, bacon, pollo a la parrila, cebolla, salsa barbacoa.', 'Pizzas', '11.90'),
+(6, 'Cabramelizada', 'Crema fresca, queso 100% mozzarella, queso de cabra, cebolla caramelizada.', 'Pizzas', '11.90'),
+(7, 'Cheesix', 'Crema fresca, queso 100% mozzarella, cheddar, emmental, parmesano, gorgonzola, queso de cabra.', 'Pizzas', '11.90'),
+(8, 'Pecado Carnal', 'Salsa de tomate, extra de queso 100% mozzarella, carne de vacuno, bacon, pepperoni, york.', 'Pizzas', '10.90'),
+(9, 'Carbonara', 'Crema fresca, queso 100% mozzarella, bacon, champiñon y cebolla.', 'Pizzas', '10.90'),
+(10, 'Extravaganzza', 'Sala de tomate, mozzarella, carne de vacuno, pepperoni, York, bacon, cebolla, pimiento verde, champiñon y aceitunas negras.', 'Pizzas', '10.90'),
+(11, 'Barbacoa', 'Salsa barbacoa, queso 100% mozzarella, carne de vacuno, cebolla, bacon, maiz', 'Pizzas', '10.90'),
+(12, 'Hawaiana Plus', 'Salsa de tomate, extra de queso 100% mozzarella, doble de York y piña.', 'Pizzas', '10.90'),
+(13, 'Pollo a la Parrilla', 'Salsa de tomate, queso 100% mozzarella, doble de pollo a la parrilla, cebolla, champiñon y maíz.', 'Pizzas', '10.90'),
+(14, 'Cuatro  Quesos', 'Salsa de tomate, queso 100% mozzarella, cheddar, emmental y gorgonzola.', 'Pizzas', '10.90'),
+(15, 'Tony Pepperoni', 'Salsa de tomate, extra de queso 100% mozzarella y doble de pepperoni.', 'Pizzas', '10.90'),
+(16, 'Patanegra', 'Salsa de tomate, queso 100% mozzarella, jamón serrano, aceite de oliva, aceitunas negras, tomate natural y orégano.', 'Pizzas', '10.90'),
+(17, 'Campiña', 'Salsa de tomate, extra de queso 100% mozzarella, champiñón, pimiento verde, cebolla, aceitunas negras y tomate natural.', 'Pizzas', '10.90'),
 (19, 'Cheese &  Bacon Fries', 'Nuestras patatas con bacon crispy y deliciosa salsa cheddar.', 'Complemento', '7.90'),
 (20, 'Patatas Grill', 'Crujientes patatas horneadas acompañadas de una salsa a elegir.', 'Complemento', '7.90'),
 (21, 'Combo de pollo', 'Strippers, Kickers y Alitas (17 uds).', 'Complemento', '9.90'),
@@ -198,8 +223,8 @@ INSERT INTO `producto` (`ID_PRODUCTO`, `NOMBRE_PRODUCTO`, `DESCRIPCION_PRODUCTO`
 (38, 'Pepsi Max', 'Pepsi Maaxlata 33cl.', 'Bebida', '1.50'),
 (39, 'Red Bull', 'Red Bull lata 25cl.', 'Bebida', '2.30'),
 (40, 'Kas Naranja', 'Kas Naranja lata 33cl.', 'Bebida', '1.50'),
-(41, 'CERVEZA MAHOU', 'Cervaza Mahou 5 estrellas 33cl', 'Bebida', '0.00'),
-(42, 'COCACOLA', 'Cocacola lata 33cl', 'Bebida', '0.00'),
+(41, 'Cerveza Mahou', 'Cervaza Mahou 5 estrellas 33cl', 'Bebida', '1.50'),
+(42, 'Cocacola', 'Cocacola lata 33cl', 'Bebida', '1.75'),
 (43, 'Kas Limón', 'Kas Limón lata 33cl.', 'Bebida', '1.50'),
 (44, 'Agua', 'Agua sin gas 50cl.', 'Bebida', '1.10'),
 (46, 'BACON & CHEESE FRIES', 'No te pierdas nuestras Bacon & Cheese Fries, uno de los platos más icónicos de Foster’s Hollywood: deliciosas y crujientes patatas fritas con mix de q', 'Entrante', '9.95'),
@@ -214,41 +239,41 @@ INSERT INTO `producto` (`ID_PRODUCTO`, `NOMBRE_PRODUCTO`, `DESCRIPCION_PRODUCTO`
 (55, 'FINGERS DE QUESO GRAND CENTRAL', 'Queso Gouda empanado. Elige una salsa: ranchera, BBQ o frambuesa.', 'Entrante', '9.95'),
 (56, 'AROS DE CEBOLLA', 'Nuestra auténtica receta americana.', 'Entrante', '9.95'),
 (57, 'TEX & CHEESE FRIES', 'Patatas fritas acompañadas de mix de quesos, pico de gallo, chili con carne, jalapeños, salsa ranchera, salsa Smoked Red Pepper y cilantro.', 'Entrante', '9.95'),
-(58, 'FAJITAS EL PASO', '\r\nCarne de vacuno, pollo o mixtas. Servidas en una sartén caliente y cocinadas con cebolla y pimientos. Envuelve todo en las tortillas de harina de tr', 'Principal', '11.90'),
-(59, 'CHICKEN ENCHILADA', 'Tortilla roja de trigo y tomate, rellena de pollo a la parrilla, mix de quesos fundidos y salsa Satay, coronada con salsa\r\nde tomatillo verde ligerame', 'Principal', '11.90'),
-(60, 'BURRITO MONTERREY', 'Tortilla de trigo y tomate rellena de tiras de pechuga de pollo marinada a la parrilla, arroz salvaje, mix de quesos, maíz y vinagreta Garden.', 'Principal', '11.90'),
-(61, 'SONORA CHICKEN TACOS', 'Tortillas de trigo rellenas de pechuga marinada a la parrilla con ensalada campestre, mix de quesos, vinagreta Garden y lima. Con arroz salvaje y sals', 'Principal', '11.90'),
-(62, 'CALIFORNIA SALAD', 'Aquí eres tú el que elige: pide tu Ensalada California clásica o vegetariana. Mezcla de lechugas, queso Feta, arroz basmati, tomates cherry, aguacate, nueces y maíz, coronado con delicioso pollo a la parrilla con especias BBQ, servido con vinagreta Gingersoy y cilantro.', 'Principal', '11.90'),
-(63, 'FOSTER CAESAR SALAD', 'Pechuga de pollo a la parrilla, lechuga romana, croutons, queso grana padano, aliñado con salsa parmesana.', 'Principal', '11.90'),
-(64, 'MEDITERRANEAN SALAD', 'Paleta ibérica en tiras, queso de cabra, tomates cherry y pasas sobre mezcla de lechugas. Alíñala con la salsa que más te guste, mostaza y miel, aceite y vinagre o nuestra vinagreta dulce Vin Brulé con matices de vino.', 'Principal', '11.90'),
-(65, 'SANTA MÓNICA', 'Pollo empanado en trozos, bacon crujiente, mezcla de quesos rallados y tomate sobre una mezcla de lechugas. Elige tu salsa entre susa, queso azul, mostaza y miel o aceite y vinagre.', 'Principal', '11.90'),
-(66, ' THE NEWYORKER 325 GRS', 'Jugoso entrecotte sazonado y preparado en nuestra parrilla. Servido con nuestra deliciosa salsa Steakhouse.', 'Principal', '14.90'),
-(67, 'FLANK STEAK 300 GRS', 'Corte argentino, vacío de vacuno marinado en cerveza negra. Preparado a la parrilla con carbón vegetal y acompañado con salsa Steakhouse.', 'Principal', '14.90'),
-(68, 'SALISBURY STEAKS', 'Sabrosa carne de vacuno aderezada, servida con salsa de champiñones, cebolla pochada y mezcla de quesos fundidos. No te pierdas nuestro delicioso Salisbury Steak acompañado de ensalada de lechuga, tomate y jalapeños.', 'Principal', '14.90'),
-(69, 'BEEF BONE', 'Carne de vacuno cocinada lentamente y terminada a la parrilla con salsa BBQ, con cebolla frita, tomate cherry y cilantro. Con 4 tortillas de trigo para montar tus propios tacos con salsa Smoked Red Pepper, pico de gallo, guacamole y lima. Con patatas Dipper, cebollino y salsa Smoked Red Pepper.', 'Principal', '14.90'),
-(70, 'NATIONAL STAR RIBS', 'El mejor costillar.', 'Principal', '16.90'),
-(71, 'CAVATAPPI CHICKEN PASTA', 'Pasta con crema elaborada con nata, mezcla de queso, cebolla caramelizada y salsa Búfalo picante. Te servimos nuestro Cavatappi Chicken Pasta con pechuga de pollo al estilo cajún o la parrilla y tostadas de pan.', 'Principal', '12.90'),
-(72, 'TERIYAKI CHICKEN BROCHETTE', 'Brochetas de pollo rebozados y especiados, pimiento rojo, pimiento verde y cebolla pochada, con salsa teiyaki sobre arroz basmati, con semillas de sésamo y cilantro.', 'Principal', '10.90'),
-(73, 'CHICKEN & RICE WOK', 'Pops de pollo rebozados y especiados, caramelizados con salsa Teriyaki, pimiento rojo y verde, cebolla pochada y arroz Basmati. Coronado con semillas de sésamo y cilantro. ', 'Principal', '11.90'),
-(74, 'CAESAR SANDWICH', 'Pechuga de pollo a la parrilla, bacon crujiente, lechuga romana y salsa parmesana en pan con semillas y copos de avena.', 'Principal', '10.90'),
-(75, 'SOUTHERN CHICKEN SANDWICH', 'Contramuslos de pollo rebozados al estilo sureño con pan Pretzel, lechuga trocadero, tomate, queso Cheddar y bacon ahumado con madera de haya. Con salsa de miel mostaza, pepinillo picado, mango y un toque de yuzu, jugo oriental que aporta el contraste dulce-ácido.', 'Principal', '11.90'),
-(76, 'PULLED PORK SANDWICH', 'El Pulled Pork Sandwich, renovado: carne de cerdo deshilachada, con salsa BBQ, cheddar ahumado, lechuga romana aderezada con salsa Yuzu y pepinillos con toques dulces y ácidos. Servidos con nuestras patatas Dipper. La combinación perfecta de sabores.', 'Principal', '11.90'),
-(77, 'BLACK LABEL BURGER', 'Disfruta la receta original de la Black Label Burger: Pan con sabor a trufa, queso Cheddar y cebolla morada confitada al Oporto. Acompañado de mayonesa con sabor a trufa, lechuga trocadero, tomate, pepinillo pickle y patatas fritas con queso Parmigiano Reggiano. Puedes cambiar las patatas fritas por', 'Principal', '14.90'),
-(78, 'RACLETTE BURGER', 'Carne de vacuno, pan rústico con semillas, salsa Mayo Chipotle, salteado de cebolla y pimientos, pepinillos, cebolla frita y bacon crispy. Acompañada de patatas Dipper y salsa Mayo Chipotle.', 'Principal', '13.90'),
-(79, 'ORLEANS BURGER', 'Pollo rebozado al estilo sureño sobre base de guacamole y coronado con chili con carne, servido en pan de cristal, acompañada de patatas Dipper. Y antes de que disfrutes del primer mordisco, la culminamos en tu mesa rallando queso Cheddar madurado.', 'Principal', '13.90'),
-(80, 'SMOKED BURGER', 'Prueba la carne de nuestra Smoked Burger, ahumada artesanalmente al estilo Low & Slow con humo de nogal. En pan de cristal, servida con salsa Mayo Smoked Bacon, queso Cheddar ahumado y cebolla pochada, acompañado de patatas Dipper con especias BBQ, lechuga trocadero, tomate, rúcula y pepinillo pickl', 'Principal', '12.90'),
-(81, ' TRUFFLED BURGER', 'Carne de vacuno con boletus y aceite de trufa. En pan de trufa con champiñones Portobello, cebolla pochada y  lascas de queso Grana Padano y acompañada de patatas dipper y queso parmesano, Mayo Truffled, rúcula y tomate.', 'Principal', '12.90'),
-(82, ' FOSTER CAESAR BURGER', 'Carne de vacuno con queso grana padano, bourbon style bacon, lechuga romana, tomate, salsa parmesana y pan rústico de semillas.', 'Principal', '12.90'),
-(83, 'GORGONZOLA BURGER', 'Gorgonzola fundido, cebolla caramelizada, nueces, tomate, rúcula, mayonesa balsámica y pan rústico de semillas', 'Principal', '11.90'),
-(84, 'PHILADELPHIA ONION BURGER', '\r\nPhiladelphia, cebolla caramelizada, tomate en rodajas, carne de vacuno, mezcla de lechugas, mayonesa y pan clásico.', 'Principal', '11.90'),
-(85, 'TRIBECA BURGER', 'Queso monterrey jack, aguacate y cebolla caramelizada sobre carne de vacuno, rúcula, tomate, salsa de miel mostaza y pan rústico de semillas.', 'Principal', '11.90'),
-(86, 'PULLED PORK BURGER', 'Carne de cerdo deshilachada sobre hamburguesa de vacuno con salsa BBQ, queso Cheddar, tomate y lechuga batavia. Con pan clásico y salsa Mayo Smoked Bacon.', 'Principal', '11.90'),
-(87, 'THE VEGGIE BURGER', 'Burger de arroz integral, quinoa, beans, salsa BBQ, lechuga trocadero, tomate, aguacate, cebolla morada, maíz, mayonesa garden y queso monterrey jack. En pan rústico de semillas. ', 'Principal', '11.90'),
-(88, 'BBQ EGG BURGER', '¡Con huevo a la plancha! Cebolla pochada, bacon ahumado con madera de haya, lechuga batavia, tomate, salsa barbacoa y, por supuesto, carne de vacuno en pan clásico.', 'Principal', '11.90'),
-(89, 'DIRECTOR’S CHOICE', 'Director’s Choice, tu Burger de siempre, ahora con los ingredientes que prefieras. Pide nuestra receta recomendada Foster’s Hollywod: Carne de vacuno con queso Cheddar, bacon ahumado con madera de haya, cebolla morada a la plancha, tomate, lechuga Batavia, pan clásico y mayonesa. Además, ¡personal', 'Principal', '10.90'),
-(90, ' DIRECTOR’S CHICKEN BURGER', 'Filete de pechuga de pollo a la parrilla, queso Cheddar fundido, bacon, mezcla de lechugas, cebolla morada, tomate en rodajas, mayonesa y pan clásico.', 'Principal', '10.90'),
-(91, 'BACON BURGER', 'Bacon, carne de vacuno, patatas fritas, mezcla de lechugas, tomate en rodajas, mayonesa y pan clásico.', 'Principal', '10.90'),
-(92, 'CHEESE BURGER', 'Queso cheddar fundido sobre carne de vacuno, lechuga batavia, tomate, mayonesa y pan clásico.', 'Principal', '9.95'),
+(58, 'FAJITAS EL PASO', '\r\nCarne de vacuno, pollo o mixtas. Servidas en una sartén caliente y cocinadas con cebolla y pimientos. Envuelve todo en las tortillas de harina de tr', 'Tex Mex', '11.90'),
+(59, 'CHICKEN ENCHILADA', 'Tortilla roja de trigo y tomate, rellena de pollo a la parrilla, mix de quesos fundidos y salsa Satay, coronada con salsa\r\nde tomatillo verde ligerame', 'Tex Mex', '11.90'),
+(60, 'BURRITO MONTERREY', 'Tortilla de trigo y tomate rellena de tiras de pechuga de pollo marinada a la parrilla, arroz salvaje, mix de quesos, maíz y vinagreta Garden.', 'Tex Mex', '11.90'),
+(61, 'SONORA CHICKEN TACOS', 'Tortillas de trigo rellenas de pechuga marinada a la parrilla con ensalada campestre, mix de quesos, vinagreta Garden y lima. Con arroz salvaje y sals', 'Tex Mex', '11.90'),
+(62, 'CALIFORNIA SALAD', 'Aquí eres tú el que elige: pide tu Ensalada California clásica o vegetariana. Mezcla de lechugas, queso Feta, arroz basmati, tomates cherry, aguacate, nueces y maíz, coronado con delicioso pollo a la parrilla con especias BBQ, servido con vinagreta Gingersoy y cilantro.', 'Ensaladas', '11.90'),
+(63, 'FOSTER CAESAR SALAD', 'Pechuga de pollo a la parrilla, lechuga romana, croutons, queso grana padano, aliñado con salsa parmesana.', 'Ensaladas', '11.90'),
+(64, 'MEDITERRANEAN SALAD', 'Paleta ibérica en tiras, queso de cabra, tomates cherry y pasas sobre mezcla de lechugas. Alíñala con la salsa que más te guste, mostaza y miel, aceite y vinagre o nuestra vinagreta dulce Vin Brulé con matices de vino.', 'Ensaladas', '11.90'),
+(65, 'SANTA MÓNICA', 'Pollo empanado en trozos, bacon crujiente, mezcla de quesos rallados y tomate sobre una mezcla de lechugas. Elige tu salsa entre susa, queso azul, mostaza y miel o aceite y vinagre.', 'Ensaladas', '11.90'),
+(66, ' THE NEWYORKER 325 GRS', 'Jugoso entrecotte sazonado y preparado en nuestra parrilla. Servido con nuestra deliciosa salsa Steakhouse.', 'Carnes', '14.90'),
+(67, 'FLANK STEAK 300 GRS', 'Corte argentino, vacío de vacuno marinado en cerveza negra. Preparado a la parrilla con carbón vegetal y acompañado con salsa Steakhouse.', 'Carnes', '14.90'),
+(68, 'SALISBURY STEAKS', 'Sabrosa carne de vacuno aderezada, servida con salsa de champiñones, cebolla pochada y mezcla de quesos fundidos. No te pierdas nuestro delicioso Salisbury Steak acompañado de ensalada de lechuga, tomate y jalapeños.', 'Carnes', '14.90'),
+(69, 'BEEF BONE', 'Carne de vacuno cocinada lentamente y terminada a la parrilla con salsa BBQ, con cebolla frita, tomate cherry y cilantro. Con 4 tortillas de trigo para montar tus propios tacos con salsa Smoked Red Pepper, pico de gallo, guacamole y lima. Con patatas Dipper, cebollino y salsa Smoked Red Pepper.', 'Carnes', '14.90'),
+(70, 'NATIONAL STAR RIBS', 'El mejor costillar.', 'Costillas', '16.90'),
+(71, 'CAVATAPPI CHICKEN PASTA', 'Pasta con crema elaborada con nata, mezcla de queso, cebolla caramelizada y salsa Búfalo picante. Te servimos nuestro Cavatappi Chicken Pasta con pechuga de pollo al estilo cajún o la parrilla y tostadas de pan.', 'Pollo', '12.90'),
+(72, 'TERIYAKI CHICKEN BROCHETTE', 'Brochetas de pollo rebozados y especiados, pimiento rojo, pimiento verde y cebolla pochada, con salsa teiyaki sobre arroz basmati, con semillas de sésamo y cilantro.', 'Pollo', '10.90'),
+(73, 'CHICKEN & RICE WOK', 'Pops de pollo rebozados y especiados, caramelizados con salsa Teriyaki, pimiento rojo y verde, cebolla pochada y arroz Basmati. Coronado con semillas de sésamo y cilantro. ', 'Pollo', '11.90'),
+(74, 'CAESAR SANDWICH', 'Pechuga de pollo a la parrilla, bacon crujiente, lechuga romana y salsa parmesana en pan con semillas y copos de avena.', 'Sándwiches', '10.90'),
+(75, 'SOUTHERN CHICKEN SANDWICH', 'Contramuslos de pollo rebozados al estilo sureño con pan Pretzel, lechuga trocadero, tomate, queso Cheddar y bacon ahumado con madera de haya. Con salsa de miel mostaza, pepinillo picado, mango y un toque de yuzu, jugo oriental que aporta el contraste dulce-ácido.', 'Sándwiches', '11.90'),
+(76, 'PULLED PORK SANDWICH', 'El Pulled Pork Sandwich, renovado: carne de cerdo deshilachada, con salsa BBQ, cheddar ahumado, lechuga romana aderezada con salsa Yuzu y pepinillos con toques dulces y ácidos. Servidos con nuestras patatas Dipper. La combinación perfecta de sabores.', 'Sándwiches', '11.90'),
+(77, 'BLACK LABEL BURGER', 'Disfruta la receta original de la Black Label Burger: Pan con sabor a trufa, queso Cheddar y cebolla morada confitada al Oporto. Acompañado de mayonesa con sabor a trufa, lechuga trocadero, tomate, pepinillo pickle y patatas fritas con queso Parmigiano Reggiano. Puedes cambiar las patatas fritas por', 'Hamburguesas', '14.90'),
+(78, 'RACLETTE BURGER', 'Carne de vacuno, pan rústico con semillas, salsa Mayo Chipotle, salteado de cebolla y pimientos, pepinillos, cebolla frita y bacon crispy. Acompañada de patatas Dipper y salsa Mayo Chipotle.', 'Hamburguesas', '13.90'),
+(79, 'ORLEANS BURGER', 'Pollo rebozado al estilo sureño sobre base de guacamole y coronado con chili con carne, servido en pan de cristal, acompañada de patatas Dipper. Y antes de que disfrutes del primer mordisco, la culminamos en tu mesa rallando queso Cheddar madurado.', 'Hamburguesas', '13.90'),
+(80, 'SMOKED BURGER', 'Prueba la carne de nuestra Smoked Burger, ahumada artesanalmente al estilo Low & Slow con humo de nogal. En pan de cristal, servida con salsa Mayo Smoked Bacon, queso Cheddar ahumado y cebolla pochada, acompañado de patatas Dipper con especias BBQ, lechuga trocadero, tomate, rúcula y pepinillo pickl', 'Hamburguesas', '12.90'),
+(81, ' TRUFFLED BURGER', 'Carne de vacuno con boletus y aceite de trufa. En pan de trufa con champiñones Portobello, cebolla pochada y  lascas de queso Grana Padano y acompañada de patatas dipper y queso parmesano, Mayo Truffled, rúcula y tomate.', 'Hamburguesas', '12.90'),
+(82, ' FOSTER CAESAR BURGER', 'Carne de vacuno con queso grana padano, bourbon style bacon, lechuga romana, tomate, salsa parmesana y pan rústico de semillas.', 'Hamburguesas', '12.90'),
+(83, 'GORGONZOLA BURGER', 'Gorgonzola fundido, cebolla caramelizada, nueces, tomate, rúcula, mayonesa balsámica y pan rústico de semillas', 'Hamburguesas', '11.90'),
+(84, 'PHILADELPHIA ONION BURGER', '\r\nPhiladelphia, cebolla caramelizada, tomate en rodajas, carne de vacuno, mezcla de lechugas, mayonesa y pan clásico.', 'Hamburguesas', '11.90'),
+(85, 'TRIBECA BURGER', 'Queso monterrey jack, aguacate y cebolla caramelizada sobre carne de vacuno, rúcula, tomate, salsa de miel mostaza y pan rústico de semillas.', 'Hamburguesas', '11.90'),
+(86, 'PULLED PORK BURGER', 'Carne de cerdo deshilachada sobre hamburguesa de vacuno con salsa BBQ, queso Cheddar, tomate y lechuga batavia. Con pan clásico y salsa Mayo Smoked Bacon.', 'Hamburguesas', '11.90'),
+(87, 'THE VEGGIE BURGER', 'Burger de arroz integral, quinoa, beans, salsa BBQ, lechuga trocadero, tomate, aguacate, cebolla morada, maíz, mayonesa garden y queso monterrey jack. En pan rústico de semillas. ', 'Hamburguesas', '11.90'),
+(88, 'BBQ EGG BURGER', '¡Con huevo a la plancha! Cebolla pochada, bacon ahumado con madera de haya, lechuga batavia, tomate, salsa barbacoa y, por supuesto, carne de vacuno en pan clásico.', 'Hamburguesas', '11.90'),
+(89, 'DIRECTOR’S CHOICE', 'Director’s Choice, tu Burger de siempre, ahora con los ingredientes que prefieras. Pide nuestra receta recomendada Foster’s Hollywod: Carne de vacuno con queso Cheddar, bacon ahumado con madera de haya, cebolla morada a la plancha, tomate, lechuga Batavia, pan clásico y mayonesa. Además, ¡personal', 'Hamburguesas', '10.90'),
+(90, ' DIRECTOR’S CHICKEN BURGER', 'Filete de pechuga de pollo a la parrilla, queso Cheddar fundido, bacon, mezcla de lechugas, cebolla morada, tomate en rodajas, mayonesa y pan clásico.', 'Hamburguesas', '10.90'),
+(91, 'BACON BURGER', 'Bacon, carne de vacuno, patatas fritas, mezcla de lechugas, tomate en rodajas, mayonesa y pan clásico.', 'Hamburguesas', '10.90'),
+(92, 'CHEESE BURGER', 'Queso cheddar fundido sobre carne de vacuno, lechuga batavia, tomate, mayonesa y pan clásico.', 'Hamburguesas', '9.95'),
 (93, 'ALL STAR BROWNIE', 'Brownie caliente de chocolate, acompañado de helado de vainilla, cubierto con nueces y nuestra salsa de chocolate caliente.', 'Postre', '7.95'),
 (94, 'CHEESE & CHOCOLATE CAKE', 'Tarta de queso con una base de bizcocho de chocolate, servida con nata y chocolate caliente.', 'Postre', '6.95'),
 (95, 'PANCAKES PARADISE', 'Tortitas servidas con nata, plátano, nueces, pepitas de chocolate negro y bañadas en sirope de arce y dulce de leche.', 'Postre', '8.95'),
@@ -351,18 +376,96 @@ INSERT INTO `producto` (`ID_PRODUCTO`, `NOMBRE_PRODUCTO`, `DESCRIPCION_PRODUCTO`
 (192, 'TORTITAS CON OREO', 'Con salsa de chocolate blanco, plátano natural y trocitos de Oreo.', 'Postre', '5.00'),
 (193, 'TORTITAS VIPS', 'Tortitas recién hechas con nata montada VIPS y sirope de chocolate.', 'Postre', '5.00'),
 (194, 'BATIDO CON OREO', 'Batido de helado de chocolate blanco, galletas Oreo y nata montada VIPS.', 'Postre', '4.00'),
-(195, 'BROWNIE', 'Bizcocho caliente de chocolate, con nueces, cubierto por un helado de vainilla y con salsa de chocolate fundido.', 'Postre', '5.00');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `productos_menu`
---
-
-CREATE TABLE `productos_menu` (
-  `ID_MENU` int(11) NOT NULL,
-  `ID_PRODUCTO` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(195, 'BROWNIE', 'Bizcocho caliente de chocolate, con nueces, cubierto por un helado de vainilla y con salsa de chocolate fundido.', 'Postre', '5.00'),
+(196, 'Ensalada Wakame Sunomono', 'Ensalada japonesa con algas, lechuga, gambas y con granitos de sésamo\r\nContiene crustáceos y sésamo ', 'Ensaladas', '8.00'),
+(197, 'Ensalada Jade ', 'Lechuga, soja, zanahoria, espárragos y jamón york ', 'Ensaladas', '6.00'),
+(198, 'Ensalada Tropical', 'Gambas y sésamo\r\nContiene crustáceos, huevos y sésamo ', 'Ensaladas', '7.00'),
+(199, 'Ensalada Japonesa Kimuchi ', 'De atún y salmón ', 'Ensaladas', '9.00'),
+(200, 'Ensalada Goma Wakame', 'Algas picantes ', 'Ensaladas', '7.00'),
+(201, 'Solomillo de Ternera ', 'Contiene soja ', 'Plancha Japonesa', '15.00'),
+(202, 'Gambas Teppanyaki ', 'Contiene crustáceos y soja ', 'Plancha Japonesa', '10.00'),
+(203, 'Brochetas de Gambas ', 'Contiene gluten - cereales, crustáceos y soja ', 'Plancha Japonesa', '10.00'),
+(204, 'Muslo de Pollo ', 'Contiene soja y sésamo', 'Plancha Japonesa', '8.00'),
+(205, 'Yakitori de Pollo', 'Contiene soja y sésamo', 'Plancha Japonesa', '8.00'),
+(206, 'Magret de Pato ', 'Contiene soja ', 'Plancha Japonesa', '12.00'),
+(207, 'Langostinos ', 'Contiene crustáceos y soja', 'Plancha Japonesa', '13.23'),
+(208, 'Teppanyaki de Verduras ', 'Contiene soja', 'Plancha Japonesa', '7.21'),
+(209, 'Rollitos de Solomillo y Espárragos Natur', 'Contiene soja ', 'Plancha Japonesa', '10.34'),
+(210, 'Udon ', 'Tallarines japoneses al teppanyaki\r\nContiene soja y sésamo ', 'Plancha Japonesa', '7.23'),
+(211, 'Tallarines Teppanyaki', 'Contiene soja y sésamo', 'Plancha Japonesa', '7.44'),
+(212, 'Pollo con Almendras', 'Contiene gluten - cereales y soja ', 'Especialidades', '7.56'),
+(213, 'Pato Pekinés, Para 2 Personas ', 'Servido con crepes, tiras de pepino, cebollín chino y acompañando con nuestra salsa especialidad del chef\r\nContiene gluten - cereales y soja', 'Especialidades', '23.56'),
+(214, 'Pato Cantonés', 'Contiene gluten - cereales y soja', 'Especialidades', '10.87'),
+(215, 'Wok de Pollo con Brócoli', 'Contiene soja ', 'Especialidades', '7.23'),
+(216, 'Pollo Konpao', 'Contiene cacahuetes y soja', 'Especialidades', '7.23'),
+(217, 'Limón Thai ', 'Pollo al limón estilo cantonés', 'Especialidades', '8.54'),
+(218, 'Pollo Frito Almendrado', 'Contiene gluten - cereales', 'Especialidades', '8.45'),
+(219, 'Pollo al Estilo Chef', 'Salteado con pimientos rojos y verdes, aceite de cacahuetes y un toque de limón\r\nContiene cacahuetes ', 'Especialidades', '7.45'),
+(220, 'Lonchas de Buey con Bambú y Setas ', 'Contiene soja ', 'Especialidades', '9.45'),
+(221, 'Gambas Picantes Thai ', 'Contiene crustáceos', 'Especialidades', '9.45'),
+(222, 'Gambas con Bambú y Setas', 'Contiene crustáceos y soja', 'Especialidades', '9.17'),
+(223, 'Arroz Cantonés ', 'Contiene crustáceos, huevos y soja', 'Arroces, Pastas y  Verduras', '6.87'),
+(224, 'Arroz Frito Balinés ', 'Contiene crustáceos, huevos y soja ', 'Arroces, Pastas y  Verduras', '6.65'),
+(225, 'Arroz Tres Delicias ', 'Contiene huevos', 'Arroces, Pastas y  Verduras', '5.87'),
+(226, 'Arroz al Curry Thai', 'Contiene huevos y soja', 'Arroces, Pastas y  Verduras', '6.21'),
+(227, 'Fideos de Singapur ', 'Contiene soja ', 'Arroces, Pastas y  Verduras', '7.54'),
+(228, 'Tallarines Jade ', 'Contiene soja', 'Arroces, Pastas y  Verduras', '7.54'),
+(229, 'Pad Thai ', 'Tallarines esitlo thai\r\nContiene soja ', 'Arroces, Pastas y  Verduras', '7.32'),
+(230, 'Teppanyaki de Teppanyaki de Arroz con So', 'Contiene huevos y soja ', 'Arroces, Pastas y  Verduras', '9.12'),
+(231, 'Tofu Estilo Sichuang ', 'Tofu y picado de cerdo\r\nContiene soja ', 'Arroces, Pastas y  Verduras', '6.34'),
+(232, 'Teppanyaki de Arroz con Salmón y Verdura', 'Contiene: huevo y sojas', 'Arroces, Pastas y  Verduras', '9.23'),
+(233, 'Edamame ', 'Judías de soja al vapor ', 'Entrantes', '4.42'),
+(234, 'Pan Chino ', 'Pan de la casa', 'Entrantes', '1.43'),
+(235, 'Entremeses Asian´s ', '2 Wan -Tun frito,  2 Langostino Frito, 2 Bolsitas de Langostinos, 2 Samosas, 2 Bolitas de Arroz y 2 Pho Pbia', 'Entrantes', '9.42'),
+(236, 'Rollito de Primavera', 'Contiene gluten - cereales ', 'Entrantes', '2.56'),
+(237, 'Pho Pbia ', 'Rollito frito de verduras y setas. Se enrolla en la lechuga y se añade un toque de menta\r\nContiene gluten - cereales', 'Entrantes', '4.54'),
+(238, 'Wan-Tun Frito', 'Bolsita rellena de carne, verduras y queso\r\nContiene gluten - cereales y leche ', 'Entrantes', '4.21'),
+(239, 'Samosa', 'Pasta frita con relleno de pollo, salsa curry y verduras\r\nContiene gluten - cereales ', 'Entrantes', '4.12'),
+(240, 'Gyoza', 'Empanadillas japonesas fritas\r\nContiene gluten - cereales y soja', 'Entrantes', '4.54'),
+(241, 'Langostinos Fritos Thai ', 'Contiene gluten - cereales y crustáceos', 'Entrantes', '6.67'),
+(242, 'Bolitas de Arroz Japonés Frito Envuelto ', 'Contiene sésamo', 'Entrantes', '4.43'),
+(243, 'Alitas Pollo Frito con Sesamon', 'Contiene: Soja, glutin y sesamon ', 'Entrantes', '3.23'),
+(244, 'Sushi de Pez Mantequilla', 'Sushi de Pez Mantequilla', 'Sushi', '1.67'),
+(245, 'Sushi de Tobico', 'Sushi de Tobico', 'Sushi', '2.87'),
+(246, 'Sushi Variado', 'Contiene crustáceos ', 'Sushi', '12.21'),
+(247, 'Sushi y Sashimi Variado en Barco ', 'Contiene crustáceos', 'Sushi', '26.34'),
+(248, 'Sashimi Variado ', 'Contiene crustáceos', 'Sushi', '17.20'),
+(249, 'Sushi de Atún', 'Sushi de Atún', 'Sushi', '2.13'),
+(250, 'Sushi de Anguila', 'Sushi de Anguila', 'Sushi', '2.54'),
+(251, 'Sushi de Salmón', 'Sushi de Salmón', 'Sushi', '1.65'),
+(252, 'Sushi de Kiwi', 'Sushi de Kiwi', 'Sushi', '1.65'),
+(253, 'Sushi de Lubina', 'Sushi de Lubina', 'Sushi', '1.32'),
+(254, 'Sushi de Pulpo', 'Sushi de Pulpo,contiene moluscos', 'Sushi', '1.89'),
+(255, 'Sushi de Langostinos', 'Sushi de Langostinos, contiene crustáceos', 'Sushi', '1.34'),
+(256, 'Sensación de Limón ', 'Helado de limoncello y sorbete de limón ', 'Postre', '4.45'),
+(257, 'Sensación de Frutos Rojos ', 'Helado de queso fresco y sorbete de frambuesa decorado con frutas del bosque ', 'Postre', '4.43'),
+(258, 'Coulant', 'Bizcocho de chocolate con chocolate fundido en su interior ', 'Postre', '3.85'),
+(259, 'Tiramisú', 'Bizcocho savoardi con café, relleno de queso mascarpone y con cacao en polvo ', 'Postre', '3.96'),
+(260, 'Big Mac', 'Dos jugosas hamburguesas de carne 100% vacuno español, lechuga fresca y crujiente, cebolla, pepinillo, queso Cheddar fundido y nuestra inimitable salsa secreta. Todo esto envuelto en un nuevo pan de sésamo horneado al estilo tradicional.', 'Hamburguesas', '8.32'),
+(261, 'McPollo', 'El ineludible bocado de pollo crujiente\r\nCrujiente pollo con mayonesa y lechuga, en pan con semilla de sésamo.', 'Hamburguesas', '7.67'),
+(262, 'Cuarto de Libra', 'Seguro que eres fanático de una de las hamburguesas más míticas de McDonald’s. ¿Quién puede no rendirse ante su tradicional receta de carne, doble de queso, pepinillo, cebolla en tiras, kétchup y mostaza?', 'Hamburguesas', '7.98'),
+(263, 'CBO', 'Disfruta en McDonald’s de CBO™, deliciosa hamburguesa con tus tres ingredientes favoritos: Chicken, Bacon, Onion. Delicioso pollo, crujiente bacon y el sabor sorprendente de nuestro crispy onion, con lechuga, queso, una salsa original y un pan único.', 'Hamburguesas', '8.43'),
+(264, 'Grand McExtreme Bacon', 'Disfruta de su deliciosa carne 100% vacuno español acompañada de queso Gouda, bacon, cebolla blanca y nuestra inconfundible salsa de bacon. Nuestra Grand McExtreme más emblemática, ahora con una carne más jugosa y sabrosa.', 'Hamburguesas', '8.10'),
+(265, 'Grand McExtreme Double Bacon', 'Disfruta el doble con su deliciosa carne 100% vacuno español acompañada de queso Gouda, bacon, cebolla blanca y nuestra inconfundible salsa de bacon. Nuestra Grand McExtreme más emblemática, ahora con mucho más de lo que te gusta.', 'Hamburguesas', '9.10'),
+(266, 'Hamburguesa de ternera', 'La más pequeña de la gama ideal para Happy Meal, una hamburguesa de carne de vacuno, kétchup, mostaza, cebolla y pepinillo. ', 'Hamburguesas', '1.50'),
+(267, 'Chicken Burger BBQ', 'Hamburguesa de delicioso filete de pollo crujiente con lechuga y salsa BBQ. Vuelve a disfrutar de la Chicken Burger BBQ en McDonald\'s.', 'Hamburguesas', '1.50'),
+(268, 'Hamburguesa con queso', 'Nuestra Cheeseburger con kétchup, mostaza, cebolla, pepinillo y queso fundido tipo Cheddar.', 'Hamburguesas', '2.00'),
+(269, 'Chicken & Cheese', 'Delicioso filete de pollo crujiente con lechuga, salsa BBQ y queso fundido tipo chedar.', 'Hamburguesas', '2.00'),
+(270, 'Happy Meal 4 McNuggets de pollo', 'Deliciosos bocaditos de pollo rebozado complementados con fruta, verdura y una bebida,', 'Happy Meal', '3.95'),
+(271, 'Happy Meal Chicken Burger Kids', 'Sabrosa hamburguesa de pollo crujiente acompañada con patatas o verduras, postre y bebida.', 'Happy Meal', '3.95'),
+(272, 'Happy Meal Hamburguesa de ternera', 'Nuestra hamburguesa de carne con deliciosos happy cherritos, fruta y bebida.', 'Happy Meal', '3.95'),
+(273, 'Patatas Fritas', 'Son las estrellas del restaurante\r\nFritas con aceite vegetal, sabrosas y doradas, se sirven con ketchup o mostaza.', 'Complementos', '1.50'),
+(274, 'Patatas Deluxe', 'Estos sabrosos gajos de patata especiadas, servidas con piel y acompañadas de una salsa especial a la cebolleta, son una alternativa a las famosas patatas fritas. ', 'Complementos', '2.00'),
+(275, 'Chicken McBites x15', 'Chicken McBites\r\nAhora podrás disfrutar de 15 pequeños bocados de crujiente pollo rebozado a un precio increíble. Chicken McBites a pedir de boca.', 'Complementos', '5.40'),
+(276, 'Maxi Bucket 25 McNuggets', 'Comparte A LO GRANDE. Disfruta en compañía de nuestras clásicas delicias de pollo rebozado ¡Tan irresistibles como el primer día! ', 'Complementos', '9.75'),
+(277, 'Happy Cherritos', 'Disfruta de nuestros sabrosos cherritos como complemento ideal para tu Happy Meal', 'Complementos', '3.98'),
+(278, 'Alitas de pollo x5', 'Sabrosas alitas de pollo en McDonald\'s\r\n¿Quien puede resistirse a las deliciosas alitas de pollo crujientes, con su inconfundible sabor barbacoa, para tomar solo o para compartir con quien tú quieras?. ¡No te resistirás!', 'Complementos', '4.20'),
+(279, 'Maxi Bucket 10 Alitas +15 McNuggets', 'Si eres de los indecisos, ahora puedes combinar A LO GRANDE nuestras clásicas delicias de pollo y nuestras irresistibles alitas de pollo crijiente. ¡No te resistirás!', 'Complementos', '9.50'),
+(280, 'McFlurry KitKat', '¿Se te ocurre alguna forma mejor de desconectar?. Añade Kit Kat a tu McFlurry y disfruta de ese delicioso momento.', 'Postre', '4.20'),
+(281, 'McFlurry Oreo', '¿Se te ocurre alguna forma mejor de desconectar?. Añade Oreo a tu McFlurry y disfruta de ese delicioso momento.', 'Postre', '4.20'),
+(282, 'Sundae chocolate', '¿Eres un fan de los clásicos?\r\n\r\nRiquísimo helado sabor vainilla combinado con topping de chocolate', 'Postre', '2.50'),
+(283, 'Sundae Caramelo', '¿Eres un fan de los clásicos?\r\n\r\nRiquísimo helado sabor vainilla combinado con topping de caramelo.', 'Postre', '2.50'),
+(284, 'Sundae Chocolate Blanco', 'Ahora nuestro Sundae se viste de blanco.\r\n\r\nRiquísimo helado sabor vainilla combinado con topping de chocolate blanco.', 'Postre', '2.50');
 
 -- --------------------------------------------------------
 
@@ -1049,7 +1152,179 @@ INSERT INTO `producto_restaurante` (`ID_PRODUCTO`, `ID_RESTAURANTE`) VALUES
 (194, 'VIPV'),
 (195, 'VIPG'),
 (195, 'VIPM'),
-(195, 'VIPV');
+(195, 'VIPV'),
+(196, 'JACO'),
+(197, 'JACO'),
+(198, 'JACO'),
+(199, 'JACO'),
+(200, 'JACO'),
+(201, 'JACO'),
+(202, 'JACO'),
+(203, 'JACO'),
+(204, 'JACO'),
+(205, 'JACO'),
+(37, 'JACO'),
+(38, 'JACO'),
+(39, 'JACO'),
+(40, 'JACO'),
+(41, 'JACO'),
+(42, 'JACO'),
+(43, 'JACO'),
+(44, 'JACO'),
+(206, 'JACO'),
+(207, 'JACO'),
+(208, 'JACO'),
+(209, 'JACO'),
+(210, 'JACO'),
+(211, 'JACO'),
+(212, 'JACO'),
+(213, 'JACO'),
+(214, 'JACO'),
+(215, 'JACO'),
+(216, 'JACO'),
+(217, 'JACO'),
+(218, 'JACO'),
+(219, 'JACO'),
+(220, 'JACO'),
+(221, 'JACO'),
+(222, 'JACO'),
+(223, 'JACO'),
+(224, 'JACO'),
+(225, 'JACO'),
+(226, 'JACO'),
+(227, 'JACO'),
+(228, 'JACO'),
+(229, 'JACO'),
+(230, 'JACO'),
+(231, 'JACO'),
+(232, 'JACO'),
+(233, 'JACO'),
+(234, 'JACO'),
+(235, 'JACO'),
+(236, 'JACO'),
+(237, 'JACO'),
+(238, 'JACO'),
+(239, 'JACO'),
+(240, 'JACO'),
+(241, 'JACO'),
+(242, 'JACO'),
+(243, 'JACO'),
+(244, 'JACO'),
+(245, 'JACO'),
+(246, 'JACO'),
+(247, 'JACO'),
+(248, 'JACO'),
+(249, 'JACO'),
+(250, 'JACO'),
+(251, 'JACO'),
+(252, 'JACO'),
+(253, 'JACO'),
+(254, 'JACO'),
+(255, 'JACO'),
+(256, 'JACO'),
+(257, 'JACO'),
+(258, 'JACO'),
+(259, 'JACO'),
+(260, 'MCDG'),
+(261, 'MCDG'),
+(262, 'MCDG'),
+(263, 'MCDG'),
+(264, 'MCDG'),
+(265, 'MCDG'),
+(266, 'MCDG'),
+(267, 'MCDG'),
+(268, 'MCDG'),
+(269, 'MCDG'),
+(270, 'MCDG'),
+(271, 'MCDG'),
+(272, 'MCDG'),
+(273, 'MCDG'),
+(274, 'MCDG'),
+(275, 'MCDG'),
+(276, 'MCDG'),
+(277, 'MCDG'),
+(278, 'MCDG'),
+(279, 'MCDG'),
+(280, 'MCDG'),
+(281, 'MCDG'),
+(282, 'MCDG'),
+(283, 'MCDG'),
+(284, 'MCDG'),
+(260, 'MCDM'),
+(261, 'MCDM'),
+(262, 'MCDM'),
+(263, 'MCDM'),
+(264, 'MCDM'),
+(265, 'MCDM'),
+(266, 'MCDM'),
+(267, 'MCDM'),
+(268, 'MCDM'),
+(269, 'MCDM'),
+(270, 'MCDM'),
+(271, 'MCDM'),
+(272, 'MCDM'),
+(273, 'MCDM'),
+(274, 'MCDM'),
+(275, 'MCDM'),
+(276, 'MCDM'),
+(277, 'MCDM'),
+(278, 'MCDM'),
+(279, 'MCDM'),
+(280, 'MCDM'),
+(281, 'MCDM'),
+(282, 'MCDM'),
+(283, 'MCDM'),
+(284, 'MCDM'),
+(260, 'MCDP'),
+(261, 'MCDP'),
+(262, 'MCDP'),
+(263, 'MCDP'),
+(264, 'MCDP'),
+(265, 'MCDP'),
+(266, 'MCDP'),
+(267, 'MCDP'),
+(268, 'MCDP'),
+(269, 'MCDP'),
+(270, 'MCDP'),
+(271, 'MCDP'),
+(272, 'MCDP'),
+(273, 'MCDP'),
+(274, 'MCDP'),
+(275, 'MCDP'),
+(276, 'MCDP'),
+(277, 'MCDP'),
+(278, 'MCDP'),
+(279, 'MCDP'),
+(280, 'MCDP'),
+(281, 'MCDP'),
+(282, 'MCDP'),
+(283, 'MCDP'),
+(284, 'MCDP'),
+(260, 'MCDV'),
+(261, 'MCDV'),
+(262, 'MCDV'),
+(263, 'MCDV'),
+(264, 'MCDV'),
+(265, 'MCDV'),
+(266, 'MCDV'),
+(267, 'MCDV'),
+(268, 'MCDV'),
+(269, 'MCDV'),
+(270, 'MCDV'),
+(271, 'MCDV'),
+(272, 'MCDV'),
+(273, 'MCDV'),
+(274, 'MCDV'),
+(275, 'MCDV'),
+(276, 'MCDV'),
+(277, 'MCDV'),
+(278, 'MCDV'),
+(279, 'MCDV'),
+(280, 'MCDV'),
+(281, 'MCDV'),
+(282, 'MCDV'),
+(283, 'MCDV'),
+(284, 'MCDV');
 
 -- --------------------------------------------------------
 
@@ -1073,31 +1348,31 @@ CREATE TABLE `restaurante` (
 --
 
 INSERT INTO `restaurante` (`ID_RESTAURANTE`, `NOMBRE_RESTAURANTE`, `TELEFONO_RESTAURANTE`, `DIRECCION_RESTAURANTE`, `LOCALIDAD_RESTAURANTE`, `EMAIL_RESTAURANTE`, `ESPECIALIDAD_RESTAURANTE`, `DESTACADO_RESTAURANTE`) VALUES
-('DPAL', 'Domino\'s Pizza', '910900973', 'Calle Pablo Picasso, 40, 28922 Alcorcón, Madrid', 'Alcorcón', 'DominosPizzaAlcorcon@gmail.com', 'Pizzas', 1),
-('DPFU', 'Domino\'s Pizza', '916085663', 'Av. de Europa, 14, 28943 Fuenlabrada, Madrid', 'Fuenlabrada', 'DominosPizzaFuenlabrada@gmai.com', 'Pizzas', 1),
-('DPMA', 'Domino\'s Pizza', '916840212', 'Calle Arboleda, 24, 28901 Madrid', 'Madrid', 'DominosPizzaMadrid@gmail.com', 'Pizzas', 1),
-('DPPI', 'Domino\'s Pizza', '910901532', 'Av. de Antonio López, 4, 28320 Pinto, Madrid', 'Pinto', 'DominosPizzaPinto@gmail.com', 'Pizzas', 1),
-('DPVA', 'Domino\'s Pizza', '910906177', 'Av. de España, 6, 28342 Valdemoro, Madrid', 'Valdemoro', 'DominosPizzaValdemoro@gmail.com', 'Pizzas', 1),
+('DPAL', 'Domino\'s Pizza', '910900973', 'Calle Pablo Picasso, 40, 28922 Alcorcón, Madrid', 'Alcorcón', 'DominosPizzaAlcorcon@gmail.com', 'Pizzeria', 1),
+('DPFU', 'Domino\'s Pizza', '916085663', 'Av. de Europa, 14, 28943 Fuenlabrada, Madrid', 'Fuenlabrada', 'DominosPizzaFuenlabrada@gmai.com', 'Pizzeria', 1),
+('DPMA', 'Domino\'s Pizza', '916840212', 'Calle Arboleda, 24, 28901 Madrid', 'Madrid', 'DominosPizzaMadrid@gmail.com', 'Pizzeria', 1),
+('DPPI', 'Domino\'s Pizza', '910901532', 'Av. de Antonio López, 4, 28320 Pinto, Madrid', 'Pinto', 'DominosPizzaPinto@gmail.com', 'Pizzeria', 1),
+('DPVA', 'Domino\'s Pizza', '910906177', 'Av. de España, 6, 28342 Valdemoro, Madrid', 'Valdemoro', 'DominosPizzaValdemoro@gmail.com', 'Pizzeria', 1),
 ('FHFU', 'Foster\'s Hollywood', '916075582', 'C.C. La Estación, Calle de Hungría, s / n, 28943 Fuenlabrada, Madrid', 'Fuenlabrada', 'FosterHFuenlabrada@gmail.com', 'Comida Internacional', 0),
 ('FHGE', 'Foster\'s Hollywood', '916213189', 'Nassica Centro Comercial y de Ocio Ctra. de Andalucía, Salida 17, 28906 Getafe, Madrid', 'Getafe', 'FosterHGetafe@gmail.com', 'Comida Internacional', 0),
 ('FHPI', 'Foster\'s Hollywood', '916927967', 'Calle Pablo Picasso, 10, 28320 Pinto, Madrid', 'Pinto', 'FosterHPinto@gmail.com', 'Comida Internacional', 0),
 ('JACO', 'Jade Colonial', '916842062', 'Calle de la Magdalena, 33, 28906 Getafe, Madrid', 'Getafe', 'Jadecolonialgetafe@gmail.com', 'Comida Japonesa', 0),
-('MCDG', 'McDonald\'s', '916213143', 'Avda. Rio Guadalquivir, 18 Centro Comercial Nassica, 28906 Getafe, Madrid', 'Getafe', 'McDonalsGetafe@gmil.com', 'Hamburguesas', 0),
-('MCDM', 'McDonald\'s', '915313711', 'Calle de la Montera, 47, 28013 Madrid', 'Madrid', 'McDonalsMadrid@gmil.com', 'Hamburguesas', 0),
-('MCDP', 'McDonald\'s', '912 91 08 6', 'Ctra. de Andalucía N-IV, Km.20,2 - 28320, 28320 Pinto, Madrid', 'Pinto', 'McDonalsPinto@gmil.com', 'Hamburguesas', 0),
-('MCDV', 'McDonald\'s', '916991992', 'Avda. de España, 4 esquina Emilia Pardo Bazan, 28342 Valdemoro, Madrid', 'Valdemoro', 'McDonalsValdemoro@gmil.com', 'Hamburguesas', 0),
+('MCDG', 'McDonald\'s', '916213143', 'Avda. Rio Guadalquivir, 18 Centro Comercial Nassica, 28906 Getafe, Madrid', 'Getafe', 'McDonalsGetafe@gmil.com', 'Hamburguesería', 0),
+('MCDM', 'McDonald\'s', '915313711', 'Calle de la Montera, 47, 28013 Madrid', 'Madrid', 'McDonalsMadrid@gmil.com', 'Hamburguesería', 0),
+('MCDP', 'McDonald\'s', '912 91 08 6', 'Ctra. de Andalucía N-IV, Km.20,2 - 28320, 28320 Pinto, Madrid', 'Pinto', 'McDonalsPinto@gmil.com', 'Hamburguesería', 0),
+('MCDV', 'McDonald\'s', '916991992', 'Avda. de España, 4 esquina Emilia Pardo Bazan, 28342 Valdemoro, Madrid', 'Valdemoro', 'McDonalsValdemoro@gmil.com', 'Hamburguesería', 0),
 ('OKSU', 'Ok Sushi', '910181920', 'Calle Arboleda, 14, 28901 Getafe, Madrid', 'Getafe', 'Oksushigetafe@gmail.com', 'Comida Japonesa', 0),
-('SDFA', 'Sublime dreams food', '914861073', 'Calle Oslo, 53, 28922 Alcorcón, Madrid', 'Alcorcón', 'Subliemdfalcorcon@gmail.com', 'Hamburguesas', 0),
-('SDFM', 'Sublime dreams food', '910224197', 'Calle de Concepción Jerónima, 28, 28012 Madrid', 'Madrid', 'sublimedfmadrid@gmail.com', 'Hamburguesas', 0),
-('TGBA', 'The Good Burger', '916428312', 'Av. de América, 7, 9, 28922 Alcorcón, Madrid', 'Alcorcón', 'Thegoodburgeralcorcon@gmail.com', 'Hamburguesas', 0),
-('TGBF', 'The Good Burger', '915672170', 'Centro Comercial Plaza Loranca, Av. de Pablo Iglesias, 17, 2', 'Fuenlabrada', 'Thegoodburgerfuenlabrada@gmailcom', 'Hamburguesas', 1),
-('TGBG', 'The Good Burger', '912548209', 'Av. Río Guadalquivir, 13, 28906 Getafe, Madrid', 'Getafe', 'Thegoodburgergetafe@gmailcom', 'Hamburguesas', 1),
-('TGBL', 'The Good Burger', '916850891', 'C.C. Parquesur, Av. de Gran Bretaña, S / N, 28916 Leganés, Madrid', 'Leganés', 'Thegoodburgerleganes@gmail.com', 'Hamburguesas', 1),
-('TGBM', 'The Good Burger', '912081896', 'Calle de Maqueda, 138, 28024 Madrid', 'Madrid', 'Thegoodburgermadrid@gmail.com', 'Hamburguesas', 1),
-('TPGE', 'Telepizza', '916017121', 'Centro Comercial Getafe 3, Av. Juan Carlos I, 3, 28905 Getafe, Madrid', 'Getafe', 'TelepizzaGetafe@gmail.com', 'Pizzas', 0),
-('TPLE', 'Telepizza', '916942011', 'Avenida del Doctor Martín Vegue Jaudenes, 28, 28912 Leganés, Madrid', 'Leganés', 'TelepizzaLeganes@gmail.com', 'Pizzas', 0),
-('TPPI', 'Telepizza', '916926553', 'Plaza de las Mercedes, 4, 28320 Pinto, Madrid', 'Pinto', 'TelepizzaPinto@gmail.com', 'Pizzas', 0),
-('TPVA', 'Telepizza', '918081001', 'Calle Estrella de Elola, 11, 28340 Valdemoro, Madrid', 'Valdemoro', 'TelepizzaValdemoro@gmail.com', 'Pizzas', 0),
+('SDFA', 'Sublime dreams food', '914861073', 'Calle Oslo, 53, 28922 Alcorcón, Madrid', 'Alcorcón', 'Subliemdfalcorcon@gmail.com', 'Hamburguesería', 0),
+('SDFM', 'Sublime dreams food', '910224197', 'Calle de Concepción Jerónima, 28, 28012 Madrid', 'Madrid', 'sublimedfmadrid@gmail.com', 'Hamburguesería', 0),
+('TGBA', 'The Good Burger', '916428312', 'Av. de América, 7, 9, 28922 Alcorcón, Madrid', 'Alcorcón', 'Thegoodburgeralcorcon@gmail.com', 'Hamburguesería', 0),
+('TGBF', 'The Good Burger', '915672170', 'Centro Comercial Plaza Loranca, Av. de Pablo Iglesias, 17, 2', 'Fuenlabrada', 'Thegoodburgerfuenlabrada@gmailcom', 'Hamburguesería', 1),
+('TGBG', 'The Good Burger', '912548209', 'Av. Río Guadalquivir, 13, 28906 Getafe, Madrid', 'Getafe', 'Thegoodburgergetafe@gmailcom', 'Hamburguesería', 1),
+('TGBL', 'The Good Burger', '916850891', 'C.C. Parquesur, Av. de Gran Bretaña, S / N, 28916 Leganés, Madrid', 'Leganés', 'Thegoodburgerleganes@gmail.com', 'Hamburguesería', 1),
+('TGBM', 'The Good Burger', '912081896', 'Calle de Maqueda, 138, 28024 Madrid', 'Madrid', 'Thegoodburgermadrid@gmail.com', 'Hamburguesería', 1),
+('TPGE', 'Telepizza', '916017121', 'Centro Comercial Getafe 3, Av. Juan Carlos I, 3, 28905 Getafe, Madrid', 'Getafe', 'TelepizzaGetafe@gmail.com', 'Pizzeria', 0),
+('TPLE', 'Telepizza', '916942011', 'Avenida del Doctor Martín Vegue Jaudenes, 28, 28912 Leganés, Madrid', 'Leganés', 'TelepizzaLeganes@gmail.com', 'Pizzeria', 0),
+('TPPI', 'Telepizza', '916926553', 'Plaza de las Mercedes, 4, 28320 Pinto, Madrid', 'Pinto', 'TelepizzaPinto@gmail.com', 'Pizzeria', 0),
+('TPVA', 'Telepizza', '918081001', 'Calle Estrella de Elola, 11, 28340 Valdemoro, Madrid', 'Valdemoro', 'TelepizzaValdemoro@gmail.com', 'Pizzeria', 0),
 ('VIPG', 'VIPS', '912156209', 'Av. Río Guadalquivir, 13, 28906 Getafe, Madrid', 'Getafe', 'Vipsgetafe@gmail.com', 'Comida Internacional', 0),
 ('VIPM', 'VIPS', '917283201', 'Calle de la Ribera de Curtidores, 43, 28005 Madrid', 'Madrid', 'Vipsmadrid@gmail.com', 'Comida Internacional', 0),
 ('VIPV', 'VIPS', '916724189', 'Av. de España, 10, 12, 28340 Valdemoro, Madrid', 'Valdemoro', 'Vipsvaldemoro@gmail.com', 'Comida Internacional', 0),
@@ -1113,13 +1388,6 @@ INSERT INTO `restaurante` (`ID_RESTAURANTE`, `NOMBRE_RESTAURANTE`, `TELEFONO_RES
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`ID_CLIENTE`),
   ADD UNIQUE KEY `EMAIL_CLIENTE` (`EMAIL_CLIENTE`);
-
---
--- Indices de la tabla `detalle_pedido_menu`
---
-ALTER TABLE `detalle_pedido_menu`
-  ADD PRIMARY KEY (`NUMERO_PEDIDO`,`ID_MENU`),
-  ADD KEY `ID_MENU` (`ID_MENU`);
 
 --
 -- Indices de la tabla `detalle_pedido_producto`
@@ -1157,13 +1425,6 @@ ALTER TABLE `producto`
   ADD PRIMARY KEY (`ID_PRODUCTO`);
 
 --
--- Indices de la tabla `productos_menu`
---
-ALTER TABLE `productos_menu`
-  ADD PRIMARY KEY (`ID_MENU`,`ID_PRODUCTO`),
-  ADD KEY `ID_PRODUCTO` (`ID_PRODUCTO`);
-
---
 -- Indices de la tabla `producto_restaurante`
 --
 ALTER TABLE `producto_restaurante`
@@ -1184,7 +1445,7 @@ ALTER TABLE `restaurante`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `ID_CLIENTE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID_CLIENTE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `menu`
@@ -1196,24 +1457,17 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `NUMERO_PEDIDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `NUMERO_PEDIDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `ID_PRODUCTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=196;
+  MODIFY `ID_PRODUCTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=285;
 
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `detalle_pedido_menu`
---
-ALTER TABLE `detalle_pedido_menu`
-  ADD CONSTRAINT `detalle_pedido_menu_ibfk_1` FOREIGN KEY (`NUMERO_PEDIDO`) REFERENCES `pedido` (`NUMERO_PEDIDO`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `detalle_pedido_menu_ibfk_2` FOREIGN KEY (`ID_MENU`) REFERENCES `menu` (`ID_MENU`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `detalle_pedido_producto`
@@ -1234,13 +1488,6 @@ ALTER TABLE `menu`
 ALTER TABLE `pedido`
   ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`ID_CLIENTE`) REFERENCES `cliente` (`ID_CLIENTE`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`ID_RESTAURANTE`) REFERENCES `restaurante` (`ID_RESTAURANTE`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `productos_menu`
---
-ALTER TABLE `productos_menu`
-  ADD CONSTRAINT `productos_menu_ibfk_1` FOREIGN KEY (`ID_PRODUCTO`) REFERENCES `producto` (`ID_PRODUCTO`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `productos_menu_ibfk_2` FOREIGN KEY (`ID_MENU`) REFERENCES `menu` (`ID_MENU`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `producto_restaurante`
