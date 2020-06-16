@@ -67,7 +67,7 @@ $restaurantes = DAO::obtenerRestaurantePorEspecialidad($especialidad);
     <?php } ?>
 
 </table>
-
+<a href="../cliente/inicio.php" class="btn btn-dark" style="margin-top: 20px" id="hover">Volver a la página de inicio</a>
 <?php require_once "footer.php" ?>
 </body>
 </html>

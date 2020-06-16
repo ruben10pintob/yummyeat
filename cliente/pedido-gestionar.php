@@ -7,6 +7,10 @@ $direccionCliente = $_REQUEST["direccionCliente"];
 
 DAO::realizarPedido($direccionCliente, $idPedido);
 
+if (empty("$idPedido")){
+    redireccionar("../cliente/inicio.php");
+}
+
 ?>
 
 <!doctype html>

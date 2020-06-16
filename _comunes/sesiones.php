@@ -67,7 +67,7 @@ function garantizarSesion()
                 borrarCookieRecuerdame($_COOKIE["email"]);
 
                 // REDIRIGIR A INICIAR SESIÓN PARA IMPEDIR QUE ESTE USUARIO VISUALICE CONTENIDO PRIVADO.
-                //redireccionar("../cliente/inicio.php");
+                redireccionar("../cliente/inicio.php");
             }
         } else { // NO hay ni sesión, ni cookie, ni formulario enviado.
             // REDIRIGIMOS PARA QUE NO SE VISUALICE CONTENIDO PRIVADO:

@@ -78,21 +78,35 @@ $categoriaProductos = DAO::obtenerCategoriaProductosPorRestaurante($idRestaurant
 
 <h2>Menú y especialidades del restaurante</h2>
 
-    <table class="table-hover" border="1" width="50%" id="tabla">
+    <table class="table-dark" border="1" width="50%" id="tabla">
     <?php foreach ($categoriaProductos as $categorias) { ?>
         <tr>
             <!--<td width="600"><a href="restaurante-detalle.php?id=<?=$idRestaurante?>&categoria=<?=$categorias?>" id="categorias"><?=$categorias?></a><ion-icon name="arrow-down-outline" id="<?=$categorias?>"></ion-icon>-->
             <td width="600"><span><?=$categorias?></span><span class="offset-11"><ion-icon name="arrow-down-outline" id="<?=$categorias?>"></ion-icon></span>
             </td>
             <div id="contenedorProductos">
+        <tr style="display: none" name="<?=$categorias?>">
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Unidades</th>
+        </tr>
         <?php $productosPorCategoria = DAO::obtenerProductosPorCategoria($categorias, $idRestaurante);
         foreach ($productosPorCategoria as $producto) { ?>
-                <tr style="display: none" name="<?=$categorias?>">
-                    <td><?=$producto->getNombre()?></td></a>
+            <form action="carrito-annadir.php?id=?&restaurante=?&Unidades=?" name="form1">
+                <input type="hidden" value="<?=$producto->getId()?>" name="id">
+                <input type="hidden" value="<?=$restaurantePorId->getId()?>" name="restaurante">
+
+            <tr style="display: none" name="<?=$categorias?>">
+                <td><a href="producto-detalle.php?id=<?=$producto->getId()?>&restaurante=<?=$restaurantePorId->getId()?>&categoria=<?=$categoria?>"  id="hover"><?= $producto->getNombre() ?></a></td>
+                <td><?= $producto->getPrecio() ?>€</td>
+                <td><input type="number" name="Unidades" value="1" min="1" placeholder="Unidades del producto" id="Unidades" ></td>
+                <td><input type="submit" name="Enviar" value="Añadir al carrito" class="btn btn-black" id="hover"></td>
                 </tr>
+            </form>
         <?php } ?>
             </div>
         </tr>
+
     <?php } ?>
     </table>
 <!--

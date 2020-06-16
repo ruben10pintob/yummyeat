@@ -50,6 +50,7 @@ $restaurantesPorUbicacion = DAO::obtenerRestaurantePorUbicacion($ubicacion);
                 <?php } ?>
             </div>
         </div>
+    <a href="../cliente/inicio.php" class="btn btn-dark btn-active" role="button" aria-pressed="true" style="margin-top: 100px">Volver a la página de inicio</a>
 </section>
 
 <?php require_once "../cliente/footer.php"?>
