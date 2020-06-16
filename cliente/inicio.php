@@ -91,12 +91,8 @@ if (haySesionIniciada()) {
             <?php foreach ($restaurantesEspecialidad as $especialidad) {?>
             <div class="col-md-4">
                 <div class="restaurantes-cercanos-container">
-                    <div class="restaurantes-cercanos-details">
-                        <a href="#">
-                            <h2><a></a><?=$especialidad?></h2>
-                        </a>
-                    </div>
                     <a href="restaurante-especialidad.php?especialidad=<?=$especialidad?>"><img src="../img/Especialidades/<?=$especialidad?>.jpg" class="img-fluid" alt="<?=$especialidad?>"></a>
+                  </figure>
                 </div>
             </div>
             <?php } ?>

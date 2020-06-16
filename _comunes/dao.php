@@ -161,6 +161,29 @@ class DAO
         return $restaurantes;
     }
 
+    public static function obtenerUbicacionesRestaurante(): array
+    {
+        $ubicaciones = [];
+        $rs = self::ejecutarConsulta("SELECT * FROM restaurante GROUP BY LOCALIDAD_RESTAURANTE", []);
+
+        foreach ($rs as $fila) {
+            $ubicacion = $fila["LOCALIDAD_RESTAURANTE"];
+            array_push($ubicaciones, $ubicacion);
+        }
+
+        return $ubicaciones;
+
+    }
+    public static function obtenerRestaurantesPorEspecialidadYUbicacion(String $localidad, String $especialidad): array
+    {
+
+        $rs = self::ejecutarConsulta("SELECT * FROM restaurante WHERE LOCALIDAD_RESTAURANTE = ? AND ESPECIALIDAD_RESTAURANTE = ?", [$localidad, $especialidad]);
+
+        $restaurantes = self::crearListaDeRestaurante($rs);
+
+        return $restaurantes;
+    }
+
     public static function restauranteObtenerPorId($id)
     {
         $rs = self::ejecutarConsulta("SELECT * FROM restaurante WHERE ID_RESTAURANTE = ?", [$id]);

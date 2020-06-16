@@ -93,16 +93,12 @@ ion-icon{
 }
 
 .restaurantes-cercanos-container img {
-    -moz-transition: all 0.8s;
-    -webkit-transition: all 0.8s;
     transition: all 0.8s;
     height: 330px;
     width: 800px;
 }
 
 .restaurantes-cercanos-container:hover img {
-    -moz-transform: scale(1.2);
-    -webkit-transform: scale(1.2);
     transform: scale(1.2);
 }
 
@@ -136,9 +132,6 @@ footer .list-inline .list-inline-item {
     padding: 10px 15px;
 }
 
-.carrito {
-    color: red;
-}
 
 /* //////////////
    Media queries
@@ -151,8 +144,8 @@ footer .list-inline .list-inline-item {
     .carousel-item p { font-size: 20px; }
 
     .footer-menu {
-        display: block !important;
-        padding: 20px 0 !important;
+        display: block;
+        padding: 20px 0;
         font-size: 20px;
 
     }

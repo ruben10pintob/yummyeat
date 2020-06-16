@@ -40,7 +40,7 @@ $restaurante = DAO::restauranteObtenerPorId($idRestaurante);
 <h1 style="color: black; margin-top: 100px"><?=$restaurante->getNombre()?></h1>
 <p><?=$producto->getNombre()?></p>
 <p><?=$producto->getDescripcion()?></p>
-<p><?=$producto->getPrecio()?></p>
+<p><?=$producto->getPrecio()?>€</p>
 
 <form action="carrito-annadir.php?id=?&restaurante=?&Unidades=?" method="post">
     <input type="hidden" value="<?=$idProducto?>" name="id">

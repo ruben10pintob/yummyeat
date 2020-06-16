@@ -81,8 +81,7 @@ $categoriaProductos = DAO::obtenerCategoriaProductosPorRestaurante($idRestaurant
     <table class="table-dark" border="1" width="50%" id="tabla">
     <?php foreach ($categoriaProductos as $categorias) { ?>
         <tr>
-            <!--<td width="600"><a href="restaurante-detalle.php?id=<?=$idRestaurante?>&categoria=<?=$categorias?>" id="categorias"><?=$categorias?></a><ion-icon name="arrow-down-outline" id="<?=$categorias?>"></ion-icon>-->
-            <td width="600"><span><?=$categorias?></span><span class="offset-11"><ion-icon name="arrow-down-outline" id="<?=$categorias?>"></ion-icon></span>
+            <td><span><?=$categorias?></span><span class="offset-11"><ion-icon name="arrow-down-outline" id="<?=$categorias?>"></ion-icon></span>
             </td>
             <div id="contenedorProductos">
         <tr style="display: none" name="<?=$categorias?>">
@@ -97,7 +96,7 @@ $categoriaProductos = DAO::obtenerCategoriaProductosPorRestaurante($idRestaurant
                 <input type="hidden" value="<?=$restaurantePorId->getId()?>" name="restaurante">
 
             <tr style="display: none" name="<?=$categorias?>">
-                <td><a href="producto-detalle.php?id=<?=$producto->getId()?>&restaurante=<?=$restaurantePorId->getId()?>&categoria=<?=$categoria?>"  id="hover"><?= $producto->getNombre() ?></a></td>
+                <td><a href="producto-detalle.php?id=<?=$producto->getId()?>&restaurante=<?=$restaurantePorId->getId()?>&categoria=<?=$categorias?>"  id="hover"><?= $producto->getNombre() ?></a></td>
                 <td><?= $producto->getPrecio() ?>€</td>
                 <td><input type="number" name="Unidades" value="1" min="1" placeholder="Unidades del producto" id="Unidades" ></td>
                 <td><input type="submit" name="Enviar" value="Añadir al carrito" class="btn btn-black" id="hover"></td>
@@ -109,34 +108,7 @@ $categoriaProductos = DAO::obtenerCategoriaProductosPorRestaurante($idRestaurant
 
     <?php } ?>
     </table>
-<!--
-<?php if (isset($_REQUEST["categoria"])) { ?>
-<div class="offset-3 col-6">
-    <table border="1" class="table-dark" style="margin-top: 20px;">
 
-        <th><?=$categoria?></th>
-        <th>Precio Unitario</th>
-        <th>Cantidad</th>
-        <?php
-        foreach ($productosPorCategoria as $producto) { ?>
-            <form action="carrito-annadir.php?id=?&restaurante=?&Unidades=?" name="form1">
-                <input type="hidden" value="<?=$producto->getId()?>" name="id">
-                <input type="hidden" value="<?=$restaurantePorId->getId()?>" name="restaurante">
-
-                <tr>
-                    <td><a href="producto-detalle.php?id=<?=$producto->getId()?>&restaurante=<?=$restaurantePorId->getId()?>&categoria=<?=$categoria?>"  id="hover"><?= $producto->getNombre() ?></a></td>
-                    <td><?= $producto->getPrecio() ?></td>
-                    <td><input type="number" name="Unidades" value="1" min="1" placeholder="Unidades del producto" id="Unidades" ></td>
-                    <td><input type="submit" name="Enviar" value="Añadir al carrito" class="btn btn-black" id="hover"></td>
-                </tr>
-            </form>
-        <?php }
-        }?>
-
-
-    </table>
-</div>
--->
 <a href="../cliente/inicio.php" class="btn btn-dark" style="margin-top: 20px" id="hover">Volver a la página de inicio</a>
 <?php require_once "../cliente/footer.php";?>
 

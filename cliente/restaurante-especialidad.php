@@ -3,7 +3,8 @@
 require_once "../_comunes/comunes-app.php";
 
 $especialidad = $_REQUEST["especialidad"];
-$restaurantes = DAO::obtenerRestaurantePorEspecialidad($especialidad);
+$localidades = DAO::obtenerUbicacionesRestaurante();
+//$restaurantes = DAO::obtenerRestaurantePorEspecialidad($especialidad);
 
 ?>
 
@@ -33,40 +34,33 @@ $restaurantes = DAO::obtenerRestaurantePorEspecialidad($especialidad);
 <?php require_once "header.php"?>
 <h1 style="margin-top: 100px"><?=$especialidad?></h1>
 
-<table border="1" class="table-hover">
+<?php foreach ($localidades as $fila) {
+    $restaurantesPorEspecialidadUbicacion = DAO::obtenerRestaurantesPorEspecialidadYUbicacion($fila, $especialidad);
 
-    <tr>
-        <th>Nombre</th>
-        <th>Telefono</th>
-        <th>direccion</th>
-        <th>localidad</th>
-        <th>email</th>
-        <th>Especialidad</th>
-    </tr>
+if (!empty($restaurantesPorEspecialidadUbicacion)) { ?>
 
-    <?php foreach ($restaurantes as $restaurante) { ?>
-        <tr>
-            <td>
-                <a href="restaurante-detalle.php?id=<?=$restaurante->getId()?>" style="color: black"><?=$restaurante->getNombre()?></a>
-            </td>
-            <td>
-                <a><?=$restaurante->getTelefono()?></a>
-            </td>
-            <td>
-                <a><?=$restaurante->getDireccion()?></a>
-            </td>
-            <td>
-                <a><?=$restaurante->getLocalidad()?></a>
-            </td>
-            <td>
-                <a><?=$restaurante->getEmail()?></a>
-            </td>            <td>
-                <a><?=$restaurante->getEspecialidad()?></a>
-            </td>
-        </tr>
-    <?php } ?>
+<section>
+    <div class="container-fluid">
+        <div class="content-center text-center">
+            <h2>Restaurantes en <?=$fila?></b></h2>
+        </div>
 
-</table>
+        <div class="row">
+            <?php foreach ($restaurantesPorEspecialidadUbicacion as $restaurante) {?>
+                <div class="col-md-4">
+                    <div class="restaurantes-cercanos-container">
+                        <a href="restaurante-detalle.php?id=<?=$restaurante->getId()?>"><img src="../img/Restaurantes/<?=$restaurante->getNombre()?>.jpg" class="img-fluid" alt="<?=$restaurante->getNombre()?>"></a>
+                        </figure>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+</section>
+<?php }
+}
+?>
+
 <a href="../cliente/inicio.php" class="btn btn-dark" style="margin-top: 20px" id="hover">Volver a la página de inicio</a>
 <?php require_once "footer.php" ?>
 </body>
